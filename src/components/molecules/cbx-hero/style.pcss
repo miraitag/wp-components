@@ -1,0 +1,210 @@
+
+
+
+html{
+    &[m-browser=ie]{
+        .cbx-hero{
+            &[m-mody=without-button]{
+                height: viewport(xxl,400);
+            }
+            >.cbx-img{
+                overflow-y: hidden;
+                img{
+                    height: auto;
+                }
+            }
+        }
+    }
+}
+
+
+.cbx-hero{
+    position: relative;
+    height: viewport(xs, 220);
+    width: 100%;
+    &[m-mody=without-button]{
+        height: 100%;
+        .hero-labels{
+            .content-hero{
+                .cbx-headline-hero{
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    &[m-mody=card]{
+        .hero-labels{
+            .content-hero{
+                transform: none;
+                > *{
+                    &:last-of-type{
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+        .hero-card{
+            @include absolute(center-horizontal);
+            border-radius: borderRadius(xs);
+            overflow: hidden;
+            bottom: 0;
+            width: viewport(xs,185);
+            height: viewport(xs,115);
+        }
+    }
+    
+    >.cbx-img:not(.hero-card){
+        width: 100%;
+        height:viewport(xs,200);
+    }
+    .hero-labels{
+        .content-hero{
+            @include absolute(center-vertical);
+            left: viewport(xs, 20);
+            width: viewport(xs, 280);
+            .cbx-category, .cbx-headline-hero{
+                //@include text-shadow( xs );
+                margin-bottom: viewport(xs, 20);
+            }
+        }
+        .cbx-button{
+            @include absolute(center-horizontal);
+            bottom: 0;
+        }
+    }
+}
+
+@media #{$max-mobile}{
+    .cbx-hero{
+        &[m-mody=card]{
+            height: viewport(xs, 285);
+            .hero-labels{
+                .content-hero{
+                    top: viewport(xs,30);
+                }
+            }
+        }
+    }
+}
+
+@media width >= 768px{
+    .cbx-hero{
+        height: 276px;
+        &[m-mody=card]{
+            .hero-card{
+                transform: none;
+                border-radius: borderRadius(sm);
+                right: 50px;
+                bottom: 30px;
+                left: auto;
+                width: 120px;
+                height: 75px;
+            }
+        }
+        >.cbx-img:not(.hero-card){
+            height: inherit;
+            img{
+                height: inherit;
+                object-fit: cover;
+            }
+        }
+        .hero-labels{
+            @include absolute(center-vertical);
+            left: 44px;
+            width: 55%;
+            .content-hero{
+                width: 100%;
+                .cbx-category, .cbx-headline-hero{
+                    margin-bottom: 20px;
+                }
+                position: static;
+                left: 0;
+                top: 0;
+                transform: none;
+                .cbx-category{
+                    margin-bottom: 20px;
+                }
+                .cbx-headline-hero{
+                    margin-bottom: 20px;
+                }
+            }
+            .cbx-button{
+                position: static;
+                bottom: 0;
+                left: 0;
+                transform: none;
+            }
+        }
+    }
+}
+
+
+
+@media width >= 1024px{
+    .cbx-hero{
+        height: viewport(lg, 368);
+        &[m-mody=card]{
+            .hero-card{
+                border-radius: borderRadius(lg);
+                right: viewport(lg, 90);
+                bottom: viewport(lg, 40);
+                width: viewport(lg, 240);
+                height: viewport(lg, 150);
+            }
+        }
+        .hero-labels{
+            left: viewport(lg, 32);
+            .content-hero{
+                .cbx-category, .cbx-headline-hero{
+                    margin-bottom: viewport(lg, 20);
+                }
+            }
+        }
+    }
+}
+
+@media width >= 1280px{
+    .cbx-hero{
+        height: viewport(xl,400);
+        &[m-mody=card]{
+            .hero-card{
+                border-radius: borderRadius(xl);
+                right: viewport(xl, 90);
+                bottom: viewport(xl, 40);
+                width: viewport(xl, 240);
+                height: viewport(xl, 150);
+            }
+        }
+        .hero-labels{
+            left: viewport(xl,140);
+            .content-hero{
+                .cbx-category, .cbx-headline-hero{
+                    margin-bottom: viewport(xl, 20);
+                }
+            }
+        }
+    }
+}
+
+@media width >= 1440px{
+    .cbx-hero{
+        height: viewport(xxl,400);
+        &[m-mody=card]{
+            .hero-card{
+                border-radius: borderRadius(xxl);
+                right: viewport(xxl, 90);
+                bottom: viewport(xxl, 40);
+                width: viewport(xxl, 240);
+                height: viewport(xxl, 150);
+            }
+        }
+        .hero-labels{
+            left: viewport(xxl,140);
+            .content-hero{
+                .cbx-category, .cbx-headline-hero{
+                    margin-bottom: viewport(xxl, 20);
+                }
+            }
+        }
+    }
+}

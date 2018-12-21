@@ -1,0 +1,263 @@
+
+html{
+    &[m-browser=ie]{
+        .cbx-social-info{
+            width: 100%;
+            justify-content: space-between;
+            .social-content{
+                flex-wrap: nowrap;  
+                &:first-child{
+                    width: 70%
+                }
+                &:last-child{
+                    width: 30%;
+                }
+                >.social-text{
+                    flex-basis: auto;
+                }
+                .social-text{
+                    flex-basis: inherit;
+                    flex-grow: inherit;
+                }
+                .social-buttons{
+                    flex-basis: auto;
+                }
+            }
+        }
+    }
+}
+.cbx-social-info{
+    @include box-shadow(xs, medium-out);
+    position: relative;
+    height: viewport(xs,180);
+    width: 100%;
+    padding: {
+        top: viewport(xs,20);
+        bottom: viewport(xs,20);
+    }
+    &[m-copy=true]{
+        .social-message{
+            animation: copy-message 1.5s linear;
+        }
+    }
+    .social-content{
+        display: flex;
+        flex-wrap: wrap;
+        width: 80%;
+        margin: auto;
+        height: auto;
+        text-align: right;
+        padding-top: viewport(xs,20);
+        &:first-child{
+            margin-bottom: viewport(xs,20);
+            
+        }
+        &:last-child{
+            .social-text{
+                .cbx-text{
+                    text-align: right;
+                    
+                }
+            }
+        }
+        > .social-text, >.social-buttons{
+            flex-shrink: 1;
+            flex-basis: 0;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .cbx-text{
+            margin-right: 10px;
+        }
+    }
+    .social-text, .social-buttons{
+        height: inherit;
+    }
+    .social-text{
+        flex-grow: 2;
+        
+    }
+    .social-buttons{
+        flex-grow: 1;
+        display: flex;
+        justify-content: space-between;
+        >div{
+            display: flex;
+            align-items: center;
+            position: relative;
+            height: inherit;
+            &:first-child{
+                flex-grow: 1;
+                margin-right: viewport(xs,10);
+                &::after{
+                    @include absolute(center-vertical);
+                    right: 0;
+                    content:'';
+                    height: 80%;
+                    width: 1px;
+                    background-color: var(--middle-gray);
+                }
+            }
+        }
+        .cbx-icon{
+            @include transition(color);
+            color: var(--darkest-gray);
+            &[m-active=true]{
+                .icons-guides-like-o{
+                    &:before{
+                        content: "\6e";
+                        color: var(--soft-blue);
+                    }
+                }
+            }
+        }
+        .cbx-icon{
+            @include transition(color);
+            color: var(--darkest-gray);
+            &[m-active=true]{
+                .icons-guides-dislike-o{
+                    &:before{
+                        content: "\76";
+                        color: var(--soft-blue);
+                    }
+                }
+            }
+        }
+    }
+    .social-message{
+        @include absolute(center-horizontal);
+        border-radius: borderRadius(xs);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        height: viewport(xs,50);
+        width: inherit;
+        opacity: 0;
+        pointer-events: none;
+        background-color: var(--background-gray);
+    }   
+}
+
+@keyframes copy-message{
+    0%{opacity: 1;}
+    25%{opacity: .75;}
+    50%{opacity: .5;}
+    75%{opacity: .25;}
+    100%{opacity: 0;}
+}
+
+@media width >= 768px{
+    .cbx-social-info {
+        @include box-shadow(sm, medium-out);
+        height: 80px;
+        padding: 20px;        
+        display: flex;
+        justify-content: space-between;        
+        .social-content {
+            margin: 0;
+            width: auto;
+            padding-top: 0;
+            &:first-child{
+                margin-bottom: 0;
+            }           
+        }
+        .social-content>.social-text {
+            display: flex;
+            align-items: center;
+            flex-shrink: 1;
+            flex-basis: 0;            
+            justify-content: flex-start;
+            padding: 10px;            
+        }
+         .social-buttons{
+            flex-grow: 0; 
+            >div{                
+                &:first-child{                    
+                    &::after{
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        left: 48px;
+                        height: 50%;
+                    }
+                }
+            }
+         }
+         .social-message{
+            border-radius: borderRadius(sm);
+            height: viewport(xs,50);
+         }         
+    } 
+}
+
+@media width >= 1024px{
+    .cbx-social-info {
+        @include box-shadow(lg, medium-out);
+        height: viewport(lg,80);
+        padding: viewport(lg,20);        
+        .social-content>.social-text {
+            padding: viewport(lg,10);            
+        }
+         .social-buttons{
+            >div{                
+                &:first-child{                    
+                    &::after{
+                        left: viewport(lg,48);
+                    }
+                }
+            }
+         }
+         .social-message{
+            border-radius: borderRadius(sm);
+            height: viewport(lg,50);
+         }         
+    }
+}
+
+@media width >= 1280px{
+    .cbx-social-info {
+        @include box-shadow(xl, medium-out);
+        height: viewport(xl,80);
+        padding: viewport(xl,20);        
+        .social-content>.social-text {
+            padding: viewport(xl,10);            
+        }
+         .social-buttons{
+            >div{                
+                &:first-child{                    
+                    &::after{
+                        left: viewport(xl,48);
+                    }
+                }
+            }
+         }
+         .social-message{
+            border-radius: borderRadius(xl);
+            height: viewport(xl,50);
+         }         
+    }
+}
+@media width >= 1440px{
+    .cbx-social-info {
+        @include box-shadow(xxl, medium-out);
+        height: viewport(xxl,80);
+        padding: viewport(xxl,20);        
+        .social-content>.social-text {
+            padding: viewport(xxl,10);            
+        }
+         .social-buttons{
+            >div{                
+                &:first-child{                    
+                    &::after{
+                        left: viewport(xxl,48);
+                    }
+                }
+            }
+         }
+         .social-message{
+            border-radius: borderRadius(xxl);
+            height: viewport(xxl,50);
+         }         
+    }
+}

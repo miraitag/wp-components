@@ -1,0 +1,119 @@
+
+
+.cbx-cookies{
+    background-color: var(--background-gray);
+    .cookie-content{
+        display: flex;
+        padding: viewport(xs,20) viewport(xs,10);
+        .cbx-icon{
+            &:last-child{
+                color: inherit;
+                &[m-mody~=border]{
+                    border-color: inherit;
+                }
+            }
+        }
+    }
+    .cbx-legal{
+        padding: 0 viewport(xs,10);
+        font-family: var(--font-b);
+        font-size: viewport(xs,10);
+        line-height: 1.5;
+    }
+}
+
+@media width >= 768px{
+    .cbx-cookies{
+        .cookie-content{
+            padding: 20px 10px;
+        }
+        .cbx-legal{
+            font-size: 10px;
+            padding:{
+                right: 10px;
+                left: 10px;
+            }
+        }
+    }
+}
+
+@media width <= 1023px{
+    .cbx-cookies{
+        @include transition(bottom);
+        position: fixed;
+        bottom: -100vh;
+        z-index: 4;
+        width: 100%;
+        &[m-open=true]{
+            bottom: 0;
+        }
+    }
+}
+
+@media width >= 1024px{
+    .cbx-cookies{
+        width: 100%;
+        overflow: hidden;
+        &[m-open=true]{
+            .cookie-content{
+                height: viewport(lg,70);
+            }
+        }
+        .cookie-content{
+            @include transition(height);
+            align-items: center;
+            height: 0;
+            padding: 0 viewport(lg,10);
+        }
+        .cbx-legal{
+            font-size: viewport(lg,12);
+            padding:{
+                right: viewport(lg,10);
+                left: viewport(lg,10);
+            }
+        }
+    }
+}
+
+@media width >= 1280px{
+    .cbx-cookies{
+        &[m-open=true]{
+            .cookie-content{
+                height: viewport(xl,70);
+            }
+        }
+        .cookie-content{
+            margin: auto;
+            max-width: viewport(xl,1100);
+            padding: 0 viewport(xl,10);
+        }
+        .cbx-legal{
+            font-size: viewport(xl,12);
+            padding:{
+                right: viewport(xl,10);
+                left: viewport(xl,10);
+            }
+        }
+    }
+}
+
+@media width >= 1440px{
+    .cbx-cookies{
+        &[m-open=true]{
+            .cookie-content{
+                height: viewport(xxl,70);
+            }
+        }
+        .cookie-content{
+            max-width: viewport(xxl,1100);
+            padding: 0 viewport(xxl,10);
+        }
+        .cbx-legal{
+            font-size: viewport(xxl,12);
+            padding:{
+                right: viewport(xxl,10);
+                left: viewport(xxl,10);
+            }
+        }
+    }
+}

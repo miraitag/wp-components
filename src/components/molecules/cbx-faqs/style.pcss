@@ -1,0 +1,216 @@
+
+
+[m-desk=faqs]{
+    > .cbx-wrapper{
+        .cbx-headline-section{
+            text-align: left;
+        }
+    }
+    .cbx-faqs{
+        .content-items{
+            border-bottom:solid;
+            border-bottom-width: 1px;
+            border-bottom-color:var(--bright-gray);
+            .head-faqs{
+                color:var(--soft-blue);
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                text-align: left;
+                padding: {
+                    top:viewport(xs,20);
+                    bottom:viewport(xs,20);
+                }
+                .cbx-icon{
+                    i{
+                        color: var(--soft-blue);
+                    }
+                }
+                &[m-open=true]{
+                    .icon-angle-down-s{
+                        &:before{
+                            content: "\6c";
+                        }
+                    }
+                }
+            }
+            .answer-faqs{
+                .cbx-text{
+                    margin-bottom: viewport(xs,20);
+                }
+            }
+        }
+        [m-drop-down]{
+            margin-bottom: viewport(xs,20);
+            [m-open]{
+                + * {
+                    transition-property: max-height;
+                    transition-timing-function: ease-in;
+                }
+            }
+            [m-open=false]{
+                + *{
+                    transition-duration: 350ms;
+                }
+            }
+        }
+    }
+    .cbx-card{
+        &[m-mody~=c-phone]{
+            background-color: var(--background-gray);
+        }
+    }
+}
+
+@media width >= 768px{
+    [m-desk=faqs]{
+        .cbx-faqs{
+            display: flex;
+            align-items: flex-start;
+            .content-items{
+                .head-faqs{
+                    padding: {
+                        top:20px;
+                        bottom:20px;
+                    }
+                }
+                .answer-faqs{
+                    .cbx-text{
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+            [m-drop-down]{
+                margin-bottom: 0;
+            }
+            > article{
+                flex-grow: 1;
+                flex-shrink: 0;
+                flex-basis: 0;
+                &:first-child{
+                    margin-right: 20px;
+                }
+            }
+        }
+        .cbx-card{
+            &[m-mody~=c-phone]{
+                .card-content{
+                    .card-head{
+                        padding-bottom: 10px;
+                        height: auto;
+                    }
+                    .card-body{
+                        .item{
+                            &:last-child{
+                                margin-bottom: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media width >= 1024px{
+    [m-desk=faqs]{
+        .cbx-faqs{
+            .content-items{
+                .head-faqs{
+                    padding: {
+                        top: viewport(lg,20);
+                        bottom: viewport(lg,20);
+                    }
+                }
+                .answer-faqs{
+                    .cbx-text{
+                        margin-bottom: viewport(lg,20);
+                    }
+                }
+            }
+            > article{
+                &:first-child{
+                    margin-right: viewport(lg,20);
+                }
+            }
+        }
+        .cbx-card{
+            &[m-mody~=c-phone]{
+                min-height: auto;
+                .card-content{
+                    .card-head{
+                        padding-bottom: viewport(lg,10);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media width >= 1280px{
+    [m-desk=faqs]{
+        .cbx-faqs{
+            .content-items{
+                .head-faqs{
+                    padding: {
+                        top: viewport(xl,20);
+                        bottom: viewport(xl,20);
+                    }
+                }
+                .answer-faqs{
+                    .cbx-text{
+                        margin-bottom: viewport(xl,20);
+                    }
+                }
+            }
+            > article{
+                &:first-child{
+                    margin-right: viewport(xl,20);
+                }
+            }
+        }
+        .cbx-card{
+            &[m-mody~=c-phone]{
+                .card-content{
+                    .card-head{
+                        padding-bottom: viewport(xl,10);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media width >= 1440px{
+    [m-desk=faqs]{
+        .cbx-faqs{
+            .content-items{
+                .head-faqs{
+                    padding: {
+                        top: viewport(xxl,20);
+                        bottom: viewport(xxl,20);
+                    }
+                }
+                .answer-faqs{
+                    .cbx-text{
+                        margin-bottom: viewport(xxl,20);
+                    }
+                }
+            }
+            > article{
+                &:first-child{
+                    margin-right: viewport(xxl,20);
+                }
+            }
+        }
+        .cbx-card{
+            &[m-mody~=c-phone]{
+                .card-content{
+                    .card-head{
+                        padding-bottom: viewport(xxl,10);
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,262 @@
+
+html{
+    &[m-browser=ie]{
+        .cbx-side-menu{
+            [m-open=true]{
+                [m-size]{
+                    &.cbx-icon{
+                        width: 1.25vw;
+                        height: 1.25vw;
+                        i {
+                            font-size: 1.65vw;
+                        }   
+                    }
+                }
+            }
+            [m-open=false]{
+                [m-size]{
+                    &.cbx-icon{
+                        i {
+                            top:0;
+                        }   
+                    }
+                }
+            }
+        }
+        .social-buttons{
+            .cbx-icon{
+                height: 100%;
+            }
+        }
+    }
+    /* &[m-browser=ff]{
+        .cbx-side-menu{
+            [m-open=true]{
+                [m-size]{
+                    &.cbx-icon{
+                        width: 2.25vw;
+                        height: 2.25vw;
+                        i {
+                            font-size: 1.65vw;
+                        }   
+                    }
+                }
+            }
+            [m-open=false]{
+                [m-size]{
+                    &.cbx-icon{
+                        width: 2.25vw;
+                        height: 2.25vw;
+                        i {
+                            font-size: 1.65vw;
+                            top:0;
+                        }   
+                    }
+                }
+            }
+        }
+    } */
+    &[m-browser~=mobile]{
+        .cbx-icon{
+            .icon-plus-o{
+                position: relative;
+                &:before{
+                    position: absolute;
+                    top: 56%;
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
+}
+.cbx-side-menu{
+    &[m-open=false]{
+        display: none;
+    }
+    &[m-open=true]{
+        display: block !important;
+    }
+    .content-items{
+        position: relative;
+        &:before,{
+            position: absolute;
+            content: "";
+            top:0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 1px;
+            width: 100%;
+            background-color: var(--bright-gray);
+        }
+        &:hover{
+            &:after,{
+                background-color: var(--soft-blue);
+            }
+        }
+        &:after,{
+            @include transition(background-color);
+            position: absolute;
+            content: "";
+            bottom:0;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 1px;
+            width: 100%;
+            background-color: var(--bright-gray);
+            
+        }
+        
+    }
+    .cbx-sub-headline{
+        display: flex;
+        width: 100%;
+        padding: {
+            top: viewport(xs,20);
+            bottom: viewport(xs,20);
+        }
+        justify-content: space-between;
+        &[m-open=true]{
+            .icon-plus-o{
+                @include transition(content);
+                &:before{
+                    content: "\59";
+                    font-weight: bold !important;
+                }
+            }
+        }
+    }
+    .contents-subitems{
+        padding: {
+            left:viewport(xs,20);
+            right:viewport(xs,20);
+        }
+        .subitem-menu{
+            padding-bottom: viewport(xs,20);
+        }
+        .cbx-link{
+            color: var(--darkest-gray);
+            position: relative;
+            &:after{
+                background-color: var(--darkest-gray);
+            }
+            &[m-active=true]{
+                &:before{
+                    content: "\6a";
+                    font-family: 'cbx-icons' !important;
+                    position: absolute;
+                    left: viewport(xs,-15);
+                    top: 50%;
+                    transform:translateY(-50%);
+                }
+            }
+        }
+    }
+}
+
+@media width >= 768px{
+    .cbx-side-menu{
+        .cbx-sub-headline{
+            padding: {
+                top: 20px;
+                bottom: 20px;
+            }
+        }
+        .contents-subitems{
+            padding: {
+                left:20px;
+                right:20px;
+            }
+            .subitem-menu{
+                padding-bottom: 20px;
+            }
+            .cbx-link{
+                &[m-active=true]{
+                    &:before{
+                        left: -15px;
+                    }
+                }
+            }
+        }
+    }
+}
+@media width >= 1024px{
+    .cbx-side-menu{
+        &[m-open=false]{
+            display: block;
+        }
+        .cbx-sub-headline{
+            padding: {
+                top: viewport(lg,20);
+                bottom: viewport(lg,20);
+            }
+        }
+        .contents-subitems{
+            padding:{
+                right:viewport(lg,20);
+                left: viewport(lg,20);
+            }     
+            .subitem-menu{
+                padding-bottom: viewport(lg,20);
+            }
+            .cbx-link{
+                &[m-active=true]{
+                    &:before{
+                        left: viewport(lg,-15);
+                    }
+                }
+            }
+        }
+    }
+}
+@media width >= 1280px{
+    .cbx-side-menu{
+        .cbx-sub-headline{
+            padding: {
+                top: viewport(xl,20);
+                bottom: viewport(xl,20);
+            }
+        }
+        .contents-subitems{
+            padding:{
+                right:viewport(xl,20);
+                left: viewport(xl,20);
+            }
+            .subitem-menu{
+                padding-bottom: viewport(xl,20);
+            }
+            .cbx-link{
+                &[m-active=true]{
+                    &:before{
+                        left: viewport(xl,-20);
+                    }
+                }
+            }
+        }   
+    }
+}
+@media width >= 1440px{
+    .cbx-side-menu{
+        .cbx-sub-headline{
+            padding: {
+                top: viewport(xxl,20);
+                bottom: viewport(xxl,20);
+            }
+        }
+        .contents-subitems{
+            padding:{
+                right:viewport(xxl,20);
+                left: viewport(xxl,20);
+            }
+            .subitem-menu{
+                padding-bottom: viewport(xxl,20);
+            }
+            .cbx-link{
+                &[m-active=true]{
+                    &:before{
+                        left: viewport(xxl,-20);
+                    }
+                }
+            }
+        }
+    }
+}

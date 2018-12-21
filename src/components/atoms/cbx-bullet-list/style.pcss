@@ -1,0 +1,62 @@
+.cbx-bullet-list{
+    @mixin border-radius xs; 
+    @mixin viewport xs, height, 30;
+    @mixin viewport xs, width, 30;
+    background-color: var(--white);
+    display: flex;
+    justify-content: center;    
+    align-items: center;   
+    flex-shrink: 0;
+    &[m-mody=circle]{
+        border-radius: 50%;
+    }
+    & .cbx-icon{
+        @mixin viewport xs, font-size, 30;
+    }   
+    & .cbx-icon, & .cbx-hightlight{
+        color: var(var(--soft-blue));
+    }
+}
+
+@media (width >= 768px){
+    .cbx-bullet-list{
+        @mixin border-radius sm; 
+        height: 30px;
+        width:30px;
+        & .cbx-icon{
+            font-size: 24px;
+        } 
+    }
+}
+
+@media (width >= 1024){
+    .cbx-bullet-list{
+        @mixin border-radius lg; 
+        @mixin viewport lg, height, 45;
+        @mixin viewport lg, width, 45;
+        & .cbx-icon{
+            @mixin viewport lg, font-size, 24;
+        }
+    }
+}
+
+@media (width >= 1280){
+    .cbx-bullet-list{
+        @mixin border-radius xl; 
+        @mixin viewport xl, height, 45;
+        @mixin viewport xl, width, 45;
+        & .cbx-icon{
+            @mixin viewport xl, font-size, 24;
+        }
+    }
+}
+@media (with >= 1440){
+    .cbx-bullet-list{
+        @mixin border-radius xxl; 
+        @mixin viewport xxl, height, 45;
+        @mixin viewport xxl, width, 45;
+        & .cbx-icon{
+            @mixin viewport xxl, font-size, 24;
+        }
+    }
+}

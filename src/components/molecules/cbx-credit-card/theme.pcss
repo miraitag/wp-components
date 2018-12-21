@@ -1,0 +1,14 @@
+.cbx-credit-card {
+	&[m-theme="white"] {
+		&[m-active="false"] {
+			.cbx-img {
+				@mixin rgba background-color, var(--white), 0.2;
+				border-color: var(--white);
+			}
+			.cbx-icon {
+				background-color: var(--white);
+				@mixin rgba color, var(--black), 0.2;
+			}
+		}
+	}
+}

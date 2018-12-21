@@ -1,0 +1,36 @@
+
+
+.cbx-title{
+    font: {
+        size: viewport(xs, 20);
+        family: var(--font-b);
+    }
+    color: var(--darkest-gray);
+}
+
+@media width >= 768px{
+    .cbx-title{
+        font-size: 20px;
+    }
+}
+
+@media width >= 1024px{
+    .cbx-title{
+        font-size: viewport(lg, 20);
+        line-height: viewport(lg, 26);
+    }
+}
+
+@media width >= 1280px{
+    .cbx-title{
+        font-size: viewport(xl, 24);
+        line-height: viewport(xl, 26);
+    }
+}
+
+@media width >= 1440px{
+    .cbx-title{
+        font-size: viewport(xxl, 24);
+        line-height: viewport(xxl, 26);
+    }
+}

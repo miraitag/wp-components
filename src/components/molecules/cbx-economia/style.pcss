@@ -1,0 +1,291 @@
+
+
+.cbx-economia{
+    background-color: var(--background-gray);
+    
+    .content-economia{
+        .item-list{
+            .card-content{
+                .card-description{
+                    display: none;
+                }
+                .cbx-icon{
+                    color: var(--darkest-gray);
+                    margin-right: 0;
+                    width: viewport(xs,25);
+                    height: viewport(xs,25);
+                    >i:not(.icon-angle-down-o){
+                        font-size: viewport(xs,18);
+                    }
+                }
+            }       
+            .tooltip-moneda{
+                @include box-shadow("lg", "small-out");
+                display:none;
+                opacity:0;
+                position: absolute;
+                background-color: var(--white);
+                padding: 10px;
+                border-radius:4px; 
+                left: 50%;
+                transform: translateX(-50%);
+                transition: opacity 350ms ease-in-out;
+                top:-85%;
+            }
+            .card-description{
+                display: block;
+            }
+            .icons-content{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                .card-content{
+                    .cbx-icon{
+                        &[m-mody~=icon-bold]{
+                            text-shadow: -1px -1px 0 var(--darkest-gray), -1px -1px 0 var(--darkest-gray), -1px -1px 0 var(--darkest-gray);
+                            @supports( display: grid){
+                                text-shadow: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &[m-open=true]{
+        .content-economia{
+            display: block;  
+        }
+        .icon-plus-o{
+            &:before{
+                content:"\59";
+            }
+        }
+    }
+    [m-current=true]{
+       .icon-angle-down-o{
+           &:before{
+               content:"\6b";
+           }
+       } 
+    }
+    .button-open{
+        width: 100%;
+        height: viewport(xs,50);
+        display: flex;
+        justify-content: center;
+        .cbx-sub-title{
+            margin-right: viewport(xs,20);
+        }        
+    }
+    .cbx-card{
+        box-shadow: none;
+        display: block;
+        width: 100%;
+        justify-content: center;
+        padding: 0 viewport(xs, 15);
+        background-color: transparent;
+        align-items: center;
+        height: inherit;
+        cursor: pointer;
+    }
+    .dropdown-list{
+        display: inline-flex;
+        width: 100%;
+        height: viewport(xs,50);
+        justify-content: space-between;
+        .item-list{
+            height: inherit;
+            display: flex;
+            align-items: center;
+            &[m-current=true]{
+                .cbx-text{
+                    color: var(--soft-blue);
+                }
+            }
+        }
+    }
+    .icon-angle-down-o{
+        color: var(--soft-blue);
+        margin-top: auto;
+    }
+    .content-items{
+        .content{
+            display: none;
+            &[m-active=true]{
+                display: block;
+            }
+        }
+    }
+}
+@media width >= 768px{
+    .cbx-economia{
+        .button-open{
+            display: none;
+        }
+        .content-economia{
+            display: block;
+            .item-list{
+                .card-content{
+                    .card-description{
+                        display: block;
+                    }
+                    .cbx-icon{
+                        width: 50px;
+                        height: 50px;
+                        >i:not(.icon-angle-down-o){
+                            font-size: 25px;
+                        }
+                    }
+                }
+                .card-description{
+                    display: none;
+                }
+            }
+        } 
+        .dropdown-list{
+            display: inline-flex;
+            width: 100%;
+            justify-content: space-around;
+            height: 80px; 
+            .item-list{
+                flex-basis: 0;
+                flex-shrink: 0;
+                flex-grow: 1;
+
+                &[m-current=true]{
+                    display: block;
+                    background-color:transparent;
+                }
+                .cbx-card{
+                    padding: 0;
+                    .cbx-text{
+                        transition: color 350ms ease-in-out;
+                    }
+                    &:hover{
+                        .cbx-text{
+                            color: var(--soft-blue);
+                        }
+                    }
+                }
+            }
+            .cbx-icon{
+                color: var(--darkest-gray);
+                margin-right: 0;
+                .icon-angle-down-o{
+                    margin-left: viewport(lg,15);
+                    
+                }
+            }
+        }
+        .cbx-card{
+            display: flex;
+        }
+    }
+}
+
+@media width >= 1024px{
+    .cbx-economia{ 
+        .content-economia{
+            .item-list{
+                .card-content{
+                    .cbx-icon{
+                        width: viewport(lg,50);
+                        height: viewport(lg,50);
+                        >i:not(.icon-angle-down-o){
+                            font-size: viewport(lg,25);
+                        }
+                    }
+                }
+            }
+        } 
+        .dropdown-list{
+            height: viewport(lg, 60);
+            .cbx-icon{
+                .icon-angle-down-o{
+                    margin-left: viewport(lg,15);
+                }
+            }
+        }
+    }
+}
+
+@media width >= 1280px{
+    .cbx-economia{
+        .content-economia{
+            .item-list{
+                position: relative;
+                .card-content{
+                    .cbx-icon{
+                        width: viewport(xl,50);
+                        height: viewport(xl,50);
+                        >i:not(.icon-angle-down-o){
+                            font-size: viewport(xl,25);
+                        }
+                    }
+                }
+                .tooltip-moneda{
+                    display:block;
+                    opacity:0;
+                    position: absolute;
+                    background-color: var(--white);
+                    padding: viewport(xl, 10);
+                    border-radius:viewport(xl, 4);
+                    left: 50%;
+                    transform: translateX(-50%);
+                    transition: opacity 350ms ease-in-out;
+                    top:-85%;
+                    @include box-shadow("xl", "small-out");
+                    z-index: 2;
+                    pointer-events: none;
+                    .cbx-text{
+                        color:var(--dark-gray);
+                    }
+                }
+                &:hover{
+                    .tooltip-moneda{
+                        opacity: 1;
+                        
+                    }
+                }
+            }
+        }  
+        .dropdown-list{
+            height: viewport(xl, 60);
+            .cbx-icon{
+                .icon-angle-down-o{
+                    margin-left: viewport(xl,15);
+                }
+            }
+        }
+    }
+}
+@media width >= 1440px{
+    .cbx-economia{ 
+        .content-economia{
+            .item-list{
+                .card-content{
+                    .cbx-icon{
+                        width: viewport(xxl,50);
+                        height: viewport(xxl,50);
+                        >i:not(.icon-angle-down-o){
+                            font-size: viewport(xxl,25);
+                        }
+                    }
+                }
+                .tooltip-moneda{
+                    padding: viewport(xxl, 10);
+                    border-radius:viewport(xxl, 4);
+                }
+            } 
+        } 
+        .dropdown-list{
+            height: viewport(xxl, 60);
+            .cbx-icon{
+                .icon-angle-down-o{
+                    margin-left: viewport(xxl,15);
+                }
+            }
+        }
+    }
+}

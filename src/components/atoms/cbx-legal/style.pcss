@@ -1,0 +1,52 @@
+
+
+.cbx-legal{
+    font:{ 
+        size: viewport( xs, 12 );
+        family: var(--font-r);
+    }
+    color: var(--dark-gray);
+    //white-space: pre-wrap;
+    & [m-mody=number],  & [m-mody=cat]{
+        font-family: var(--font-b);
+    }
+    & [m-mody=cat]{
+        font-size: viewport( xs, 16 );
+    }
+}
+
+@media width >= 768px{
+    .cbx-legal{
+        font-size: 12px;
+        & [m-mody=cat]{
+            font-size: 16px;
+        }
+    }
+}
+
+@media width >= 1024px{
+    .cbx-legal{
+        font-size: viewport( lg, 12);
+        & [m-mody=cat]{
+            font-size: viewport( lg, 16);
+        }
+    }
+}
+
+@media width >= 1280px{
+    .cbx-legal{
+        font-size: viewport(xl, 12 );
+        & [m-mody=cat]{
+            font-size: viewport(xl, 16 );
+        }
+    }
+}
+
+@media width >= 1440px{
+    .cbx-legal{
+        font-size: viewport(xxl, 12);
+        & [m-mody=cat]{
+            font-size: viewport(xxl, 16 );
+        }
+    }
+}

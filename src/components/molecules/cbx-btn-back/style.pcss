@@ -1,0 +1,23 @@
+
+.cbx-btn-back{
+    display: flex;
+    width: viewport(xs,200);
+    height: viewport(xs,50);
+    align-items: center;
+    .cbx-icon, .cbx-text{
+        color: var(--soft-blue);
+    }
+}
+
+@media width >= 768px{
+    .cbx-btn-back{
+        width: 200px;
+        height: 50px;
+    }
+}
+
+@media width >= 1024px{
+    .cbx-btn-back{
+        display: none;   
+    }
+}

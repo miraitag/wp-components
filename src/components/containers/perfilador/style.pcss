@@ -1,0 +1,82 @@
+
+
+[m-container=perfilador]{
+    .cbx-perfilador{
+        .perfil-buttton{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: viewport(xs,240);
+            display: inline-flex;
+            width: viewport(xs,200);
+            justify-content: space-between;
+        }
+        .perfilador-labels{
+            > .cbx-button{
+                margin-bottom: viewport(xs,20);
+            }
+        }
+    }
+}
+
+@media width >= 768px{
+ [m-container=perfilador]{
+    .cbx-perfilador{
+        .perfil-buttton{
+           position: relative;
+            left: auto;
+            transform: none;
+            top:auto;
+            width: 240px;
+            margin: {
+                bottom: 40px;
+            }
+        } 
+        .perfilador-labels{
+            > .cbx-button{
+                margin-bottom:0;
+            }
+        }
+    }
+ }   
+}
+
+@media width >= 1024px{
+    [m-container=perfilador]{
+        .cbx-perfilador{
+            .perfil-buttton{
+                width:viewport(lg,260);
+               margin:{
+                    bottom:viewport(lg,60);
+                }
+                
+            } 
+        }  
+    }
+}
+
+@media width >= 1280px{
+    [m-container=perfilador]{
+        .cbx-perfilador{
+            .perfil-buttton{
+                width:viewport(xl,260);
+                margin:{
+                    bottom:viewport(xl,60);
+                }
+            }
+        }  
+    }
+}
+
+@media width >= 1440px{
+    [m-container=perfilador]{
+        .cbx-perfilador{
+            .perfil-buttton{
+               width:viewport(xxl,260);
+                margin:{
+                    bottom:viewport(xxl,60);
+                }
+            }
+        }  
+    }
+}

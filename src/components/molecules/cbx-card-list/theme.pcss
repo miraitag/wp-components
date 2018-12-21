@@ -1,0 +1,43 @@
+.cbx-card-list {
+	&[m-theme~="gray"] {
+		box-shadow: none;
+		.card-list-head {
+			background-color: var(--light-gray);
+		}
+		.card-list-body {
+			background-color: var(--white);
+		}
+		.cbx-footer-list {
+			background-color: var(--bright-gray);
+		}
+	}
+	&[m-theme="blue"] {
+		box-shadow: none;
+		.card-list-head,
+		.cbx-footer-list {
+			background-color: var(--soft-blue);
+		}
+		.card-list-body {
+			background-color: var(--white);
+		}
+		.cbx-footer-list {
+			.cbx-text {
+				color: var(--white);
+			}
+		}
+	}
+	&[m-theme~="head-white"] {
+		.card-list-head {
+			background-color: var(--white);
+			.cbx-title {
+				color: inherit;
+			}
+		}
+	}
+	&[m-theme~="soft-gray"] {
+		box-shadow: none;
+		.card-list-body {
+			background-color: var(--soft-gray);
+		}
+	}
+}

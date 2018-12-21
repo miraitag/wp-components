@@ -1,0 +1,81 @@
+
+
+[m-container=promociones]{
+	overflow: hidden;
+	.cbx-wrapper{
+		padding:{
+			right: 0;
+			left: 0;
+		}
+	}
+	.content-promociones{
+		width: 100%;
+	}
+	.menu-promociones{
+		padding:{
+			left: viewport(xs, 20);
+			right: viewport(xs, 20);
+		}
+	}
+	.cards-promociones{
+		&.slick-slider{
+			.cbx-card{
+				width: viewport(xs,255);
+				margin-right: viewport(xs,20);
+				&:last-child{
+					margin-right: 0;
+				}
+			}
+		}
+		.slick-list{
+			overflow: visible;
+		}
+		/* .slick-dots{
+			margin-top: viewport(xs,20);
+		} */
+	}	
+}
+
+@media width >= 768px{
+	[m-container=promociones]{
+		.menu-promociones{
+			padding:{
+				left: 20px;
+				right: 20px;
+			}
+		}
+		.cards-promociones{
+			&.slick-slider{
+				&[m-open=true]{
+					display: block;
+				}
+				.cbx-card{
+					width: 350px;
+					margin-right: 20px;	
+				}
+			}
+			/* .slick-dots{
+				margin-top: 20px;
+			} */
+			.card-description{
+				min-height: 320px;
+			}
+		}	
+	}
+}
+
+@media width >= 1024px{
+	[m-container=promociones]{
+		.menu-promociones{
+			padding:{
+				right: 0;
+				left: 0;
+			}
+		}
+		.cards-promociones{
+			.card-description{
+				min-height: auto;
+			}
+		}
+	}
+}

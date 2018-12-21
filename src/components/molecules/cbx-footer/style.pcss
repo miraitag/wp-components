@@ -1,0 +1,377 @@
+.cbx-footer {
+	background-color: var(--citi-blue);
+	> .cbx-wrapper {
+		color: var(--white);
+		ul,
+		a {
+			color: inherit;
+		}
+	}
+	.cbx-link {
+		&::after {
+			background-color: var(--white);
+		}
+	}
+	.footer-top {
+		> .cbx-sub-headline {
+			color: inherit;
+			margin-bottom: viewport(xs, 20);
+		}
+		> ul {
+			display: flex;
+			margin-bottom: viewport(xs, 20);
+			> li {
+				height: viewport(xs, 20);
+				width: viewport(xs, 20);
+				margin-right: viewport(xs, 20);
+				&:last-child {
+					margin-right: 0;
+				}
+				> button {
+					height: inherit;
+					width: inherit;
+					color: inherit;
+				}
+			}
+		}
+	}
+	.footer-content,
+	.footer-bottom {
+		li {
+			height: viewport(xs, 32);
+			display: flex;
+			align-items: center;
+		}
+	}
+	.footer-content {
+		color: inherit;
+		margin-bottom: viewport(xs, 20);
+		.content-item {
+			color: inherit;
+			> a {
+				height: viewport(xs, 40);
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				position: relative;
+				&::before,
+				&::after {
+					@mixin rgba background-color, var(--white), 0.2;
+					content: "";
+					height: 1px;
+					width: 100%;
+					left: 0;
+					position: absolute;
+				}
+				&::before {
+					top: 0;
+				}
+				&::after {
+					bottom: 0;
+				}
+				&[m-open="true"] {
+					&::after {
+						content: none;
+					}
+					> .cbx-icon {
+						.icon-angle-down-o {
+							&::before {
+								content: "\6b";
+							}
+						}
+					}
+					+ ul {
+						max-height: 1000px;
+						transition: max-height 350ms ease-in-out;
+						> li {
+							&:last-child {
+								&::after {
+									content: "";
+								}
+							}
+						}
+					}
+				}
+			}
+			> ul {
+				max-height: 0;
+				overflow: hidden;
+				> li {
+					&:last-child {
+						position: relative;
+						&::after {
+							@mixin rgba background-color, var(--white), 0.2;
+							content: none;
+							width: 100%;
+							height: 1px;
+							position: absolute;
+							left: 0;
+							bottom: 0;
+						}
+					}
+					> a {
+						display: flex;
+						font-family: var(--font-l);
+						span {
+							margin-right: viewport(xs, 5);
+						}
+					}
+				}
+			}
+		}
+	}
+	.footer-bottom {
+		margin-bottom: viewport(xs, 20);
+	}
+	.footer-legal {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		> .cbx-legal {
+			margin-bottom: viewport(xs, 20);
+			color: inherit;
+		}
+	}
+	.footer-costos {
+		display: flex;
+		justify-content: flex-end;
+		> a {
+			flex-basis: 65%;
+			text-align: right;
+		}
+	}
+}
+
+@media width >= 768px {
+	.cbx-footer {
+		.footer-top {
+			display: flex;
+			justify-content: space-between;
+			position: relative;
+			> .cbx-sub-headline {
+				margin-bottom: 0;
+				flex-grow: 1;
+			}
+			> ul {
+				margin-bottom: 0;
+				> li {
+					height: 20px;
+					width: 20px;
+					margin-right: 20px;
+				}
+			}
+		}
+		.footer-content,
+		.footer-bottom {
+			li {
+				height: 32px;
+			}
+		}
+		.footer-top,
+		.footer-content {
+			margin-bottom: 20px;
+		}
+		.footer-content {
+			display: flex;
+			justify-content: space-between;
+			position: relative;
+			.content-item {
+				width: calc(100% / 4 - 20px);
+				> a {
+					height: 40px;
+					pointer-events: none;
+					&::before {
+						content: none;
+					}
+					> .cbx-icon {
+						display: none;
+					}
+				}
+				> ul {
+					max-height: initial;
+					overflow: visible;
+					> li {
+						> a {
+							span {
+								margin-right: 5px;
+							}
+						}
+					}
+				}
+			}
+		}
+		.footer-bottom {
+			margin-bottom: 20px;
+			ul {
+				display: flex;
+				flex-wrap: wrap;
+				> li {
+					margin-right: 20px;
+					&:last-child {
+						margin-right: 0;
+					}
+				}
+			}
+		}
+		.footer-legal {
+			justify-content: space-between;
+			> .cbx-legal {
+				flex-grow: 0;
+				flex-shrink: 1;
+				margin-bottom: 20px;
+			}
+		}
+		.footer-costos {
+			flex-basis: 100%;
+		}
+	}
+}
+
+@media width >= 1024px {
+	.cbx-footer {
+		.footer-top {
+			> ul {
+				> li {
+					height: viewport(lg, 20);
+					width: viewport(lg, 20);
+					margin-right: viewport(lg, 20);
+				}
+			}
+		}
+		.footer-content,
+		.footer-bottom {
+			li {
+				height: viewport(lg, 32);
+			}
+		}
+		.footer-top,
+		.footer-content {
+			//padding-bottom: viewport(lg,20);
+			margin-bottom: viewport(lg, 20);
+		}
+		.footer-content {
+			.content-item {
+				> a {
+					height: viewport(lg, 40);
+				}
+				> ul {
+					> li {
+						> a {
+							span {
+								margin-right: viewport(lg, 5);
+							}
+						}
+					}
+				}
+			}
+		}
+		.footer-bottom {
+			margin-bottom: viewport(lg, 20);
+			ul {
+				justify-content: space-between;
+				> li {
+					margin-right: 0;
+				}
+			}
+		}
+		.footer-legal {
+			> .cbx-legal {
+				margin-bottom: 0;
+			}
+		}
+		.footer-costos {
+			flex-basis: auto;
+			> a {
+				flex-basis: auto;
+			}
+		}
+	}
+}
+
+@media width >= 1280px {
+	.cbx-footer {
+		.footer-top {
+			> ul {
+				> li {
+					height: viewport(xl, 20);
+					width: viewport(xl, 20);
+					margin-right: viewport(xl, 20);
+				}
+			}
+		}
+		.footer-content,
+		.footer-bottom {
+			li {
+				height: viewport(xl, 32);
+			}
+		}
+		.footer-top,
+		.footer-content {
+			//padding-bottom: viewport(xl,20);
+			margin-bottom: viewport(xl, 20);
+		}
+		.footer-content {
+			.content-item {
+				> a {
+					height: viewport(xl, 40);
+				}
+				> ul {
+					> li {
+						> a {
+							span {
+								margin-right: viewport(xl, 5);
+							}
+						}
+					}
+				}
+			}
+		}
+		.footer-bottom {
+			margin-bottom: viewport(xl, 20);
+		}
+	}
+}
+
+@media width >= 1440px {
+	.cbx-footer {
+		.footer-top {
+			> ul {
+				> li {
+					height: viewport(xxl, 20);
+					width: viewport(xxl, 20);
+					margin-right: viewport(xxl, 20);
+				}
+			}
+		}
+		.footer-content,
+		.footer-bottom {
+			li {
+				height: viewport(xxl, 32);
+			}
+		}
+		.footer-top,
+		.footer-content {
+			margin-bottom: viewport(xxl, 20);
+		}
+		.footer-content {
+			.content-item {
+				> a {
+					height: viewport(xxl, 40);
+				}
+				> ul {
+					> li {
+						> a {
+							span {
+								margin-right: viewport(xxl, 5);
+							}
+						}
+					}
+				}
+			}
+		}
+		.footer-bottom {
+			margin-bottom: viewport(xxl, 20);
+		}
+	}
+}
