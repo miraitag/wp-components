@@ -1,0 +1,39 @@
+@import '../../mixins.pcss';
+
+@media (width >= 1024px) {
+	[m-container="our-apps"] {
+		&.slick-slider {
+			& .slick-list {
+				height: inherit;
+			}
+			& .slick-slide {
+				@mixin viewport lg, padding-right, 20;
+				@mixin viewport lg, padding-left, 20;
+				display: flex;
+				justify-content: space-between;
+			}
+		}
+	}
+}
+
+@media (width >= 1280px) {
+	[m-container="our-apps"] {
+		&.slick-slider {
+			& .slick-slide {
+				@mixin viewport xl, padding-right, 20;
+				@mixin viewport xl, padding-left, 20;
+			}
+		}
+	}
+}
+
+@media (width >= 1440px) {
+	[m-container="our-apps"] {
+		&.slick-slider {
+			& .slick-slide {
+				@mixin viewport xxl, padding-right,  20;
+				@mixin viewport xxl, padding-left,  20;
+			}
+		}
+	}
+}

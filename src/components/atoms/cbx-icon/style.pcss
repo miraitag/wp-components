@@ -1,429 +1,422 @@
+@import '../../mixins.pcss';
 
-
-.cbx-icon{
-    display: flex;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: center;
-    color: var(--white);
-    & i {
-        width: inherit;
-        height: inherit;
-        display: inherit;
-        align-items: inherit;
-        justify-content: inherit;
-        &::before{
-            color: inherit;
-        }
-    }
-    &[m-size="10"]{
-        width: viewport( xs, 10 );
-        height: viewport( xs, 10 );
-        & i {
-            font-size: viewport( xs, 6 );
-        }
-    }
-    &[m-size="20"]{
-        width: viewport( xs, 20 );
-        height: viewport( xs, 20 );
-        & i {
-            font-size: viewport( xs, 12 );
-        }
-    }
-    &[m-size="30"]{
-        width: viewport( xs, 30 );
-        height: viewport( xs, 30 );
-        & i {
-            font-size: viewport( xs, 16 );
-        }
-    }
-    &[m-size="40"]{
-        width: viewport( xs, 40 );
-        height: viewport( xs, 40 );
-        & i {
-            font-size: viewport( xs, 22 );
-        }
-    }
-    &[m-size="50"]{
-        width: viewport( xs, 50 );
-        height: viewport( xs, 50 );
-        & i {
-            font-size: viewport( xs, 30 );
-        }
-    }
-    &[m-mody~=fill]{
-        background-color: var(--soft-blue);
-    }
-    &[m-mody~=border]{
-        color: var(--soft-blue);
-        border:{ 
-            width: viewport( xs, 1 );
-            style: solid;
-            color: var(--soft-blue);
-        }
-    }
-    &[m-mody~=circle]{
-        border-radius: 50%;
-    }
-    &[m-mody~=rounded]{
-        border-radius: borderRadius( xs );
-    }
-    &[m-mody~=icon-bold]{
-        text-shadow: -1px -1px 0 var(--white), -1px -1px 0 var(--white), -1px -1px 0 var(--white);
-        @supports (display: grid){
-            -webkit-text-stroke: viewport( xs, 1 ); 
-            text-shadow: none;
-        }
-    }
-    &[m-mody~=flat]{
-        width: auto;
-        height: auto;
-        &[m-size="10"]{
-            & i {
-                font-size: viewport( xs, 10 );
-            }
-        }
-        &[m-size="20"]{
-            & i {
-                font-size: viewport( xs, 20 );
-            }
-        }
-        &[m-size="30"]{
-            & i {
-                font-size: viewport( xs, 30 );
-            }
-        }
-        &[m-size="40"]{
-            & i {
-                font-size: viewport( xs, 40 );
-            }
-        }
-        &[m-size="50"]{
-            & i {
-                font-size: viewport( xs, 50 );
-            }
-        }
-    }
+.cbx-icon {
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	color: var(--white);
+	& i {
+		width: inherit;
+		height: inherit;
+		display: inherit;
+		align-items: inherit;
+		justify-content: inherit;
+		&::before {
+			color: inherit;
+		}
+	}
+	&[m-size="10"] {
+		@mixin viewport xs, width, 10;
+		@mixin viewport xs, height, 10;
+		& i {
+			@mixin viewport xs, font-size, 6;
+		}
+	}
+	&[m-size="20"] {
+		@mixin viewport xs, width, 20;
+		@mixin viewport xs, height, 20;
+		& i {
+			@mixin viewport xs, font-size, 12;
+		}
+	}
+	&[m-size="30"] {
+		@mixin viewport xs, width, 30;
+		@mixin viewport xs, height, 30;
+		& i {
+			@mixin viewport xs, font-size, 16;
+		}
+	}
+	&[m-size="40"] {
+		@mixin viewport xs, width, 40;
+		@mixin viewport xs, height, 40;
+		& i {
+			@mixin viewport xs, font-size, 22;
+		}
+	}
+	&[m-size="50"] {
+		@mixin viewport xs, width, 50;
+		@mixin viewport xs, height, 50;
+		& i {
+			@mixin viewport xs, font-size, 30;
+		}
+	}
+	&[m-mody~="fill"] {
+		background-color: var(--soft-blue);
+	}
+	&[m-mody~="border"] {
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--soft-blue);
+		color: var(--soft-blue);
+	}
+	&[m-mody~="circle"] {
+		border-radius: 50%;
+	}
+	&[m-mody~="rounded"] {
+		@mixin border-radius xs;
+	}
+	&[m-mody~="icon-bold"] {
+		text-shadow: -1px -1px 0 var(--white), -1px -1px 0 var(--white),
+			-1px -1px 0 var(--white);
+		@supports (display: grid) {
+			@mixin viewport xs, -webkit-text-stroke, 1;
+			text-shadow: none;
+		}
+	}
+	&[m-mody~="flat"] {
+		width: auto;
+		height: auto;
+		&[m-size="10"] {
+			& i {
+				@mixin viewport xs, font-size, 10;
+			}
+		}
+		&[m-size="20"] {
+			& i {
+				@mixin viewport xs, font-size, 20;
+			}
+		}
+		&[m-size="30"] {
+			& i {
+				@mixin viewport xs, font-size, 30;
+			}
+		}
+		&[m-size="40"] {
+			& i {
+				@mixin viewport xs, font-size, 40;
+			}
+		}
+		&[m-size="50"] {
+			& i {
+				@mixin viewport xs, font-size, 50;
+			}
+		}
+	}
 }
 
-/* i.cbx-icon{
-    display: inline-flex;
-    color: var(--soft-blue);
-} */
-
-@media width >= 768px{
-    .cbx-icon{
-        &[m-size="10"]{
-            width: 10px;
-            height: 10px;
-            & i {
-                font-size: 6px;
-            }
-        }
-        &[m-size="20"]{
-            width: 20px;
-            height: 20px;
-            & i {
-                font-size: 12px;
-            }
-        }
-        &[m-size="30"]{
-            width: 30px;
-            height: 30px;
-            & i {
-                font-size: 16px;
-            }
-        }
-        &[m-size="40"]{
-            width: 40px;
-            height: 40px;
-            & i {
-                font-size: 22px;
-            }
-        }
-        &[m-size="50"]{
-            width: 50px;
-            height: 50px;
-            & i {
-                font-size: 30px;
-            }
-        }
-        &[m-mody~=border]{           
-            border-width: 1px;
-        }
-        &[m-mody~=rounded]{
-            border-radius: borderRadius( sm );
-        }
-        &[m-mody~=icon-bold]{
-            @supports (display: grid){
-                -webkit-text-stroke: 1px; 
-            }
-        }
-        &[m-mody~=flat]{
-            &[m-size="10"]{
-                & i {
-                    font-size: 10px;
-                }
-            }
-            &[m-size="20"]{
-                & i {
-                    font-size: 20px;
-                }
-            }
-            &[m-size="30"]{
-                & i {
-                    font-size: 30px;
-                }
-            }
-            &[m-size="40"]{
-                & i {
-                    font-size: 40px;
-                }
-            }
-            &[m-size="50"]{
-                & i {
-                    font-size: 50px;
-                }
-            }
-        }
-    }
+@media (width >= 768px) {
+	.cbx-icon {
+		&[m-size="10"] {
+			width: 10px;
+			height: 10px;
+			& i {
+				font-size: 6px;
+			}
+		}
+		&[m-size="20"] {
+			width: 20px;
+			height: 20px;
+			& i {
+				font-size: 12px;
+			}
+		}
+		&[m-size="30"] {
+			width: 30px;
+			height: 30px;
+			& i {
+				font-size: 16px;
+			}
+		}
+		&[m-size="40"] {
+			width: 40px;
+			height: 40px;
+			& i {
+				font-size: 22px;
+			}
+		}
+		&[m-size="50"] {
+			width: 50px;
+			height: 50px;
+			& i {
+				font-size: 30px;
+			}
+		}
+		&[m-mody~="border"] {
+			border-width: 1px;
+		}
+		&[m-mody~="rounded"] {
+			@mixin border-radius sm;
+		}
+		&[m-mody~="icon-bold"] {
+			@supports (display: grid) {
+				-webkit-text-stroke: 1px;
+			}
+		}
+		&[m-mody~="flat"] {
+			&[m-size="10"] {
+				& i {
+					font-size: 10px;
+				}
+			}
+			&[m-size="20"] {
+				& i {
+					font-size: 20px;
+				}
+			}
+			&[m-size="30"] {
+				& i {
+					font-size: 30px;
+				}
+			}
+			&[m-size="40"] {
+				& i {
+					font-size: 40px;
+				}
+			}
+			&[m-size="50"] {
+				& i {
+					font-size: 50px;
+				}
+			}
+		}
+	}
 }
 
-@media width >= 1024px{
-    .cbx-icon{
-        &[m-size="10"]{
-            width: viewport( lg, 10 );
-            height: viewport( lg, 10 );
-            & i {
-                font-size: viewport( lg, 6 );            
-            }
-        }
-        &[m-size="20"]{
-            width: viewport( lg, 20 );
-            height: viewport( lg, 20 );
-            & i {
-                font-size: viewport( lg, 12 );            
-            }
-        }
-        &[m-size="30"]{
-            width: viewport( lg, 30 );
-            height: viewport( lg, 30 );
-            & i {
-                font-size: viewport( lg, 16 );            
-            }
-        }
-        &[m-size="40"]{
-            width: viewport( lg, 40 );
-            height: viewport( lg, 40 );
-            & i {
-                font-size: viewport( lg, 22 );            
-            }
-        }
-        &[m-size="50"]{
-            width: viewport( lg, 50 );
-            height: viewport( lg, 50 );
-            & i {
-                font-size: viewport( lg, 30 );            
-            }
-        }
-        &[m-mody~=border]{
-            border-width: viewport( lg, 1 );
-        }
-        &[m-mody~=rounded]{
-            border-radius: borderRadius( lg );
-        }
-        &[m-mody~=icon-bold]{
-            @supports (display: grid){
-                -webkit-text-stroke: viewport( lg, 1 ); 
-            }
-        }
-        &[m-mody~=flat]{
-            &[m-size="10"]{
-                & i {
-                    font-size: viewport( lg, 10 );
-                }
-            }
-            &[m-size="20"]{
-                & i {
-                    font-size: viewport( lg, 20 );
-                }
-            }
-            &[m-size="30"]{
-                & i {
-                    font-size: viewport( lg, 30 );
-                }
-            }
-            &[m-size="40"]{
-                & i {
-                    font-size: viewport( lg, 40 );
-                }
-            }
-            &[m-size="50"]{
-                & i {
-                    font-size: viewport( lg, 50 );
-                }
-            }
-        }
-    }
+@media (width >= 1024px) {
+	.cbx-icon {
+		&[m-size="10"] {
+			@mixin viewport lg, width, 10;
+			@mixin viewport lg, height, 10;
+			& i {
+				@mixin viewport lg, font-size, 6;
+			}
+		}
+		&[m-size="20"] {
+			@mixin viewport lg, width, 20;
+			@mixin viewport lg, height, 20;
+			& i {
+				@mixin viewport lg, font-size, 12;
+			}
+		}
+		&[m-size="30"] {
+			@mixin viewport lg, width, 30;
+			@mixin viewport lg, height, 30;
+			& i {
+				@mixin viewport lg, font-size, 16;
+			}
+		}
+		&[m-size="40"] {
+			@mixin viewport lg, width, 40;
+			@mixin viewport lg, height, 40;
+			& i {
+				@mixin viewport lg, font-size, 22;
+			}
+		}
+		&[m-size="50"] {
+			@mixin viewport lg, width, 50;
+			@mixin viewport lg, height, 50;
+			& i {
+				@mixin viewport lg, font-size, 30;
+			}
+		}
+		&[m-mody~="border"] {
+			@mixin viewport lg, border-width, 1;
+		}
+		&[m-mody~="rounded"] {
+			@mixin border-radius lg;
+		}
+		&[m-mody~="icon-bold"] {
+			@supports (display: grid) {
+				@mixin viewport lg, -webkit-text-stroke, 1;
+			}
+		}
+		&[m-mody~="flat"] {
+			&[m-size="10"] {
+				& i {
+					@mixin viewport lg, font-size, 10;
+				}
+			}
+			&[m-size="20"] {
+				& i {
+					@mixin viewport lg, font-size, 20;
+				}
+			}
+			&[m-size="30"] {
+				& i {
+					@mixin viewport lg, font-size, 30;
+				}
+			}
+			&[m-size="40"] {
+				& i {
+					@mixin viewport lg, font-size, 40;
+				}
+			}
+			&[m-size="50"] {
+				& i {
+					@mixin viewport lg, font-size, 50;
+				}
+			}
+		}
+	}
 }
 
-
-@media width >= 1280px{
-    .cbx-icon{
-        &[m-size="10"]{
-            width: viewport(xl, 10 );
-            height: viewport(xl, 10 );
-            & i {
-                font-size: viewport(xl, 6 );            
-            }
-        }
-        &[m-size="20"]{
-            width: viewport(xl, 20 );
-            height: viewport(xl, 20 );
-            & i {
-                font-size: viewport(xl, 12 );            
-            }
-        }
-        &[m-size="30"]{
-            width: viewport(xl, 30 );
-            height: viewport(xl, 30 );
-            & i {
-                font-size: viewport(xl, 16 );            
-            }
-        }
-        &[m-size="40"]{
-            width: viewport(xl, 40 );
-            height: viewport(xl, 40 );
-            & i {
-                font-size: viewport(xl, 22 );            
-            }
-        }
-        &[m-size="50"]{
-            width: viewport(xl, 50 );
-            height: viewport(xl, 50 );
-            & i {
-                font-size: viewport(xl, 30 );            
-            }
-        }
-        &[m-mody~=border]{
-            border-width: viewport(xl, 1);           
-        }
-        &[m-mody~=rounded]{
-            border-radius: borderRadius(xl );
-        }
-        &[m-mody~=icon-bold]{
-            @supports (display: grid){
-                -webkit-text-stroke: viewport(xl, 1 ); 
-            }
-        }
-        &[m-mody~=flat]{
-            width: auto;
-            height: auto;
-            &[m-size="10"]{
-                & i {
-                    font-size: viewport(xl, 10 );
-                }
-            }
-            &[m-size="20"]{
-                & i {
-                    font-size: viewport(xl, 20 );
-                }
-            }
-            &[m-size="30"]{
-                & i {
-                    font-size: viewport(xl, 30 );
-                }
-            }
-            &[m-size="40"]{
-                & i {
-                    font-size: viewport(xl, 40 );
-                }
-            }
-            &[m-size="50"]{
-                & i {
-                    font-size: viewport(xl, 50 );
-                }
-            }
-        }
-    }
+@media (width >= 1280px) {
+	.cbx-icon {
+		&[m-size="10"] {
+			@mixin viewport xl, width, 10;
+			@mixin viewport xl, height, 10;
+			& i {
+				@mixin viewport xl, font-size, 6;
+			}
+		}
+		&[m-size="20"] {
+			@mixin viewport xl, width, 20;
+			@mixin viewport xl, height, 20;
+			& i {
+				@mixin viewport xl, font-size, 12;
+			}
+		}
+		&[m-size="30"] {
+			@mixin viewport xl, width, 30;
+			@mixin viewport xl, height, 30;
+			& i {
+				@mixin viewport xl, font-size, 16;
+			}
+		}
+		&[m-size="40"] {
+			@mixin viewport xl, width, 40;
+			@mixin viewport xl, height, 40;
+			& i {
+				@mixin viewport xl, font-size, 22;
+			}
+		}
+		&[m-size="50"] {
+			@mixin viewport xl, width, 50;
+			@mixin viewport xl, height, 50;
+			& i {
+				@mixin viewport xl, font-size, 30;
+			}
+		}
+		&[m-mody~="border"] {
+			@mixin viewport xl, border-width, 1;
+		}
+		&[m-mody~="rounded"] {
+			border-radius: borderRadius(xl);
+		}
+		&[m-mody~="icon-bold"] {
+			@supports (display: grid) {
+				@mixin viewport xl, -webkit-text-stroke, 1;
+			}
+		}
+		&[m-mody~="flat"] {
+			width: auto;
+			height: auto;
+			&[m-size="10"] {
+				& i {
+					@mixin viewport xl, font-size, 10;
+				}
+			}
+			&[m-size="20"] {
+				& i {
+					@mixin viewport xl, font-size, 20;
+				}
+			}
+			&[m-size="30"] {
+				& i {
+					@mixin viewport xl, font-size, 30;
+				}
+			}
+			&[m-size="40"] {
+				& i {
+					@mixin viewport xl, font-size, 40;
+				}
+			}
+			&[m-size="50"] {
+				& i {
+					@mixin viewport xl, font-size, 50;
+				}
+			}
+		}
+	}
 }
 
-@media width >= 1440px{
-    .cbx-icon{
-        &[m-size="10"]{
-            width: viewport(xxl, 10 );
-            height: viewport(xxl, 10 );
-            & i {
-                font-size: viewport(xxl, 6 );            
-            }
-        }
-        &[m-size="20"]{
-            width: viewport(xxl, 20 );
-            height: viewport(xxl, 20 );
-            & i {
-                font-size: viewport(xxl, 12 );            
-            }
-        }
-        &[m-size="30"]{
-            width: viewport(xxl, 30 );
-            height: viewport(xxl, 30 );
-            & i {
-                font-size: viewport(xxl, 16 );            
-            }
-        }
-        &[m-size="40"]{
-            width: viewport(xxl, 40 );
-            height: viewport(xxl, 40 );
-            & i {
-                font-size: viewport(xxl, 22 );            
-            }
-        }
-        &[m-size="50"]{
-            width: viewport(xxl, 50 );
-            height: viewport(xxl, 50 );
-            & i {
-                font-size: viewport(xxl, 30 );            
-            }
-        }
-        &[m-mody~=border]{
-            border-width: viewport(xxl, 1);           
-        }
-        &[m-mody~=rounded]{
-            border-radius: borderRadius(xxl );
-        }
-        &[m-mody~=icon-bold]{
-            @supports (display: grid){
-                -webkit-text-stroke: viewport(xxl, 1 ); 
-            }
-        }
-        &[m-mody~=flat]{
-            width: auto;
-            height: auto;
-            &[m-size="10"]{
-                & i {
-                    font-size: viewport(xxl, 10 );
-                }
-            }
-            &[m-size="20"]{
-                & i {
-                    font-size: viewport(xxl, 20 );
-                }
-            }
-            &[m-size="30"]{
-                & i {
-                    font-size: viewport(xxl, 30 );
-                }
-            }
-            &[m-size="40"]{
-                & i {
-                    font-size: viewport(xxl, 40 );
-                }
-            }
-            &[m-size="50"]{
-                & i {
-                    font-size: viewport(xxl, 50 );
-                }
-            }
-        }
-    }
+@media (width >= 1440px) {
+	.cbx-icon {
+		&[m-size="10"] {
+			@mixin viewport xxl, width, 10;
+			@mixin viewport xxl, height, 10;
+			& i {
+				@mixin viewport xxl, font-size, 6;
+			}
+		}
+		&[m-size="20"] {
+			@mixin viewport xxl, width, 20;
+			@mixin viewport xxl, height, 20;
+			& i {
+				@mixin viewport xxl, font-size, 12;
+			}
+		}
+		&[m-size="30"] {
+			@mixin viewport xxl, width, 30;
+			@mixin viewport xxl, height, 30;
+			& i {
+				@mixin viewport xxl, font-size, 16;
+			}
+		}
+		&[m-size="40"] {
+			@mixin viewport xxl, width, 40;
+			@mixin viewport xxl, height, 40;
+			& i {
+				@mixin viewport xxl, font-size, 22;
+			}
+		}
+		&[m-size="50"] {
+			@mixin viewport xxl, width, 50;
+			@mixin viewport xxl, height, 50;
+			& i {
+				@mixin viewport xxl, font-size, 30;
+			}
+		}
+		&[m-mody~="border"] {
+			@mixin viewport xxl, border-width, 1;
+		}
+		&[m-mody~="rounded"] {
+			border-radius: borderRadius(xxl);
+		}
+		&[m-mody~="icon-bold"] {
+			@supports (display: grid) {
+				@mixin viewport xxl, -webkit-text-stroke, 1;
+			}
+		}
+		&[m-mody~="flat"] {
+			width: auto;
+			height: auto;
+			&[m-size="10"] {
+				& i {
+					@mixin viewport xxl, font-size, 10;
+				}
+			}
+			&[m-size="20"] {
+				& i {
+					@mixin viewport xxl, font-size, 20;
+				}
+			}
+			&[m-size="30"] {
+				& i {
+					@mixin viewport xxl, font-size, 30;
+				}
+			}
+			&[m-size="40"] {
+				& i {
+					@mixin viewport xxl, font-size, 40;
+				}
+			}
+			&[m-size="50"] {
+				& i {
+					@mixin viewport xxl, font-size, 50;
+				}
+			}
+		}
+	}
 }

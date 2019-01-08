@@ -1,186 +1,188 @@
+@import '../../mixins.pcss';
 
-.cbx-check{
-    display: inline-flex;
-    cursor: pointer;
-    padding: {
-        top:viewport(xs,20);
-        right:viewport(xs,10);
-        bottom:viewport(xs,20);
-        left:viewport(xs,10);
-    }
-    border: solid;
-    border-width: 1px;
-    border-color: transparent;
-    transition: all 350ms ease-in-out;
-    &[m-mody=right]{
-        flex-direction: row-reverse;
-        .cbx-text{
-            text-align: left;
-        }
-        > span{
-            margin-right: viewport(xs,20);
-            margin-left: 0;
-        }
-    }
-    input[type=checkbox], input[type=radio]{
-        display: none;
-        margin-top: 0;
-        appearance: none;
-        -webkit-appearance: none;
-        &:checked {
-            +span{
-                background-color: var(--green);
-            }
-        }
-    }
-    input[type=radio]{
-        &:checked{
-            + span{
-                background-color: transparent;
-                border-color: var(--green);
-                &::before{
-                    background-color: var(--green);
-                }
-            }
-        }
-        + span{
-            position: relative;
-            border-radius: 50%;
-            &::before{
-                @include transition(background-color);
-                @include absolute(center);
-                content:'';
-                width: 50%;
-                height: 50%;
-                border-radius: 50%;
-                background-color: transparent;
-            }
-        }
-    }
-    > span{
-        position: relative;
-        height: viewport(xs,20);
-        width: viewport(xs,20);
-        border: solid;
-        border-width: 1px;
-        border-color: var(--middle-gray);
-        transition: background-color 350ms ease-in-out;
-        background-color: #fff;
-        flex-shrink: 0;
-        margin-left: viewport(xs,20);
-        >i {
-            @include absolute(center);
-            color: var(--white);
-            font-size: viewport(xs,15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-    }
-    .cbx-text{
-        color: var(--soft-blue);
-    }
-    .cbx-text{
-        text-align: right;
-    }
+.cbx-check {
+	display: inline-flex;
+	cursor: pointer;
+	padding: {
+		@mixin viewport xs, top, 20;
+		@mixin viewport xs, right, 10;
+		@mixin viewport xs, bottom, 20;
+		@mixin viewport xs, left, 10;
+	}
+	border: solid;
+	border-width: 1px;
+	border-color: transparent;
+	transition: all 350ms ease-in-out;
+	&[m-mody="right"] {
+		flex-direction: row-reverse;
+		& .cbx-text {
+			text-align: left;
+		}
+		& > span {
+			@mixin viewport xs, margin-right, 20;
+			margin-left: 0;
+		}
+	}
+	& input[type="checkbox"],
+	& input[type="radio"] {
+		@mixin appearance;
+		display: none;
+		margin-top: 0;
+		&:checked {
+			& + span {
+				background-color: var(--green);
+			}
+		}
+	}
+	& input[type="radio"] {
+		&:checked {
+			& + span {
+				background-color: transparent;
+				border-color: var(--green);
+				&::before {
+					background-color: var(--green);
+				}
+			}
+		}
+		& + span {
+			position: relative;
+			border-radius: 50%;
+			&::before {
+				@mixin transition background-color;
+				@mixin absolute center;
+				content: "";
+				width: 50%;
+				height: 50%;
+				border-radius: 50%;
+				background-color: transparent;
+			}
+		}
+	}
+	& > span {
+		position: relative;
+		@mixin viewport xs, height, 20;
+		@mixin viewport xs, width, 20;
+		border: solid;
+		border-width: 1px;
+		border-color: var(--middle-gray);
+		transition: background-color 350ms ease-in-out;
+		background-color: #fff;
+		flex-shrink: 0;
+		@mixin viewport xs, margin-left, 20;
+		& > i {
+			@mixin absolute center;
+			color: var(--white);
+			@mixin viewport xs, font-size, 15;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+		}
+	}
+	& .cbx-text {
+		color: var(--soft-blue);
+	}
+	& .cbx-text {
+		text-align: right;
+	}
 }
 
-@media width >= 768px{
-    .cbx-check{
-        padding: {
-            top:20px;
-            right:10px;
-            bottom:20px;
-            left:10px;
-        }
-        > span{
-            height: 20px;
-            width: 20px;
-            margin-left: 20px;
-            >i {
-                font-size: 15px;
-            }
-        }
-        &[m-mody=right]{
-            > span{
-                margin-right: 20px;
-            }
-        }
-    }    
+@media (width >= 768px) {
+	.cbx-check {
+		padding: {
+			top: 20px;
+			right: 10px;
+			bottom: 20px;
+			left: 10px;
+		}
+		& > span {
+			height: 20px;
+			width: 20px;
+			margin-left: 20px;
+			& > i {
+				font-size: 15px;
+			}
+		}
+		&[m-mody="right"] {
+			& > span {
+				margin-right: 20px;
+			}
+		}
+	}
 }
-@media width >= 1024px{
-    .cbx-check{
-        &:hover{
-            border:solid;
-            border-width: 1px;
-            border-color: var(--cyan);
 
-        }
-        &[m-mody=right]{
-            > span{
-                margin-right: viewport(lg,20);
-            }
-        }
-        padding: {
-            top:viewport(lg,20);
-            right:viewport(lg,10);
-            bottom:viewport(lg,20);
-            left:viewport(lg,10);
-        }
-        > span{
-            height: viewport(lg,20);
-            width: viewport(lg,20);
-            margin-left: viewport(lg,20);
-            >i {
-                font-size: viewport(lg,15);
-            }
-        }
-    }    
+@media (width >= 1024px) {
+	.cbx-check {
+		&:hover {
+			border: solid;
+			border-width: 1px;
+			border-color: var(--cyan);
+		}
+		&[m-mody="right"] {
+			& > span {
+				@mixin viewport lg, margin-right, 20;
+			}
+		}
+		padding: {
+			@mixin viewport lg, top, 20;
+			@mixin viewport lg, right, 10;
+			@mixin viewport lg, bottom, 20;
+			@mixin viewport lg, left, 10;
+		}
+		& > span {
+			@mixin viewport lg, height, 20;
+			@mixin viewport lg, width, 20;
+			@mixin viewport lg, margin-left, 20;
+			& > i {
+				@mixin viewport lg, font-size, 15;
+			}
+		}
+	}
 }
-@media width >= 1280px{
-    .cbx-check{
-        &[m-mody=right]{
-            > span{
-                margin-right: viewport(xl,20);
-            }
-        }
-        padding: {
-            top:viewport(xl,20);
-            right:viewport(xl,10);
-            bottom:viewport(xl,20);
-            left:viewport(xl,10);
-        }
-        > span{
-            height: viewport(xl,20);
-            width: viewport(xl,20);
-            margin-left: viewport(xl,20);
-            >i {
-                font-size: viewport(xl,15);
-            }
-        }
-    }  
+@media (width >= 1280px) {
+	.cbx-check {
+		&[m-mody="right"] {
+			& > span {
+				@mixin viewport xl, margin-right, 20;
+			}
+		}
+		padding: {
+			@mixin viewport xl, top, 20;
+			@mixin viewport xl, right, 10;
+			@mixin viewport xl, bottom, 20;
+			@mixin viewport xl, left, 10;
+		}
+		& > span {
+			@mixin viewport xl, height, 20;
+			@mixin viewport xl, width, 20;
+			@mixin viewport xl, margin-left, 20;
+			& > i {
+				@mixin viewport xl, font-size, 15;
+			}
+		}
+	}
 }
-@media width >= 1440px{
-    &[m-mody=right]{
-        > span{
-            margin-right: viewport(xxl,20);
-        }
-    }
-    .cbx-check{
-        padding: {
-            top:viewport(xl,20);
-            right:viewport(xl,10);
-            bottom:viewport(xl,20);
-            left:viewport(xl,10);
-        }
-        > span{
-            height: viewport(xxl,20);
-            width: viewport(xxl,20);
-            margin-left: viewport(xxl,20);
-            >i {
-                font-size: viewport(xxl,15);
-            }
-        }
-    }  
+
+@media (width >= 1440px) {
+	&[m-mody="right"] {
+		& > span {
+			@mixin viewport xxl, margin-right,  20;
+		}
+	}
+	.cbx-check {
+		padding: {
+			@mixin viewport xxl, top, 20;
+			@mixin viewport xxl, right, 10;
+			@mixin viewport xxl, bottom, 20;
+			@mixin viewport xxl, left, 10;
+		}
+		& > span {
+			@mixin viewport xxl, height,  20;
+			@mixin viewport xxl, width,  20;
+			@mixin viewport xxl, margin-left,  20;
+			& > i {
+				@mixin viewport xxl, font-size,  15;
+			}
+		}
+	}
 }

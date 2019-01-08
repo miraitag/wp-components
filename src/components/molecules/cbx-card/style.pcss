@@ -1,13 +1,15 @@
+@import '../../mixins.pcss';
+
 html {
 	&[m-browser~="mobile"] {
-		.cbx-card {
+		& .cbx-card {
 			&[m-mody~="c-app"] {
-				.card-description {
-					margin-bottom: viewport(xs, 10);
-					.cbx-text {
-						margin-bottom: viewport(xs, 10);
+				& .card-description {
+					@mixin viewport xs, margin-bottom, 10;
+					& .cbx-text {
+						@mixin viewport xs, margin-bottom, 10;
 					}
-					.cbx-link {
+					& .cbx-link {
 						display: none;
 					}
 				}
@@ -15,7 +17,7 @@ html {
 		}
 	}
 	&[m-browser="ie"] {
-		.cbx-card {
+		& .cbx-card {
 			&[m-mody*="c-img-large"] {
 				display: flex;
 				height: 100%;
@@ -26,7 +28,7 @@ html {
 				&[m-open="false"] {
 					display: none;
 				}
-				.cbx-img {
+				& .cbx-img {
 					height: auto !important;
 				}
 			}
@@ -36,58 +38,55 @@ html {
 
 button.cbx-card {
 	&:active {
-		@include box-shadow(xs, medium-out);
+		@mixin box-shadow xs, medium-out;
 	}
 }
 .cbx-card {
-	@include box-shadow(xs, medium-out);
-	border-radius: borderRadius(xs);
+	@mixin box-shadow xs, medium-out;
+	@mixin border-radius xs;
 	background-color: var(--white);
 	display: flex;
-	min-height: viewport(xs, 20);
-	padding: viewport(xs, 20);
-	width: viewport(xs, 280);
+	@mixin viewport xs, min-height, 20;
+	@mixin viewport xs, padding, 20;
+	@mixin viewport xs, width, 280;
 	z-index: 0;
-	.card-content {
+	& .card-content {
 		display: flex;
 		align-items: center;
 		min-height: inherit;
 		height: 100%;
-		.cbx-icon {
-			margin-right: viewport(xs, 20);
+		& .cbx-icon {
+			@mixin viewport xs, margin-right, 20;
 		}
 	}
-	.card-description {
+	& .card-description {
 		width: 100%;
-		.cbx-title,
-		.cbx-sub-category {
-			margin-bottom: viewport(xs, 10);
+		& .cbx-title,
+		& .cbx-sub-category {
+			@mixin viewport xs, margin-bottom, 10;
 		}
-		.cbx-text {
-			margin-bottom: viewport(xs, 10);
+		& .cbx-text {
+			@mixin viewport xs, margin-bottom, 10;
 			&:last-child {
 				margin-bottom: 0;
 			}
 		}
-		.cbx-list {
-			.list-item {
-				margin-bottom: viewport(xs, 10);
+		& .cbx-list {
+			& .list-item {
+				@mixin viewport xs, margin-bottom, 10;
 				&:last-child {
 					margin-bottom: 0;
 				}
 			}
 		}
-		/* 	> .cbx-button{
-			width: 100%;
-		} */
 	}
-	.card-stamp,
-	.card-img {
-		margin-bottom: viewport(xs, 20);
+	& .card-stamp,
+	& .card-img {
+		@mixin viewport xs, margin-bottom, 20;
 	}
-	.card-call {
+	& .card-call {
 		height: inherit;
-		> .cbx-link {
+		& > .cbx-link {
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -95,23 +94,18 @@ button.cbx-card {
 			width: 100%;
 		}
 	}
-	.cbx-link {
+	& .cbx-link {
 		text-align: center;
 	}
-	[m-mody~="c-relative"] {
+	& [m-mody~="c-relative"] {
 		position: relative;
 	}
-	/* &:not([m-mody]){
-		.card-content{
-			align-items: flex-start;
-		}
-	} */
-	&.slick-slide {
+	& &.slick-slide {
 		display: flex !important;
 	}
 	&[m-dmp] {
+		@mixin viewport xs, width, 280;
 		text-align: center;
-		width: viewport(xs, 280);
 		overflow: hidden;
 		display: none;
 		&[m-open="true"] {
@@ -122,262 +116,254 @@ button.cbx-card {
 			z-index: 4;
 			display: flex;
 		}
-		.card-content {
+		& .card-content {
 			box-shadow: none !important;
 			border-radius: 0;
 		}
-		.card-description {
-			padding: {
-				top: viewport(xs, 40);
-				bottom: 0;
+		& .card-description {
+			@mixin viewport xs, padding-top, 40;
+			padding-bottom: 0;
+			& > .cbx-sub-category,
+			& > .cbx-title {
+				@mixin viewport xs, margin-bottom, 20;
 			}
-			> .cbx-sub-category,
-			> .cbx-title {
-				margin-bottom: viewport(xs, 20);
-			}
-			> .cbx-text {
-				min-height: viewport(xs, 65);
-				max-height: viewport(xs, 65);
+			& > .cbx-text {
+				@mixin viewport xs, min-height, 65;
+				@mixin viewport xs, max-height, 65;
 				overflow: hidden;
 			}
 		}
-		.card-images {
-			height: viewport(xs, 150);
+		& .card-images {
+			@mixin viewport xs, height, 150;
 		}
-		.card-buttons {
-			margin-bottom: viewport(xs, 40);
-			.cbx-button {
-				margin-bottom: viewport(xs, 40);
+		& .card-buttons {
+			@mixin viewport xs, margin-bottom, 40;
+			& .cbx-button {
+				@mixin viewport xs, margin-bottom, 40;
 			}
 		}
 	}
 	&[m-mody~="c-icon"] {
-		.card-content {
+		& .card-content {
 			align-items: flex-start;
 		}
 	}
 	&[m-mody~="c-icon-top"] {
-		.card-content {
+		& .card-content {
 			flex-direction: column;
 			flex-basis: 100%;
-			> .cbx-icon {
-				margin: {
-					right: 0;
-					bottom: viewport(xs, 10);
-				}
+			& > .cbx-icon {
+				@mixin viewport xs, margin-bottom, 10;
+				margin-right: 0;
 			}
 		}
 	}
 	&[m-mody~="c-icon-spaces"] {
-		.card-content {
-			> .cbx-icon {
-				margin: {
-					top: viewport(xs, 20);
-					bottom: viewport(xs, 50);
-				}
+		& .card-content {
+			& > .cbx-icon {
+				@mixin viewport xs, margin-top, 20;
+				@mixin viewport xs, margin-bottom, 50;
 			}
 		}
-		.card-description {
-			.cbx-text {
-				margin-bottom: viewport(xs, 20);
+		& .card-description {
+			& .cbx-text {
+				@mixin viewport xs, margin-bottom, 20;
 			}
 		}
 	}
 	&[m-mody~="c-img"] {
+		@mixin viewport xs, padding-left, 20;
 		padding: 0;
-		padding-left: viewport(xs, 20);
 		position: relative;
 		flex-direction: column;
 		justify-content: flex-end;
 		background-color: transparent;
-		.cbx-img {
-			@include absolute(center-vertical);
+		& .cbx-img {
+			@mixin absolute center-vertical;
+			@mixin viewport xs, width, 90;
+			@mixin viewport xs, height, 55;
 			left: 0;
 			z-index: 1;
-			width: viewport(xs, 90);
-			height: viewport(xs, 55);
-			border-radius: borderRadius(xs);
+			@mixin border-radius xs;
 		}
-		.card-content {
+		& .card-content {
 			background-color: var(--white);
 			flex-direction: column;
 			align-items: flex-start;
 			border-radius: inherit;
 			position: relative;
-			> .cbx-icon {
+			& > .cbx-icon {
+				@mixin viewport xs, top, 10;
+				@mixin viewport xs, right, 20;
 				position: absolute;
-				top: viewport(xs, 10);
-				right: viewport(xs, 20);
 				margin-right: 0;
 			}
 		}
-		.card-description {
-			padding: {
-				top: viewport(xs, 20);
-				right: viewport(xs, 20);
-				bottom: viewport(xs, 20);
-				left: viewport(xs, 84);
-			}
+		& .card-description {
+			@mixin viewport xs, padding-top, 20;
+			@mixin viewport xs, padding-right, 20;
+			@mixin viewport xs, padding-bottom, 20;
+			@mixin viewport xs, padding-left, 84;
 		}
 	}
 	&[m-mody*="c-img-"] {
 		box-shadow: none;
-		.card-content {
-			@include box-shadow(xs, medium-out);
+		& .card-content {
+			@mixin box-shadow xs, medium-out;
 		}
 	}
 	&[m-mody~="c-img-top"] {
 		padding: {
-			top: viewport(xs, 20);
+			@mixin viewport xs, top, 20;
 			left: 0;
 		}
-		.cbx-img {
+		& .cbx-img {
+			@mixin viewport xs, left, 20;
 			top: 0;
-			left: viewport(xs, 20);
 			transform: none;
 		}
-		.card-description {
+		& .card-description {
 			width: 100%;
 			padding: {
-				top: viewport(xs, 55);
-				left: viewport(xs, 20);
+				@mixin viewport xs, top, 55;
+				@mixin viewport xs, left, 20;
 			}
 		}
 	}
 	&[m-mody~="c-img-icon"] {
-		.card-description {
-			padding-top: viewport(xs, 40);
+		& .card-description {
+			@mixin viewport xs, padding-top, 40;
 		}
 	}
 	&[m-mody*="c-img-square"] {
-		width: viewport(xs, 130);
-		.cbx-img {
-			height: viewport(xs, 80);
+		@mixin viewport xs, width, 130;
+		& .cbx-img {
+			@mixin viewport xs, height, 80;
 			transform: translateX(-50%);
 			left: 50%;
 		}
-		.card-description {
-			padding-top: viewport(xs, 80);
+		& .card-description {
+			@mixin viewport xs, padding-top, 80;
 		}
 	}
 	&[m-mody~="c-img-square-h"] {
-		width: viewport(xs, 280);
-		.cbx-img {
+		@mixin viewport xs, width, 280;
+		& .cbx-img {
 			transform: translateY(-50%);
 			left: 0;
 		}
-		.card-description {
-			padding-top: viewport(xs, 20);
+		& .card-description {
+			@mixin viewport xs, padding-top, 20;
 		}
 	}
 	&[m-mody~="c-img-square-v"] {
-		.card-description {
-			min-height: viewport(xs, 231);
+		& .card-description {
+			@mixin viewport xs, min-height, 231;
 		}
 	}
 	&[m-mody~="c-img-square-h"],
 	&[m-mody~="c-img-square-v"] {
-		.cbx-img {
+		& .cbx-img {
 			overflow: hidden;
 		}
 	}
 	&[m-mody*="c-img-large"] {
+		@mixin viewport xs, width, 280;
 		justify-content: flex-start;
-		width: viewport(xs, 280);
-		.cbx-img {
-			height: viewport(xs, 150);
+		& .cbx-img {
+			@mixin viewport xs, height, 150;
 			overflow: hidden;
 		}
 	}
 	&[m-mody~="c-img-large"] {
-		padding-top: viewport(xs, 40);
-		.cbx-img {
-			width: viewport(xs, 200);
+		@mixin viewport xs, padding-top, 40;
+		& .cbx-img {
+			@mixin viewport xs, width, 200;
 			&:first-child {
-				border-radius: borderRadius(xs);
+				@mixin border-radius xs;
 			}
 		}
-		.card-description {
-			padding-top: viewport(xs, 150);
+		& .card-description {
+			@mixin viewport xs, padding-top, 150;
 		}
 	}
 	&[m-mody~="c-img-large-full"] {
-		@include box-shadow(xs, medium-out);
+		@mixin box-shadow xs, medium-out;
 		padding-left: 0;
-		.cbx-img {
+		& .cbx-img {
 			width: 100%;
 			position: relative;
 			top: auto;
 			left: auto;
 			transform: none;
 		}
-		.card-content {
+		& .card-content {
 			box-shadow: none !important;
 		}
-		.card-description {
-			padding-left: viewport(xs, 20);
+		& .card-description {
+			@mixin viewport xs, padding-left, 20;
 		}
 	}
 	&[m-mody*="c-img-double"] {
-		.card-images {
+		& .card-images {
+			@mixin viewport xs, height, 150;
 			position: relative;
-			height: viewport(xs, 150);
-			.cbx-img {
+			& .cbx-img {
 				margin-bottom: 0;
 				&:last-child {
-					@include box-shadow(xs, medium-out);
-					@include absolute(center-horizontal);
-					bottom: viewport(xs, -40);
-					width: viewport(xs, 120);
-					height: viewport(xs, 75);
+					@mixin box-shadow xs, medium-out;
+					@mixin absolute center-horizontal;
+					@mixin viewport xs, bottom, -40;
+					@mixin viewport xs, width, 120;
+					@mixin viewport xs, height, 75;
 					min-height: auto;
 					overflow: hidden;
 				}
 			}
 		}
-		.card-content {
+		& .card-content {
 			border-radius: 0;
 		}
-		.card-description {
-			padding-top: viewport(xs, 67.5);
+		& .card-description {
+			@mixin viewport xs, padding-top, 67.5;
 		}
 	}
 	&[m-mody~="c-img-double-big"] {
-		.card-images {
-			.cbx-img {
+		& .card-images {
+			& .cbx-img {
 				&:last-child {
-					bottom: viewport(xs, -30);
-					width: viewport(xs, 228);
-					height: viewport(xs, 140);
+					@mixin viewport xs, bottom, -30;
+					@mixin viewport xs, width, 228;
+					@mixin viewport xs, height, 140;
 				}
 			}
 		}
 	}
 	&[m-mody~="c-img-background"] {
-		width: viewport(xs, 280);
-		height: viewport(xs, 140);
+		@mixin viewport xs, width, 280;
+		@mixin viewport xs, height, 140;
 		position: relative;
 		padding: 0;
-		.card-content {
+		& .card-content {
 			width: inherit;
 			border-radius: inherit;
 			overflow: hidden;
 		}
-		.cbx-img {
+		& .cbx-img {
 			width: inherit;
 			height: inherit;
-			> img {
+			& > img {
 				height: inherit;
 				object-fit: cover;
 			}
-			.card-description {
+			& .card-description {
 				position: absolute;
 				top: 0;
 				left: 0;
-				padding: viewport(xs, 30) viewport(xs, 20);
+				@mixin viewport xs, padding, 30, 20;
 				width: 100%;
 				height: 100%;
-				.cbx-title {
+				& .cbx-title {
 					color: white;
 					&:last-of-type {
 						margin-bottom: 0;
@@ -388,10 +374,10 @@ button.cbx-card {
 	}
 	&[m-mody~="c-button"] {
 		flex-direction: column;
-		.card-description {
+		& .card-description {
 			position: relative;
 			&::after {
-				@include absolute(center-horizontal);
+				@mixin absolute center-horizontal;
 				content: "";
 				bottom: 0;
 				width: 90%;
@@ -399,30 +385,30 @@ button.cbx-card {
 				background-color: var(--soft-gray);
 			}
 		}
-		.card-buttons {
+		& .card-buttons {
 			display: flex;
-			height: viewport(xs, 70);
+			@mixin viewport xs, height, 70;
 			width: 100%;
 			align-items: center;
 			justify-content: space-between;
 			text-align: center;
 			padding: {
-				right: viewport(xs, 20);
-				left: viewport(xs, 20);
+				@mixin viewport xs, right, 20;
+				@mixin viewport xs, left, 20;
 			}
-			> * {
+			& > * {
 				min-width: calc(100% / 2);
 			}
 		}
 	}
 	&[m-mody~="c-button-full"] {
-		.card-buttons {
+		& .card-buttons {
 			width: 100%;
 			padding: {
-				right: viewport(xs, 20);
-				left: viewport(xs, 20);
+				@mixin viewport xs, right, 20;
+				@mixin viewport xs, left, 20;
 			}
-			> * {
+			& > * {
 				width: 100%;
 			}
 		}
@@ -430,86 +416,86 @@ button.cbx-card {
 	&[m-mody~="c-stamp"] {
 		flex-direction: column;
 		padding-bottom: 0;
-		.card-stamp {
-			border-radius: viewport(xs, 16);
-			width: viewport(xs, 80);
-			height: viewport(xs, 80);
+		& .card-stamp {
+			@mixin viewport xs, border-radius, 16;
+			@mixin viewport xs, width, 80;
+			@mixin viewport xs, height, 80;
 		}
-		.card-content {
+		& .card-content {
 			flex-direction: column;
 			text-align: center;
 		}
-		.card-description {
-			margin-bottom: viewport(xs, 20);
-			.cbx-text {
-				margin-bottom: viewport(xs, 20);
+		& .card-description {
+			@mixin viewport xs, margin-bottom, 20;
+			& .cbx-text {
+				@mixin viewport xs, margin-bottom, 20;
 			}
 		}
-		.card-img {
+		& .card-img {
 			margin-bottom: 0;
 		}
 	}
 	&[m-mody~="c-stamp-only"] {
-		padding-bottom: viewport(xs, 20);
-		.card-description {
+		@mixin viewport xs, padding-bottom, 20;
+		& .card-description {
 			margin-bottom: 0 !important;
 		}
-		.cbx-apps {
+		& .cbx-apps {
 			justify-content: center;
 		}
 	}
 	&[m-mody~="c-request"] {
 		padding-left: 0;
-		.card-content {
-			@include blue-wave(citi);
+		& .card-content {
+			@mixin blue-wave citi;
 		}
-		.card-description {
-			padding-top: viewport(xs, 20);
-			.cbx-title {
+		& .card-description {
+			@mixin viewport xs, padding-top, 20;
+			& .cbx-title {
 				color: var(--white);
 			}
 		}
 	}
 	&[m-mody~="c-phone"] {
 		width: 100%;
-		.card-content {
+		& .card-content {
 			display: block;
 			width: 100%;
-			.card-head {
+			& .card-head {
 				height: auto;
 				border-bottom-style: solid;
 				border-width: 1px;
 				border-color: var(--soft-gray);
-				margin-bottom: viewport(xs, 20);
+				@mixin viewport xs, margin-bottom, 20;
 				display: flex;
 				flex-direction: column;
 			}
-			.card-body {
+			& .card-body {
 				display: block;
-				.item {
+				& .item {
 					width: 100%;
-					margin-bottom: viewport(xs, 20);
+					@mixin viewport xs, margin-bottom, 20;
 				}
-				.cbx-text {
-					margin-bottom: viewport(xs, 5);
+				& .cbx-text {
+					@mixin viewport xs, margin-bottom, 5;
 				}
 			}
 		}
 	}
 	&[m-mody~="c-phone-full"] {
-		min-height: viewport(xs, 260);
-		.card-body {
-			.item {
-				margin-bottom: viewport(xs, 20);
+		@mixin viewport xs, min-height, 260;
+		& .card-body {
+			& .item {
+				@mixin viewport xs, margin-bottom, 20;
 			}
 		}
 	}
 	&[m-mody~="c-blue-wave"] {
-		.card-content {
-			@include blue-wave(citi);
+		& .card-content {
+			@mixin blue-wave citi;
 		}
-		.card-description {
-			> * {
+		& .card-description {
+			& > * {
 				color: var(--white);
 			}
 		}
@@ -517,10 +503,10 @@ button.cbx-card {
 
 	&[m-size="c-4"],
 	&[m-size="c-3"] {
-		width: viewport(xs, 280);
+		@mixin viewport xs, width, 280;
 	}
 	&[m-size="c-2"] {
-		width: viewport(xs, 130);
+		@mixin viewport xs, width, 130;
 	}
 
 	&[m-mody~="c-icon"],
@@ -529,44 +515,44 @@ button.cbx-card {
 	&[m-mody~="c-stamp"] {
 		&[m-size="c-4"],
 		&[m-size="c-3"] {
-			width: viewport(xs, 280);
+			@mixin viewport xs, width, 280;
 		}
 		&[m-size="c-2"] {
-			width: viewport(xs, 130);
+			@mixin viewport xs, width, 130;
 		}
 	}
 }
 
-@media #{$max-mobile} {
-	.cbx-card {
-		.card-description {
-			> .cbx-button {
+@media (width <= 767px) {
+	& .cbx-card {
+		& .card-description {
+			& > .cbx-button {
 				min-width: 100%;
 				width: 100%;
 			}
 		}
 		&[m-mody~="c-request"] {
-			.cbx-img {
+			& .cbx-img {
 				display: none;
 			}
 		}
 		&[m-mody="c-img"] {
 			box-shadow: none;
-			.card-content {
-				@include box-shadow(xs, medium-out);
+			& .card-content {
+				@mixin box-shadow xs, medium-out;
 			}
 		}
 	}
 }
 
-@media width >= 768px {
+@media (width >= 768px) {
 	html {
 		&[m-browser~="mobile"] {
-			.cbx-card {
+			& .cbx-card {
 				&[m-mody~="c-app"] {
-					.card-description {
+					& .card-description {
 						margin-bottom: 20px;
-						.cbx-text {
+						& .cbx-text {
 							margin-bottom: 10px;
 						}
 					}
@@ -576,30 +562,30 @@ button.cbx-card {
 	}
 	button.cbx-card {
 		&:active {
-			@include box-shadow(sm, medium-out);
+			@mixin box-shadow sm, medium-out;
 		}
 	}
 	.cbx-card {
-		@include box-shadow(sm, medium-out);
-		border-radius: borderRadius(sm);
+		@mixin box-shadow sm, medium-out;
+		@mixin border-radius sm;
 		min-height: 20px;
 		padding: 20px;
 		width: 330px;
-		.card-content {
-			.cbx-icon {
+		& .card-content {
+			& .cbx-icon {
 				margin-right: 20px;
 			}
 		}
-		.card-description {
-			.cbx-title,
-			.cbx-sub-category {
+		& .card-description {
+			& .cbx-title,
+			& .cbx-sub-category {
 				margin-bottom: 10px;
 			}
-			.cbx-text {
+			& .cbx-text {
 				margin-bottom: 10px;
 			}
-			.cbx-list {
-				.list-item {
+			& .cbx-list {
+				& .list-item {
 					margin-bottom: 10px;
 				}
 			}
@@ -613,61 +599,61 @@ button.cbx-card {
 				transform: none;
 				z-index: 1;
 			}
-			.card-description {
-				//padding-top: 40px;
-				> .cbx-sub-category,
-				> .cbx-title {
+			& .card-description {
+				/* padding-top: 40px; */
+				& > .cbx-sub-category,
+				& > .cbx-title {
 					margin-bottom: 20px;
 				}
-				> .cbx-text {
+				& > .cbx-text {
 					min-height: 70px;
 					max-height: 70px;
 				}
 			}
-			.card-buttons {
+			& .card-buttons {
 				margin-bottom: 40px;
-				.cbx-button {
+				& .cbx-button {
 					margin-bottom: 40px;
 				}
 			}
 		}
 		&[m-mody~="c-icon-top"] {
-			.card-content {
-				> .cbx-icon {
+			& .card-content {
+				& > .cbx-icon {
 					margin-bottom: 10px;
 				}
 			}
 		}
 		&[m-mody~="c-icon-spaces"] {
-			.card-content {
-				> .cbx-icon {
+			& .card-content {
+				& > .cbx-icon {
 					margin: {
 						top: 20px;
 						bottom: 50px;
 					}
 				}
 			}
-			.card-description {
-				.cbx-text {
+			& .card-description {
+				& .cbx-text {
 					margin-bottom: 20px;
 				}
 			}
 		}
 		&[m-mody~="c-img"] {
 			padding-left: 20px;
-			.cbx-img {
+			& .cbx-img {
 				width: 90px;
 				height: 55px;
-				border-radius: borderRadius(sm);
+				@mixin border-radius sm;
 			}
-			.card-content {
-				//@include box-shadow(sm, medium-out);
-				> .cbx-icon {
+			& .card-content {
+				@mixin box-shadow sm, medium-out;
+				& > .cbx-icon {
 					top: 10px;
 					right: 20px;
 				}
 			}
-			.card-description {
+			& .card-description {
 				padding: {
 					top: 20px;
 					right: 20px;
@@ -677,17 +663,17 @@ button.cbx-card {
 			}
 		}
 		&[m-mody*="c-img-"] {
-			.card-content {
-				@include box-shadow(sm, medium-out);
+			& .card-content {
+				@mixin box-shadow sm, medium-out;
 			}
 		}
 		&[m-mody~="c-img-top"],
 		&[m-mody="c-img"] {
 			padding-top: 20px;
-			.cbx-img {
+			& .cbx-img {
 				left: 20px;
 			}
-			.card-description {
+			& .card-description {
 				padding: {
 					top: 55px;
 					left: 20px;
@@ -698,19 +684,19 @@ button.cbx-card {
 			padding-left: 0;
 		}
 		&[m-mody~="c-img-icon"] {
-			.card-description {
+			& .card-description {
 				padding-top: 40px;
 			}
 		}
 		&[m-mody*="c-img-square"] {
 			width: 330px;
-			.cbx-img {
+			& .cbx-img {
 				height: 80px;
 			}
 		}
 		&[m-mody~="c-img-square"],
 		&[m-mody~="c-img-square-v"] {
-			.card-description {
+			& .card-description {
 				height: inherit;
 				padding: {
 					top: 20px;
@@ -720,12 +706,12 @@ button.cbx-card {
 		}
 		&[m-mody~="c-img-square"] {
 			min-height: 120px;
-			.cbx-img {
+			& .cbx-img {
 				transform: none;
 				height: 120px;
 				width: 120px;
 			}
-			.card-description {
+			& .card-description {
 				padding: {
 					left: 160px;
 					bottom: 20px;
@@ -738,14 +724,14 @@ button.cbx-card {
 				left: 20px;
 			}
 			background-color: transparent;
-			.cbx-img {
+			& .cbx-img {
 				top: 50%;
 				left: 0;
 				transform: translateY(-50%);
 			}
-			.card-content {
-				@include box-shadow(sm, medium-out);
-				border-radius: borderRadius(sm);
+			& .card-content {
+				@mixin box-shadow sm, medium-out;
+				@mixin border-radius sm;
 			}
 		}
 		&[m-mody~="c-img-square-h"],
@@ -765,10 +751,10 @@ button.cbx-card {
 			&[m-mody~="br-left-teal"] {
 				border-left-color: var(--teal);
 			}
-			.cbx-img {
+			& .cbx-img {
 				display: none;
 			}
-			.card-description {
+			& .card-description {
 				padding-top: 20px;
 				padding-left: 20px;
 				min-height: 126px;
@@ -776,22 +762,22 @@ button.cbx-card {
 		}
 		&[m-mody*="c-img-large"] {
 			width: 330px;
-			.cbx-img {
+			& .cbx-img {
 				height: 150px;
 			}
 		}
 		&[m-mody~="c-img-large"] {
 			padding-top: 40px;
-			.cbx-img {
+			& .cbx-img {
 				width: 170px;
 				top: 0;
 				left: 50%;
 				transform: translateX(-50%);
 				&:first-child {
-					border-radius: borderRadius(sm);
+					@mixin border-radius sm;
 				}
 			}
-			.card-description {
+			& .card-description {
 				padding: {
 					top: 150px;
 					left: 20px;
@@ -799,36 +785,36 @@ button.cbx-card {
 			}
 		}
 		&[m-mody~="c-img-large-full"] {
-			@include box-shadow(sm, medium-out);
+			@mixin box-shadow sm, medium-out;
 			padding-left: 0;
-			> .cbx-img {
+			& > .cbx-img {
 				width: 100%;
 			}
-			.card-description {
+			& .card-description {
 				padding-left: 20px;
 			}
 		}
 		&[m-mody*="c-img-double"] {
-			.card-images {
+			& .card-images {
 				height: 150px;
-				.cbx-img {
+				& .cbx-img {
 					top: auto;
 					width: 100%;
 					&:last-child {
-						@include box-shadow(sm, medium-out);
+						@mixin box-shadow sm, medium-out;
 						bottom: -40px;
 						width: 120px;
 						height: 75px;
 					}
 				}
 			}
-			.card-description {
-				padding-top: 67.5px;
+			& .card-description {
+				& padding-top: 67.5px;
 			}
 		}
 		&[m-mody~="c-img-double-big"] {
-			.card-images {
-				.cbx-img {
+			& .card-images {
+				& .cbx-img {
 					&:last-child {
 						bottom: -30px;
 						width: 228px;
@@ -840,38 +826,38 @@ button.cbx-card {
 		&[m-mody="c-img"] {
 			padding-left: 0;
 			box-shadow: none;
-			.cbx-img {
+			& .cbx-img {
 				transform: none;
 				top: 0;
 			}
-			.card-content {
+			& .card-content {
 				display: block;
-				@include box-shadow(sm, medium-out);
+				@mixin box-shadow sm, medium-out;
 			}
 		}
 		&[m-mody~="c-img-background"] {
 			width: 210px;
 			height: 180px;
-			.cbx-img {
-				.card-description {
+			& .cbx-img {
+				& .card-description {
 					padding: 30px 20px;
 				}
 			}
 		}
 		&[m-mody~="c-button"] {
-			.card-buttons {
+			& .card-buttons {
 				height: 70px;
 				padding: {
 					right: 20px;
 					left: 20px;
 				}
-				> * {
+				& > * {
 					min-width: calc(100% / 2);
 				}
 			}
 		}
 		&[m-mody~="c-button-full"] {
-			.card-buttons {
+			& .card-buttons {
 				padding: {
 					right: 20px;
 					left: 20px;
@@ -882,26 +868,26 @@ button.cbx-card {
 			flex-direction: row;
 			align-items: flex-end;
 			width: 680px;
-			.card-content,
-			> .cbx-img {
+			& .card-content,
+			& > .cbx-img {
 				flex-grow: 1;
 				flex-shrink: 0;
 				flex-basis: 50%;
 			}
-			.card-content {
+			& .card-content {
 				align-self: flex-start;
 				align-items: flex-start;
 				text-align: left;
 			}
-			.card-stamp {
+			& .card-stamp {
 				border-radius: 16px;
 				width: 80px;
 				height: 80px;
 				margin-bottom: 20px;
 			}
-			.card-description {
+			& .card-description {
 				margin-bottom: 20px;
-				.cbx-text {
+				& .cbx-text {
 					margin-bottom: 20px;
 				}
 			}
@@ -909,10 +895,10 @@ button.cbx-card {
 		&[m-mody~="c-stamp-only"] {
 			width: 330px;
 			padding: 40px;
-			.card-content {
+			& .card-content {
 				text-align: center;
 			}
-			.card-stamp {
+			& .card-stamp {
 				margin: {
 					right: auto;
 					left: auto;
@@ -920,26 +906,26 @@ button.cbx-card {
 			}
 		}
 		&[m-mody~="c-request"] {
-			.cbx-img {
+			& .cbx-img {
 				width: 184px;
 				height: 58px;
 				left: 50%;
 				transform: translateX(-50%);
 			}
-			.card-description {
+			& .card-description {
 				padding-top: 58px;
 			}
 		}
 		&[m-mody~="c-phone"] {
-			.card-content {
+			& .card-content {
 				position: relative;
-				.card-head {
+				& .card-head {
 					height: 80px;
 					border-width: 1px;
 					margin-bottom: 20px;
 				}
-				.card-body {
-					.item {
+				& .card-body {
+					& .item {
 						margin-bottom: 20px;
 						flex-grow: 1;
 						&:not(:last-child) {
@@ -947,7 +933,7 @@ button.cbx-card {
 						}
 					}
 				}
-				.card-footer {
+				& .card-footer {
 					position: absolute;
 					bottom: 0;
 					height: 20px;
@@ -956,9 +942,9 @@ button.cbx-card {
 		}
 		&[m-mody~="c-phone-full"] {
 			min-height: 260px;
-			.card-body {
+			& .card-body {
 				display: flex;
-				.item {
+				& .item {
 					width: calc(100% / 5);
 				}
 			}
@@ -989,15 +975,15 @@ button.cbx-card {
 	}
 }
 
-@media width >= 1024px {
+@media (width >= 1024px) {
 	html {
 		&[m-browser~="mobile"] {
-			.cbx-card {
+			& .cbx-card {
 				&[m-mody~="c-app"] {
-					.card-description {
-						margin-bottom: viewport(lg, 20);
-						.cbx-text {
-							margin-bottom: viewport(lg, 10);
+					& .card-description {
+						@mixin viewport lg, margin-bottom, 20;
+						& .cbx-text {
+							@mixin viewport lg, margin-bottom, 10;
 						}
 					}
 				}
@@ -1006,18 +992,18 @@ button.cbx-card {
 	}
 	button.cbx-card {
 		&:active {
-			@include box-shadow(lg, medium-out);
+			@mixin box-shadow lg, medium-out;
 		}
 	}
-	.cbx-card {
-		@include box-shadow(lg, medium-out);
-		border-radius: borderRadius(lg);
-		min-height: viewport(lg, 20);
-		padding: viewport(lg, 20);
-		width: viewport(lg, 470);
-		.card-content {
-			.cbx-icon {
-				margin-right: viewport(lg, 20);
+	& .cbx-card {
+		@mixin box-shadow lg, medium-out;
+		@mixin border-radius lg;
+		@mixin viewport lg, min-height, 20;
+		@mixin viewport lg, padding, 20;
+		@mixin viewport lg, width, 470;
+		& .card-content {
+			& .cbx-icon {
+				@mixin viewport lg, margin-right, 20;
 			}
 		}
 		&:not([m-mody]),
@@ -1025,126 +1011,126 @@ button.cbx-card {
 		&[m-mody~="c-stamp"] {
 			transition: box-shadow 250ms ease-out;
 			&:hover {
-				@include box-shadow(lg, big-out);
+				@mixin box-shadow lg, big-out;
 			}
 		}
-		.card-call {
+		& .card-call {
 			height: auto;
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			> .cbx-link {
+			& > .cbx-link {
 				display: inline-block;
 				height: auto;
 				width: auto;
 			}
 		}
-		.card-description {
-			.cbx-title,
-			.cbx-sub-category {
-				margin-bottom: viewport(lg, 10);
+		& .card-description {
+			& .cbx-title,
+			& .cbx-sub-category {
+				@mixin viewport lg, margin-bottom, 10;
 			}
-			.cbx-text {
-				margin-bottom: viewport(lg, 10);
+			& .cbx-text {
+				@mixin viewport lg, margin-bottom, 10;
 			}
-			.cbx-list {
-				.list-item {
-					margin-bottom: viewport(lg, 10);
+			& .cbx-list {
+				& .list-item {
+					@mixin viewport lg, margin-bottom, 10;
 				}
 			}
 		}
 		&[m-dmp] {
-			width: viewport(lg, 306);
+			@mixin viewport lg, width, 306;
 			&[m-open="true"] {
-				top: viewport(lg, 100);
-				right: viewport(lg, 20);
+				@mixin viewport lg, top, 100;
+				@mixin viewport lg, right, 20;
 			}
-			.card-description {
-				> .cbx-sub-category,
-				> .cbx-title {
-					margin-bottom: viewport(lg, 20);
+			& .card-description {
+				& > .cbx-sub-category,
+				& > .cbx-title {
+					@mixin viewport lg, margin-bottom, 20;
 				}
-				> .cbx-text {
-					min-height: viewport(lg, 70);
-					max-height: viewport(lg, 70);
+				& > .cbx-text {
+					@mixin viewport lg, min-height, 70;
+					@mixin viewport lg, max-height, 70;
 				}
 			}
-			.card-buttons {
-				margin-bottom: viewport(lg, 40);
-				.cbx-button {
-					margin-bottom: viewport(lg, 40);
+			& .card-buttons {
+				@mixin viewport lg, margin-bottom, 40;
+				& .cbx-button {
+					@mixin viewport lg, margin-bottom, 40;
 				}
 			}
 		}
 		&[m-mody~="c-icon-top"] {
-			.card-content {
-				> .cbx-icon {
-					margin-bottom: viewport(lg, 10);
+			& .card-content {
+				& > .cbx-icon {
+					@mixin viewport lg, margin-bottom, 10;
 				}
 			}
 		}
 		&[m-mody~="c-icon-spaces"] {
-			.card-content {
-				> .cbx-icon {
+			& .card-content {
+				& > .cbx-icon {
 					margin: {
-						top: viewport(lg, 20);
-						bottom: viewport(lg, 50);
+						@mixin viewport lg, top, 20;
+						@mixin viewport lg, bottom, 50;
 					}
 				}
 			}
-			.card-description {
-				.cbx-text {
-					margin-bottom: viewport(lg, 20);
+			& .card-description {
+				& .cbx-text {
+					@mixin viewport lg, margin-bottom, 20;
 				}
 			}
 		}
 		&[m-mody~="c-img"] {
-			padding-left: viewport(lg, 20);
-			.cbx-img {
-				width: viewport(lg, 120);
-				height: viewport(lg, 74);
-				border-radius: borderRadius(sm);
+			@mixin viewport lg, padding-left, 20;
+			& .cbx-img {
+				@mixin viewport lg, width, 120;
+				@mixin viewport lg, height, 74;
+				@mixin border-radius lg;
 			}
-			.card-content {
-				> .cbx-icon {
-					top: viewport(lg, 10);
-					right: viewport(lg, 20);
+			& .card-content {
+				& > .cbx-icon {
+					@mixin viewport lg, top, 10;
+					@mixin viewport lg, right, 20;
 				}
 			}
-			.card-description {
+			& .card-description {
 				padding: {
-					top: viewport(lg, 20);
-					right: viewport(lg, 20);
-					bottom: viewport(lg, 20);
-					left: viewport(lg, 120);
+					@mixin viewport lg, top, 20;
+					@mixin viewport lg, right, 20;
+					@mixin viewport lg, bottom, 20;
+					@mixin viewport lg, left, 120;
 				}
 			}
 		}
 		&[m-mody*="c-img-"] {
 			&:not([m-mody*="c-img-large"]) {
 				&:hover {
-					.card-content {
-						@include box-shadow(lg, big-out);
+					& .card-content {
+						@mixin box-shadow lg, big-out;
 					}
 				}
-				.card-content {
+				& .card-content {
 					transition: box-shadow 250ms ease-out;
 				}
 			}
-			.card-content {
-				@include box-shadow(lg, medium-out);
+			& .card-content {
+				@mixin box-shadow lg, medium-out;
 			}
 		}
 		&[m-mody~="c-img-top"],
 		&[m-mody="c-img"] {
-			padding-top: viewport(lg, 20);
-			.cbx-img {
-				left: viewport(lg, 20);
+			@mixin viewport lg, padding-top, 20;
+			& .cbx-img {
+				@mixin viewport lg, left, 20;
 			}
-			.card-description {
+			& .card-description {
 				padding: {
-					top: viewport(lg, 74);
-					left: viewport(lg, 20);
+					@mixin viewport lg, top, 74;
+					@mixin viewport lg, left, 20;
 				}
 			}
 		}
@@ -1152,120 +1138,120 @@ button.cbx-card {
 			padding-left: 0;
 		}
 		&[m-mody~="c-img-icon"] {
-			.card-description {
-				padding-top: viewport(lg, 40);
+			& .card-description {
+				@mixin viewport lg, padding-top, 40;
 			}
 		}
 		&[m-mody*="c-img-square"] {
-			width: viewport(lg, 470);
-			.cbx-img {
-				height: viewport(lg, 120);
+			@mixin viewport lg, width, 470;
+			& .cbx-img {
+				@mixin viewport lg, height, 120;
 			}
 		}
 		&[m-mody~="c-img-square"],
 		&[m-mody~="c-img-square-v"] {
-			.card-description {
+			& .card-description {
 				padding: {
-					top: viewport(lg, 20);
-					left: viewport(lg, 90);
+					@mixin viewport lg, top, 20;
+					@mixin viewport lg, left, 90;
 				}
 			}
 		}
 		&[m-mody~="c-img-square"] {
-			min-height: viewport(lg, 120);
-			.cbx-img {
+			@mixin viewport lg, min-height, 120;
+			& .cbx-img {
 				transform: none;
-				height: viewport(lg, 120);
-				width: viewport(lg, 120);
+				@mixin viewport lg, height, 120;
+				@mixin viewport lg, width, 120;
 			}
-			.card-description {
+			& .card-description {
 				padding: {
-					left: viewport(lg, 160);
-					bottom: viewport(lg, 20);
+					@mixin viewport lg, left, 160;
+					@mixin viewport lg, bottom, 20;
 				}
 			}
 		}
 		&[m-mody~="c-img-square-v"] {
 			padding: {
 				top: 0;
-				left: viewport(lg, 20);
+				@mixin viewport lg, left, 20;
 			}
 			background-color: transparent;
-			.cbx-img {
+			& .cbx-img {
 				top: 50%;
 				left: 0;
 				transform: translateY(-50%);
 			}
-			.card-content {
-				@include box-shadow(lg, medium-out);
-				border-radius: borderRadius(lg);
+			& .card-content {
+				@mixin box-shadow lg, medium-out;
+				@mixin border-radius lg;
 			}
-			.card-description {
-				padding-left: viewport(lg, 120);
+			& .card-description {
+				@mixin viewport lg, padding-left, 120;
 			}
 		}
 		&[m-mody~="c-img-square-h"],
 		&[m-mody~="c-img-square-v"] {
-			padding-left: viewport(lg, 20);
+			@mixin viewport lg, padding-left, 20;
 			&[m-mody*="br-left"] {
 				border: none;
 			}
-			.cbx-img {
+			& .cbx-img {
 				display: block;
 			}
-			.card-description {
+			& .card-description {
 				padding: {
-					top: viewport(lg, 20);
-					bottom: viewport(lg, 20);
-					left: viewport(lg, 120);
+					@mixin viewport lg, top, 20;
+					@mixin viewport lg, bottom, 20;
+					@mixin viewport lg, left, 120;
 				}
-				min-height: viewport(lg, 160);
+				@mixin viewport lg, min-height, 160;
 			}
 		}
 		&[m-mody*="c-img-large"] {
-			@include box-shadow(lg, medium-out);
-			@include transition(box-shadow);
+			@mixin box-shadow lg, medium-out;
+			@mixin transition box-shadow;
 			background-color: var(--white);
-			width: viewport(lg, 305);
+			@mixin viewport lg, width, 305;
 			padding: {
 				top: 0;
 				left: 0;
 			}
 			&:not([m-dmp]):hover {
-				@include box-shadow(lg, big-out);
-				.cbx-img {
+				@mixin box-shadow lg, big-out;
+				& .cbx-img {
 					img {
-						@include scale(hover);
+						@mixin scale hover;
 					}
 				}
 			}
-			.cbx-img {
+			& .cbx-img {
 				transform: none;
 				position: relative;
 				top: 0;
 				left: auto;
 				width: 100%;
 				height: 100%;
-				min-height: viewport(lg, 130);
-				margin-bottom: viewport(lg, 40);
+				@mixin viewport lg, min-height, 130;
+				@mixin viewport lg, margin-bottom, 40;
 				img {
-					@include transition(transform);
-					@include scale(value);
+					@mixin transition transform;
+					@mixin scale value;
 				}
 			}
-			.card-content {
+			& .card-content {
 				background-color: transparent;
 				box-shadow: none;
 			}
-			.card-description {
+			& .card-description {
 				padding: {
 					top: 0;
-					left: viewport(lg, 20);
+					@mixin viewport lg, left, 20;
 				}
 			}
 		}
 		&[m-mody~="c-img-large"] {
-			.cbx-img {
+			& .cbx-img {
 				&:first-child {
 					border-bottom: {
 						right-radius: 0;
@@ -1275,28 +1261,28 @@ button.cbx-card {
 			}
 		}
 		&[m-mody*="c-img-double"] {
-			.card-images {
-				height: viewport(lg, 130);
-				.cbx-img {
+			& .card-images {
+				@mixin viewport lg, height, 130;
+				& .cbx-img {
 					&:last-child {
-						@include box-shadow(lg, medium-out);
-						bottom: viewport(lg, -40);
-						width: viewport(lg, 120);
-						height: viewport(lg, 75);
+						@mixin box-shadow lg, medium-out;
+						@mixin viewport lg, bottom, -40;
+						@mixin viewport lg, width, 120;
+						@mixin viewport lg, height, 75;
 					}
 				}
 			}
-			.card-description {
-				padding-top: viewport(lg, 67.5);
+			& .card-description {
+				@mixin viewport lg, padding-top, 67.5;
 			}
 		}
 		&[m-mody~="c-img-double-big"] {
-			.card-images {
-				.cbx-img {
+			& .card-images {
+				& .cbx-img {
 					&:last-child {
-						bottom: viewport(lg, -30);
-						width: viewport(lg, 228);
-						height: viewport(lg, 140);
+						@mixin viewport lg, bottom, -30;
+						@mixin viewport lg, width, 228;
+						@mixin viewport lg, height, 140;
 					}
 				}
 			}
@@ -1304,123 +1290,128 @@ button.cbx-card {
 		&[m-mody="c-img"] {
 			padding-left: 0;
 			&:hover {
-				.card-content {
-					@include box-shadow(lg, big-out);
+				& .card-content {
+					@mixin box-shadow lg, big-out;
 				}
 			}
-			.card-content {
-				@include box-shadow(lg, medium-out);
+			& .card-content {
+				@mixin box-shadow lg, medium-out;
 				transition: box-shadow 250ms ease-out;
 			}
 		}
 		&[m-mody~="c-img-background"] {
-			width: viewport(lg, 305);
-			height: viewport(lg, 180);
-			.cbx-img {
-				.card-description {
-					padding: viewport(lg, 30) viewport(lg, 20);
+			@mixin viewport lg, width, 305;
+			@mixin viewport lg, height, 180;
+			& .cbx-img {
+				& .card-description {
+					padding:{
+						@mixin viewport lg, top, 30;
+						@mixin viewport lg, right, 20; 
+						@mixin viewport lg, bottom, 30; 
+						@mixin viewport lg, left, 20;  
+					}
 				}
 			}
 		}
 		&[m-mody~="c-button"] {
-			.card-buttons {
-				height: viewport(lg, 70);
+			& .card-buttons {
+				@mixin viewport lg, height, 70;
 				padding: {
-					right: viewport(lg, 20);
-					left: viewport(lg, 20);
+					@mixin viewport lg, right, 20;
+					@mixin viewport lg, left, 20;
 				}
-				> * {
+				& > * {
 					min-width: calc(100% / 2);
 				}
 			}
 		}
 		&[m-mody~="c-button-full"] {
-			.card-buttons {
+			& .card-buttons {
 				padding: {
-					right: viewport(lg, 20);
-					left: viewport(lg, 20);
+					@mixin viewport lg, right, 20;
+					@mixin viewport lg, left, 20;
 				}
 			}
 		}
 		&[m-mody~="c-stamp"] {
-			width: viewport(lg, 715);
-			.card-content {
-				padding-right: viewport(lg, 20);
+			@mixin viewport lg, width, 715;
+			& .card-content {
+				@mixin viewport lg, padding-right, 20;
 			}
-			.card-stamp {
-				border-radius: viewport(lg, 16);
-				width: viewport(lg, 80);
-				height: viewport(lg, 80);
-				margin-bottom: viewport(lg, 20);
+			& .card-stamp {
+				@mixin viewport lg, border-radius, 16;
+				@mixin viewport lg, width, 80;
+				@mixin viewport lg, height, 80;
+				@mixin viewport lg, margin-bottom, 20;
 			}
-			.card-description {
-				margin-bottom: viewport(lg, 20);
-				.cbx-text {
-					margin-bottom: viewport(lg, 20);
+			& .card-description {
+				@mixin viewport lg, margin-bottom, 20;
+				& .cbx-text {
+					@mixin viewport lg, margin-bottom, 20;
 				}
 			}
 			&[m-mody~="c-stamp-only"] {
-				width: viewport(lg, 305);
-				padding: viewport(lg, 40);
-				.card-content {
+				@mixin viewport lg, width, 305;
+				@mixin viewport lg, padding, 40;
+				& .card-content {
 					padding-right: 0;
 				}
 			}
 		}
 		&[m-mody~="c-request"] {
-			.cbx-img {
+			& .cbx-img {
 				left: 50%;
-				width: viewport(lg, 184);
-				height: viewport(lg, 58);
+				@mixin viewport lg, width, 184;
+				@mixin viewport lg, height, 58;
 			}
-			.card-description {
-				padding-top: viewport(lg, 58);
+			& .card-description {
+				@mixin viewport lg, padding-top, 58;
 			}
 		}
 		&[m-mody~="c-phone"] {
-			min-height: viewport(lg, 310);
-			.card-content {
-				.card-head {
-					height: viewport(lg, 80);
-					margin-bottom: viewport(lg, 20);
+			@mixin viewport lg, min-height, 310;
+			& .card-content {
+				& .card-head {
+					@mixin viewport lg, height, 80;
+					@mixin viewport lg, margin-bottom, 20;
 				}
-				.card-body {
-					.item {
-						.cbx-text {
+				& .card-body {
+					& .item {
+						& .cbx-text {
 							margin-bottom: 0;
 						}
 
 						&:not(:last-child) {
-							margin-right: viewport(lg, 10);
+							@mixin viewport lg, margin-right, 10;
 						}
 					}
 				}
-				.card-footer {
-					height: viewport(lg, 20);
+				& .card-footer {
+					@mixin viewport lg, height, 20;
 				}
 			}
 		}
 		&[m-mody~="c-phone-full"] {
-			min-height: viewport(lg, 260);
+			@mixin viewport lg, min-height, 260;
 		}
 
 		&[m-size="c-4"],
 		&[m-size="c-3"] {
-			width: viewport(xs, 280);
+			@mixin viewport lg, width, 280;
 		}
 		&[m-size="c-2"] {
-			width: viewport(xs, 130);
+			@mixin viewport lg, width, 130;
 		}
 
 		&[m-size="c-4"] {
-			width: viewport(lg, 225);
+			@mixin viewport lg, width, 225;
 		}
 
 		&[m-size="c-3"] {
-			width: viewport(lg, 305);
+			@mixin viewport lg, width, 305;
 		}
 		&[m-size="c-2"] {
-			width: viewport(lg, 470);
+			@mixin viewport lg, width, 470;
 		}
 
 		&[m-mody~="c-icon"],
@@ -1428,27 +1419,27 @@ button.cbx-card {
 		&[m-mody~="c-button"],
 		&[m-mody~="c-stamp"] {
 			&[m-size="c-4"] {
-				width: viewport(lg, 225);
+				@mixin viewport lg, width, 225;
 			}
 			&[m-size="c-3"] {
-				width: viewport(lg, 305);
+				@mixin viewport lg, width, 305;
 			}
 			&[m-size="c-2"] {
-				width: viewport(lg, 470);
+				@mixin viewport lg, width, 470;
 			}
 		}
 	}
 }
 
-@media width >= 1280px {
+@media (width >= 1280px) {
 	html {
 		&[m-browser~="mobile"] {
-			.cbx-card {
+			& .cbx-card {
 				&[m-mody~="c-app"] {
-					.card-description {
-						margin-bottom: viewport(xl, 20);
-						.cbx-text {
-							margin-bottom: viewport(xl, 10);
+					& .card-description {
+						@mixin viewport xl, margin-bottom, 20;
+						& .cbx-text {
+							@mixin viewport xl, margin-bottom, 10;
 						}
 					}
 				}
@@ -1457,131 +1448,131 @@ button.cbx-card {
 	}
 	button.cbx-card {
 		&:active {
-			@include box-shadow(xl, medium-out);
+			@mixin box-shadow xl, medium-out;
 		}
 	}
-	.cbx-card {
-		@include box-shadow(xl, medium-out);
-		border-radius: borderRadius(xl);
-		min-height: viewport(xl, 20);
-		padding: viewport(xl, 20);
-		width: viewport(xl, 535);
+	& .cbx-card {
+		@mixin box-shadow xl, medium-out;
+		@mixin border-radius xl;
+		@mixin viewport xl, min-height, 20;
+		@mixin viewport xl, padding, 20;
+		@mixin viewport xl, width, 535;
 		&:not([m-mody]),
 		&[m-mody~="c-icon"],
 		&[m-mody~="c-stamp"] {
 			&:hover {
-				@include box-shadow(xl, big-out);
+				@mixin box-shadow xl, big-out;
 			}
 		}
-		.card-content {
-			.cbx-icon {
-				margin-right: viewport(xl, 20);
+		& .card-content {
+			& .cbx-icon {
+				@mixin viewport xl, margin-right, 20;
 			}
 		}
-		.card-description {
-			.cbx-title,
-			.cbx-sub-category {
-				margin-bottom: viewport(xl, 10);
+		& .card-description {
+			& .cbx-title,
+			& .cbx-sub-category {
+				@mixin viewport xl, margin-bottom, 10;
 			}
-			.cbx-text {
-				margin-bottom: viewport(xl, 10);
+			& .cbx-text {
+				@mixin viewport xl, margin-bottom, 10;
 			}
-			.cbx-list {
-				.list-item {
-					margin-bottom: viewport(xl, 10);
+			& .cbx-list {
+				& .list-item {
+					@mixin viewport xl, margin-bottom, 10;
 				}
 			}
 		}
 		&[m-dmp] {
-			width: viewport(xl, 320);
+			@mixin viewport xl, width, 320;
 			&[m-open="true"] {
-				top: viewport(xl, 100);
-				right: viewport(xl, 20);
+				@mixin viewport xl, top, 100;
+				@mixin viewport xl, right, 20;
 			}
-			.card-description {
-				> .cbx-sub-category,
-				> .cbx-title {
-					margin-bottom: viewport(xl, 20);
+			& .card-description {
+				& > .cbx-sub-category,
+				& > .cbx-title {
+					@mixin viewport xl, margin-bottom, 20;
 				}
-				> .cbx-text {
-					min-height: viewport(xl, 65);
-					max-height: viewport(xl, 65);
+				& > .cbx-text {
+					@mixin viewport xl, min-height, 65;
+					@mixin viewport xl, max-height, 65;
 				}
 			}
-			.card-buttons {
-				margin-bottom: viewport(xl, 40);
-				.cbx-button {
-					margin-bottom: viewport(xl, 40);
+			& .card-buttons {
+				@mixin viewport xl, margin-bottom, 40;
+				& .cbx-button {
+					@mixin viewport xl, margin-bottom, 40;
 				}
 			}
 		}
 		&[m-mody~="c-icon-top"] {
-			.card-content {
-				> .cbx-icon {
-					margin-bottom: viewport(xl, 10);
+			& .card-content {
+				& > .cbx-icon {
+					@mixin viewport xl, margin-bottom, 10;
 				}
 			}
 		}
 		&[m-mody~="c-icon-spaces"] {
-			.card-content {
-				> .cbx-icon {
+			& .card-content {
+				& > .cbx-icon {
 					margin: {
-						top: viewport(xl, 20);
-						bottom: viewport(xl, 50);
+						@mixin viewport xl, top, 20;
+						@mixin viewport xl, bottom, 50;
 					}
 				}
 			}
-			.card-description {
-				.cbx-text {
-					margin-bottom: viewport(xl, 20);
+			& .card-description {
+				& .cbx-text {
+					@mixin viewport xl, margin-bottom, 20;
 				}
 			}
 		}
 		&[m-mody~="c-img"] {
-			padding-left: viewport(xl, 20);
-			.cbx-img {
-				width: viewport(xl, 120);
-				height: viewport(xl, 74);
-				border-radius: borderRadius(xl);
+			@mixin viewport xl, padding-left, 20;
+			& .cbx-img {
+				@mixin viewport xl, width, 120;
+				@mixin viewport xl, height, 74;
+				@mixin border-radius xl;
 			}
-			.card-content {
-				//@include box-shadow(xl, medium-out);
-				> .cbx-icon {
-					top: viewport(xl, 10);
-					right: viewport(xl, 20);
+			& .card-content {
+				@mixin box-shadow xl, medium-out;
+				& > .cbx-icon {
+					@mixin viewport xl, top, 10;
+					@mixin viewport xl, right, 20;
 				}
 			}
-			.card-description {
+			& .card-description {
 				padding: {
-					top: viewport(xl, 20);
-					right: viewport(xl, 20);
-					bottom: viewport(xl, 20);
-					left: viewport(xl, 120);
+					@mixin viewport xl, top, 20;
+					@mixin viewport xl, right, 20;
+					@mixin viewport xl, bottom, 20;
+					@mixin viewport xl, left, 120;
 				}
 			}
 		}
 		&[m-mody*="c-img-"] {
 			&:not([m-mody*="c-img-large"]) {
 				&:hover {
-					.card-content {
-						@include box-shadow(xl, big-out);
+					& .card-content {
+						@mixin box-shadow xl, big-out;
 					}
 				}
-				.card-content {
-					@include box-shadow(xl, medium-out);
+				& .card-content {
+					@mixin box-shadow xl, medium-out;
 				}
 			}
 		}
 		&[m-mody~="c-img-top"],
 		&[m-mody="c-img"] {
-			padding-top: viewport(xl, 20);
-			.cbx-img {
-				left: viewport(xl, 20);
+			@mixin viewport xl, padding-top, 20;
+			& .cbx-img {
+				@mixin viewport xl, left, 20;
 			}
-			.card-description {
+			& .card-description {
 				padding: {
-					top: viewport(xl, 74);
-					left: viewport(xl, 20);
+					@mixin viewport xl, top, 74;
+					@mixin viewport xl, left, 20;
 				}
 			}
 		}
@@ -1589,125 +1580,125 @@ button.cbx-card {
 			padding-left: 0;
 		}
 		&[m-mody~="c-img-icon"] {
-			.card-description {
-				padding-top: viewport(xl, 40);
+			& .card-description {
+				@mixin viewport xl, padding-top, 40;
 			}
 		}
 		&[m-mody*="c-img-square"] {
-			width: viewport(xl, 470);
-			.cbx-img {
-				height: viewport(xl, 120);
+			@mixin viewport xl, width, 470;
+			& .cbx-img {
+				@mixin viewport xl, height, 120;
 			}
 		}
 		&[m-mody~="c-img-square"],
 		&[m-mody~="c-img-square-v"] {
-			.card-description {
+			& .card-description {
 				padding: {
-					top: viewport(xl, 20);
-					left: viewport(xl, 90);
+					@mixin viewport xl, top, 20;
+					@mixin viewport xl, left, 90;
 				}
 			}
 		}
 		&[m-mody~="c-img-square"] {
-			min-height: viewport(xl, 120);
-			.cbx-img {
+			@mixin viewport xl, min-height, 120;
+			& .cbx-img {
 				transform: none;
-				height: viewport(xl, 120);
-				width: viewport(xl, 120);
+				@mixin viewport xl, height, 120;
+				@mixin viewport xl, width, 120;
 			}
-			.card-description {
+			& .card-description {
 				padding: {
-					left: viewport(xl, 160);
-					bottom: viewport(xl, 20);
+					@mixin viewport xl, left, 160;
+					@mixin viewport xl, bottom, 20;
 				}
 			}
 		}
 		&[m-mody~="c-img-square-v"] {
 			padding: {
 				top: 0;
-				left: viewport(xl, 20);
+				@mixin viewport xl, left, 20;
 			}
 			background-color: transparent;
-			.cbx-img {
+			& .cbx-img {
 				top: 50%;
 				left: 0;
 				transform: translateY(-50%);
 			}
-			.card-content {
-				@include box-shadow(xl, medium-out);
-				border-radius: borderRadius(xl);
+			& .card-content {
+				@mixin box-shadow xl, medium-out;
+				@mixin border-radius xl;
 			}
-			.card-description {
-				padding-left: viewport(xl, 120);
+			& .card-description {
+				@mixin viewport xl, padding-left, 120;
 			}
 		}
 		&[m-mody~="c-img-square-h"],
 		&[m-mody~="c-img-square-v"] {
-			padding-left: viewport(xl, 20);
-			.card-description {
+			@mixin viewport xl, padding-left, 20;
+			& .card-description {
 				padding: {
-					top: viewport(xl, 20);
-					bottom: viewport(xl, 20);
-					left: viewport(xl, 120);
+					@mixin viewport xl, top, 20;
+					@mixin viewport xl, bottom, 20;
+					@mixin viewport xl, left, 120;
 				}
-				min-height: viewport(xl, 190);
+				@mixin viewport xl, min-height, 190;
 			}
 		}
 		&[m-mody*="c-img-large"] {
-			@include box-shadow(xl, medium-out);
+			@mixin box-shadow xl, medium-out;
 			background-color: var(--white);
-			width: viewport(xl, 350);
+			@mixin viewport xl, width, 350;
 			padding: {
 				top: 0;
 				left: 0;
 			}
 			&:not([m-dmp]):hover {
-				@include box-shadow(xl, big-out);
+				@mixin box-shadow xl, big-out;
 			}
-			.cbx-img {
+			& .cbx-img {
 				position: relative;
 				top: 0;
 				left: auto;
 				transform: none;
 				width: 100%;
 				height: 100%;
-				min-height: viewport(xl, 150);
-				margin-bottom: viewport(xl, 40);
+				@mixin viewport xl, min-height, 150;
+				@mixin viewport xl, margin-bottom, 40;
 			}
-			.card-content {
+			& .card-content {
 				background-color: transparent;
 				box-shadow: none;
 			}
-			.card-description {
+			& .card-description {
 				padding: {
 					top: 0;
-					left: viewport(xl, 20);
+					@mixin viewport xl, left, 20;
 				}
 			}
 		}
 		&[m-mody*="c-img-double"] {
-			.card-images {
-				height: viewport(xl, 175);
-				.cbx-img {
+			& .card-images {
+				@mixin viewport xl, height, 175;
+				& .cbx-img {
 					&:last-child {
-						@include box-shadow(xl, medium-out);
-						bottom: viewport(xl, -40);
-						width: viewport(xl, 120);
-						height: viewport(xl, 75);
+						@mixin box-shadow xl, medium-out;
+						@mixin viewport xl, bottom, -40;
+						@mixin viewport xl, width, 120;
+						@mixin viewport xl, height, 75;
 					}
 				}
 			}
-			.card-description {
-				padding-top: viewport(xl, 67.5);
+			& .card-description {
+				@mixin viewport xl, padding-top, 67.5;
 			}
 		}
 		&[m-mody~="c-img-double-big"] {
-			.card-images {
-				.cbx-img {
+			& .card-images {
+				& .cbx-img {
 					&:last-child {
-						bottom: viewport(xl, -30);
-						width: viewport(xl, 228);
-						height: viewport(xl, 140);
+						@mixin viewport xl, bottom, -30;
+						@mixin viewport xl, width, 228;
+						@mixin viewport xl, height, 140;
 					}
 				}
 			}
@@ -1715,107 +1706,112 @@ button.cbx-card {
 		&[m-mody="c-img"] {
 			padding-left: 0;
 			&:hover {
-				.card-content {
-					@include box-shadow(xl, big-out);
+				& .card-content {
+					@mixin box-shadow xl, big-out;
 				}
 			}
-			.card-content {
-				@include box-shadow(xl, medium-out);
+			& .card-content {
+				@mixin box-shadow xl, medium-out;
 			}
 		}
 		&[m-mody~="c-img-background"] {
-			width: viewport(xl, 350);
-			height: viewport(xl, 180);
-			.cbx-img {
-				.card-description {
-					padding: viewport(xl, 30) viewport(xl, 20);
+			@mixin viewport xl, width, 350;
+			@mixin viewport xl, height, 180;
+			& .cbx-img {
+				& .card-description {
+					padding:{
+							@mixin viewport xl, top, 30; 
+							@mixin viewport xl, right, 20; 
+							@mixin viewport xl, bottom, 30; 
+							@mixin viewport xl, left, 20;  
+					}
 				}
 			}
 		}
 		&[m-mody~="c-stamp"] {
-			width: viewport(xl, 825);
-			.card-content {
-				padding-right: viewport(xl, 20);
+			@mixin viewport xl, width, 825;
+			& .card-content {
+				@mixin viewport xl, padding-right, 20;
 			}
-			.card-stamp {
-				border-radius: viewport(xl, 16);
-				width: viewport(xl, 80);
-				height: viewport(xl, 80);
-				margin-bottom: viewport(xl, 20);
+			& .card-stamp {
+				@mixin viewport xl, border-radius, 16;
+				@mixin viewport xl, width, 80;
+				@mixin viewport xl, height, 80;
+				@mixin viewport xl, margin-bottom, 20;
 			}
-			.card-description {
-				margin-bottom: viewport(xl, 20);
-				.cbx-text {
-					margin-bottom: viewport(xl, 20);
+			& .card-description {
+				@mixin viewport xl, margin-bottom, 20;
+				& .cbx-text {
+					@mixin viewport xl, margin-bottom, 20;
 				}
 			}
 		}
 		&[m-mody~="c-stamp-only"] {
-			width: viewport(xl, 470);
-			padding: viewport(xl, 40);
+			@mixin viewport xl, width, 470;
+			@mixin viewport xl, padding, 40;
 		}
 		&[m-mody~="c-button"] {
-			.card-buttons {
-				height: viewport(xl, 70);
+			& .card-buttons {
+				@mixin viewport xl, height, 70;
 				padding: {
-					right: viewport(xl, 20);
-					left: viewport(xl, 20);
+					@mixin viewport xl, right, 20;
+					@mixin viewport xl, left, 20;
 				}
-				> * {
+				& > * {
 					min-width: calc(100% / 2);
 				}
 			}
 		}
 		&[m-mody~="c-button-full"] {
-			.card-buttons {
+			& .card-buttons {
 				padding: {
-					right: viewport(xl, 20);
-					left: viewport(xl, 20);
+					@mixin viewport xl, right, 20;
+					@mixin viewport xl, left, 20;
 				}
 			}
 		}
 		&[m-mody~="c-request"] {
 			padding-left: 0;
-			.cbx-img {
+			& .cbx-img {
 				left: 50%;
-				width: viewport(xl, 184);
-				height: viewport(xl, 58);
+				@mixin viewport xl, width, 184;
+				@mixin viewport xl, height, 58;
 			}
-			.card-description {
-				padding-top: viewport(xl, 58);
+			& .card-description {
+				@mixin viewport xl, padding-top, 58;
 			}
 		}
 		&[m-mody~="c-phone"] {
-			min-height: viewport(xl, 310);
-			.card-content {
-				.card-head {
-					height: viewport(xl, 80);
-					margin-bottom: viewport(xl, 20);
+			@mixin viewport xl, min-height, 310;
+			& .card-content {
+				& .card-head {
+					@mixin viewport xl, height, 80;
+					@mixin viewport xl, margin-bottom, 20;
 				}
-				.card-body {
-					.item {
+				& .card-body {
+					& .item {
 						&:not(:last-child) {
-							margin-right: viewport(xl, 10);
+							@mixin viewport xl, margin-right, 10;
 						}
 					}
 				}
-				.card-footer {
-					height: viewport(xl, 20);
+				& .card-footer {
+					@mixin viewport xl, height, 20;
 				}
 			}
 		}
 		&[m-mody~="c-phone-full"] {
-			min-height: viewport(xl, 260);
+			@mixin viewport xl, min-height, 260;
 		}
 
 		&[m-size="c-4"] {
-			width: viewport(xl, 255);
+			@mixin viewport xl, width, 255;
 		}
 		&[m-size="c-3"] {
-			width: viewport(xl, 350);
+			@mixin viewport xl, width, 350;
 		}
 		&[m-size="c-2"] {
-			width: viewport(xl, 535);
+			@mixin viewport xl, width, 535;
 		}
 
 		&[m-mody~="c-icon"],
@@ -1823,27 +1819,27 @@ button.cbx-card {
 		&[m-mody~="c-button"],
 		&[m-mody~="c-stamp"] {
 			&[m-size="c-4"] {
-				width: viewport(xl, 255);
+				@mixin viewport xl, width, 255;
 			}
 			&[m-size="c-3"] {
-				width: viewport(xl, 350);
+				@mixin viewport xl, width, 350;
 			}
 			&[m-size="c-2"] {
-				width: viewport(xl, 535);
+				@mixin viewport xl, width, 535;
 			}
 		}
 	}
 }
 
-@media width >= 1440px {
+@media (width >= 1440px) {
 	html {
 		&[m-browser~="mobile"] {
-			.cbx-card {
+			& .cbx-card {
 				&[m-mody~="c-app"] {
-					.card-description {
-						margin-bottom: viewport(xxl, 20);
-						.cbx-text {
-							margin-bottom: viewport(xxl, 10);
+					& .card-description {
+						@mixin viewport xxl, margin-bottom, 20;
+						& .cbx-text {
+							@mixin viewport xxl, margin-bottom, 10;
 						}
 					}
 				}
@@ -1852,131 +1848,131 @@ button.cbx-card {
 	}
 	button.cbx-card {
 		&:active {
-			@include box-shadow(xxl, medium-out);
+			@mixin box-shadow xxl, medium-out;
 		}
 	}
-	.cbx-card {
-		@include box-shadow(xxl, medium-out);
-		border-radius: borderRadius(xxl);
-		min-height: viewport(xxl, 20);
-		padding: viewport(xxl, 20);
-		width: viewport(xxl, 535);
+	& .cbx-card {
+		@mixin box-shadow xxl, medium-out;
+		@mixin border-radius xxl;
+		@mixin viewport xxl, min-height, 20;
+		@mixin viewport xxl, padding, 20;
+		@mixin viewport xxl, width, 535;
 		&:not([m-mody]),
 		&[m-mody~="c-icon"],
 		&[m-mody~="c-stamp"] {
 			&:hover {
-				@include box-shadow(xxl, big-out);
+				@mixin box-shadow xxl, big-out;
 			}
 		}
-		.card-content {
-			.cbx-icon {
-				margin-right: viewport(xxl, 20);
+		& .card-content {
+			& .cbx-icon {
+				@mixin viewport xxl, margin-right, 20;
 			}
 		}
-		.card-description {
-			.cbx-title,
-			.cbx-sub-category {
-				margin-bottom: viewport(xxl, 10);
+		& .card-description {
+			& .cbx-title,
+			& .cbx-sub-category {
+				@mixin viewport xxl, margin-bottom, 10;
 			}
-			.cbx-text {
-				margin-bottom: viewport(xxl, 10);
+			& .cbx-text {
+				@mixin viewport xxl, margin-bottom, 10;
 			}
-			.cbx-list {
-				.list-item {
-					margin-bottom: viewport(xxl, 10);
+			& .cbx-list {
+				& .list-item {
+					@mixin viewport xxl, margin-bottom, 10;
 				}
 			}
 		}
 		&[m-dmp] {
-			width: viewport(xxl, 320);
+			@mixin viewport xxl, width, 320;
 			&[m-open="true"] {
-				top: viewport(xxl, 100);
-				right: viewport(xxl, 20);
+				@mixin viewport xxl, top, 100;
+				@mixin viewport xxl, right, 20;
 			}
-			.card-description {
-				> .cbx-sub-category,
-				> .cbx-title {
-					margin-bottom: viewport(xxl, 20);
+			& .card-description {
+				& > .cbx-sub-category,
+				& > .cbx-title {
+					@mixin viewport xxl, margin-bottom, 20;
 				}
-				> .cbx-text {
-					min-height: viewport(xxl, 65);
-					max-height: viewport(xxl, 65);
+				& > .cbx-text {
+					@mixin viewport xxl, min-height, 65;
+					@mixin viewport xxl, max-height, 65;
 				}
 			}
-			.card-buttons {
-				margin-bottom: viewport(xxl, 40);
-				.cbx-button {
-					margin-bottom: viewport(xxl, 40);
+			& .card-buttons {
+				@mixin viewport xxl, margin-bottom, 40;
+				& .cbx-button {
+					@mixin viewport xxl, margin-bottom, 40;
 				}
 			}
 		}
 		&[m-mody~="c-icon-top"] {
-			.card-content {
-				> .cbx-icon {
-					margin-bottom: viewport(xxl, 10);
+			& .card-content {
+				& > .cbx-icon {
+					@mixin viewport xxl, margin-bottom, 10;
 				}
 			}
 		}
 		&[m-mody~="c-icon-spaces"] {
-			.card-content {
-				> .cbx-icon {
+			& .card-content {
+				& > .cbx-icon {
 					margin: {
-						top: viewport(xxl, 20);
-						bottom: viewport(xxl, 50);
+						@mixin viewport xxl, top, 20;
+						@mixin viewport xxl, bottom, 50;
 					}
 				}
 			}
-			.card-description {
-				.cbx-text {
-					margin-bottom: viewport(xxl, 20);
+			& .card-description {
+				& .cbx-text {
+					@mixin viewport xxl, margin-bottom, 20;
 				}
 			}
 		}
 		&[m-mody~="c-img"] {
-			padding-left: viewport(xxl, 20);
-			.cbx-img {
-				width: viewport(xxl, 120);
-				height: viewport(xxl, 74);
-				border-radius: borderRadius(xxl);
+			@mixin viewport xxl, padding-left, 20;
+			& .cbx-img {
+				@mixin viewport xxl, width, 120;
+				@mixin viewport xxl, height, 74;
+				@mixin border-radius xxl;
 			}
-			.card-content {
-				//@include box-shadow(xxl, medium-out);
-				> .cbx-icon {
-					top: viewport(xxl, 10);
-					right: viewport(xxl, 20);
+			& .card-content {
+				@mixin box-shadow xxl, medium-out;
+				& > .cbx-icon {
+					@mixin viewport xxl, top, 10;
+					@mixin viewport xxl, right, 20;
 				}
 			}
-			.card-description {
+			& .card-description {
 				padding: {
-					top: viewport(xxl, 20);
-					right: viewport(xxl, 20);
-					bottom: viewport(xxl, 20);
-					left: viewport(xxl, 120);
+					@mixin viewport xxl, top, 20;
+					@mixin viewport xxl, right, 20;
+					@mixin viewport xxl, bottom, 20;
+					@mixin viewport xxl, left, 120;
 				}
 			}
 		}
 		&[m-mody*="c-img-"] {
 			&:not([m-mody*="c-img-large"]) {
 				&:hover {
-					.card-content {
-						@include box-shadow(xxl, big-out);
+					& .card-content {
+						@mixin box-shadow xxl, big-out;
 					}
 				}
-				.card-content {
-					@include box-shadow(xxl, medium-out);
+				& .card-content {
+					@mixin box-shadow xxl, medium-out;
 				}
 			}
 		}
 		&[m-mody~="c-img-top"],
 		&[m-mody="c-img"] {
-			padding-top: viewport(xxl, 20);
-			.cbx-img {
-				left: viewport(xxl, 20);
+			@mixin viewport xxl, padding-top, 20;
+			& .cbx-img {
+				@mixin viewport xxl, left, 20;
 			}
-			.card-description {
+			& .card-description {
 				padding: {
-					top: viewport(xxl, 74);
-					left: viewport(xxl, 20);
+					@mixin viewport xxl, top, 74;
+					@mixin viewport xxl, left, 20;
 				}
 			}
 		}
@@ -1984,125 +1980,125 @@ button.cbx-card {
 			padding-left: 0;
 		}
 		&[m-mody~="c-img-icon"] {
-			.card-description {
-				padding-top: viewport(xxl, 40);
+			& .card-description {
+				@mixin viewport xxl, padding-top, 40;
 			}
 		}
 		&[m-mody*="c-img-square"] {
-			width: viewport(xxl, 470);
-			.cbx-img {
-				height: viewport(xxl, 120);
+			@mixin viewport xxl, width, 470;
+			& .cbx-img {
+				@mixin viewport xxl, height, 120;
 			}
 		}
 		&[m-mody~="c-img-square"],
 		&[m-mody~="c-img-square-v"] {
-			.card-description {
+			& .card-description {
 				padding: {
-					top: viewport(xxl, 20);
-					left: viewport(xxl, 90);
+					@mixin viewport xxl, top, 20;
+					@mixin viewport xxl, left, 90;
 				}
 			}
 		}
 		&[m-mody~="c-img-square"] {
-			min-height: viewport(xxl, 120);
-			.cbx-img {
+			@mixin viewport xxl, min-height, 120;
+			& .cbx-img {
 				transform: none;
-				height: viewport(xxl, 120);
-				width: viewport(xxl, 120);
+				@mixin viewport xxl, height, 120;
+				@mixin viewport xxl, width, 120;
 			}
-			.card-description {
+			& .card-description {
 				padding: {
-					left: viewport(xxl, 160);
-					bottom: viewport(xxl, 20);
+					@mixin viewport xxl, left, 160;
+					@mixin viewport xxl, bottom, 20;
 				}
 			}
 		}
 		&[m-mody~="c-img-square-v"] {
 			padding: {
 				top: 0;
-				left: viewport(xxl, 20);
+				@mixin viewport xxl, left, 20;
 			}
 			background-color: transparent;
-			.cbx-img {
+			& .cbx-img {
 				top: 50%;
 				left: 0;
 				transform: translateY(-50%);
 			}
-			.card-content {
-				@include box-shadow(xxl, medium-out);
-				border-radius: borderRadius(xxl);
+			& .card-content {
+				@mixin box-shadow xxl, medium-out;
+				@mixin border-radius xxl;
 			}
-			.card-description {
-				padding-left: viewport(xxl, 120);
+			& .card-description {
+				@mixin viewport xxl, padding-left, 120;
 			}
 		}
 		&[m-mody~="c-img-square-h"],
 		&[m-mody~="c-img-square-v"] {
-			padding-left: viewport(xxl, 20);
-			.card-description {
+			@mixin viewport xxl, padding-left, 20;
+			& .card-description {
 				padding: {
-					top: viewport(xxl, 20);
-					bottom: viewport(xxl, 20);
-					left: viewport(xxl, 120);
+					@mixin viewport xxl, top, 20;
+					@mixin viewport xxl, bottom, 20;
+					@mixin viewport xxl, left, 120;
 				}
-				min-height: viewport(xxl, 160);
+				@mixin viewport xxl, min-height, 160;
 			}
 		}
 		&[m-mody*="c-img-large"] {
-			@include box-shadow(xxl, medium-out);
+			@mixin box-shadow xxl, medium-out;
 			background-color: var(--white);
-			width: viewport(xxl, 350);
+			@mixin viewport xxl, width, 350;
 			padding: {
 				top: 0;
 				left: 0;
 			}
 			&:not([m-dmp]):hover {
-				@include box-shadow(xxl, big-out);
+				@mixin box-shadow xxl, big-out;
 			}
-			.cbx-img {
+			& .cbx-img {
 				position: relative;
 				top: 0;
 				left: auto;
 				transform: none;
 				width: 100%;
 				height: 100%;
-				min-height: viewport(xxl, 150);
-				margin-bottom: viewport(xxl, 40);
+				@mixin viewport xxl, min-height, 150;
+				@mixin viewport xxl, margin-bottom, 40;
 			}
-			.card-content {
+			& .card-content {
 				background-color: transparent;
 				box-shadow: none;
 			}
-			.card-description {
+			& .card-description {
 				padding: {
 					top: 0;
-					left: viewport(xxl, 20);
+					@mixin viewport xxl, left, 20;
 				}
 			}
 		}
 		&[m-mody*="c-img-double"] {
-			.card-images {
-				height: viewport(xxl, 140);
-				.cbx-img {
+			& .card-images {
+				@mixin viewport xxl, height, 140;
+				& .cbx-img {
 					&:last-child {
-						@include box-shadow(xxl, medium-out);
-						bottom: viewport(xxl, -40);
-						width: viewport(xxl, 120);
-						height: viewport(xxl, 75);
+						@mixin box-shadow xxl, medium-out;
+						@mixin viewport xxl, bottom, -40;
+						@mixin viewport xxl, width, 120;
+						@mixin viewport xxl, height, 75;
 					}
 				}
 			}
-			.card-description {
-				padding-top: viewport(xxl, 67.5);
+			& .card-description {
+				@mixin viewport xxl, padding-top, 67.5;
 			}
 		}
 		&[m-mody~="c-img-double-big"] {
-			.card-images {
-				.cbx-img {
+			& .card-images {
+				& .cbx-img {
 					&:last-child {
-						bottom: viewport(xxl, -30);
-						width: viewport(xxl, 228);
-						height: viewport(xxl, 140);
+						@mixin viewport xxl, bottom, -30;
+						@mixin viewport xxl, width, 228;
+						@mixin viewport xxl, height, 140;
 					}
 				}
 			}
@@ -2110,84 +2106,89 @@ button.cbx-card {
 		&[m-mody="c-img"] {
 			padding-left: 0;
 			&:hover {
-				.card-content {
-					@include box-shadow(xxl, big-out);
+				& .card-content {
+					@mixin box-shadow xxl, big-out;
 				}
 			}
-			.card-content {
-				@include box-shadow(xxl, medium-out);
+			& .card-content {
+				@mixin box-shadow xxl, medium-out;
 			}
 		}
 		&[m-mody~="c-img-background"] {
-			width: viewport(xxl, 350);
-			height: viewport(xxl, 180);
-			.cbx-img {
-				.card-description {
-					padding: viewport(xxl, 30) viewport(xxl, 20);
+			@mixin viewport xxl, width, 350;
+			@mixin viewport xxl, height, 180;
+			& .cbx-img {
+				& .card-description {
+					padding:{
+							@mixin viewport xxl, top, 30; 
+							@mixin viewport xxl, right, 20; 
+							@mixin viewport xxl, bottom, 30; 
+							@mixin viewport xxl, left, 20;  
+					}
 				}
 			}
 		}
 		&[m-mody~="c-stamp"] {
-			width: viewport(xxl, 825);
-			.card-content {
-				padding-right: viewport(xxl, 20);
+			@mixin viewport xxl, width, 825;
+			& .card-content {
+				@mixin viewport xxl, padding-right, 20;
 			}
-			.card-stamp {
-				border-radius: viewport(xxl, 16);
-				width: viewport(xxl, 80);
-				height: viewport(xxl, 80);
-				margin-bottom: viewport(xxl, 20);
+			& .card-stamp {
+				@mixin viewport xxl, border-radius, 16;
+				@mixin viewport xxl, width, 80;
+				@mixin viewport xxl, height, 80;
+				@mixin viewport xxl, margin-bottom, 20;
 			}
-			.card-description {
-				margin-bottom: viewport(xxl, 20);
-				.cbx-text {
-					margin-bottom: viewport(xxl, 20);
+			& .card-description {
+				@mixin viewport xxl, margin-bottom, 20;
+				& .cbx-text {
+					@mixin viewport xxl, margin-bottom, 20;
 				}
 			}
 		}
 		&[m-mody~="c-stamp-only"] {
-			width: viewport(xxl, 470);
-			padding: viewport(xxl, 40);
+			@mixin viewport xxl, width, 470;
+			@mixin viewport xxl, padding, 40;
 		}
 		&[m-mody~="c-request"] {
-			.cbx-img {
+			& .cbx-img {
 				left: 50%;
-				width: viewport(xxl, 184);
-				height: viewport(xxl, 58);
+				@mixin viewport xxl, width, 184;
+				@mixin viewport xxl, height, 58;
 			}
-			.card-description {
-				padding-top: viewport(xxl, 58);
+			& .card-description {
+				@mixin viewport xxl, padding-top, 58;
 			}
 		}
 		&[m-mody~="c-button"] {
-			.card-buttons {
-				height: viewport(xxl, 70);
+			& .card-buttons {
+				@mixin viewport xxl, height, 70;
 				padding: {
-					right: viewport(xxl, 20);
-					left: viewport(xxl, 20);
+					@mixin viewport xxl, right, 20;
+					@mixin viewport xxl, left, 20;
 				}
-				> * {
+				& > * {
 					min-width: calc(100% / 2);
 				}
 			}
 		}
 		&[m-mody~="c-button-full"] {
-			.card-buttons {
+			& .card-buttons {
 				padding: {
-					right: viewport(xxl, 20);
-					left: viewport(xxl, 20);
+					@mixin viewport xxl, right, 20;
+					@mixin viewport xxl, left, 20;
 				}
 			}
 		}
 
 		&[m-size="c-4"] {
-			width: viewport(xxl, 255);
+			@mixin viewport xxl, width, 255;
 		}
 		&[m-size="c-3"] {
-			width: viewport(xxl, 350);
+			@mixin viewport xxl, width, 350;
 		}
 		&[m-size="c-2"] {
-			width: viewport(xxl, 535);
+			@mixin viewport xxl, width, 535;
 		}
 
 		&[m-mody~="c-icon"],
@@ -2195,35 +2196,35 @@ button.cbx-card {
 		&[m-mody~="c-button"],
 		&[m-mody~="c-stamp"] {
 			&[m-size="c-4"] {
-				width: viewport(xxl, 255);
+				@mixin viewport xxl, width, 255;
 			}
 			&[m-size="c-3"] {
-				width: viewport(xxl, 350);
+				@mixin viewport xxl, width, 350;
 			}
 			&[m-size="c-2"] {
-				width: viewport(xxl, 535);
+				@mixin viewport xxl, width, 535;
 			}
 		}
 		&[m-mody~="c-phone"] {
-			min-height: viewport(xxl, 310);
-			.card-content {
-				.card-head {
-					height: viewport(xxl, 80);
-					margin-bottom: viewport(xxl, 20);
+			@mixin viewport xxl, min-height, 310;
+			& .card-content {
+				& .card-head {
+					@mixin viewport xxl, height, 80;
+					@mixin viewport xxl, margin-bottom, 20;
 				}
-				.card-body {
-					.item {
+				& .card-body {
+					& .item {
 						&:not(:last-child) {
-							margin-right: viewport(xxl, 10);
+							@mixin viewport xxl, margin-right, 10;
 						}
 					}
 				}
-				.card-footer {
-					height: viewport(xl, 20);
+				& .card-footer {
+					@mixin viewport xl, height, 20;
 				}
 			}
 			&[m-mody~="c-phone-full"] {
-				min-height: viewport(xxl, 260);
+				@mixin viewport xxl, min-height, 260;
 			}
 		}
 	}

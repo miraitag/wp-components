@@ -1,0 +1,67 @@
+@import '../../mixins.pcss';
+
+[m-container="promociones"] {
+	overflow: hidden;
+	& .cbx-wrapper {
+		padding-right: 0;
+		padding-left: 0;
+	}
+	& .content-promociones {
+		width: 100%;
+	}
+	& .menu-promociones {
+		@mixin viewport xs, padding-left, 20;
+		@mixin viewport xs, padding-right, 20;
+	}
+	& .cards-promociones {
+		&.slick-slider {
+			& .cbx-card {
+				@mixin viewport xs, width, 255;
+				@mixin viewport xs, margin-right, 20;
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+		& .slick-list {
+			overflow: visible;
+		}
+	}
+}
+
+@media (width >= 768px) {
+	[m-container="promociones"] {
+		& .menu-promociones {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+		& .cards-promociones {
+			&.slick-slider {
+				&[m-open="true"] {
+					display: block;
+				}
+				& .cbx-card {
+					width: 350px;
+					margin-right: 20px;
+				}
+			}
+			& .card-description {
+				min-height: 320px;
+			}
+		}
+	}
+}
+
+@media (width >= 1024px) {
+	[m-container="promociones"] {
+		& .menu-promociones {
+			padding-right: 0;
+			padding-left: 0;
+		}
+		& .cards-promociones {
+			& .card-description {
+				min-height: auto;
+			}
+		}
+	}
+}

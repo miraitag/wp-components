@@ -1,19 +1,15 @@
+@import '../../mixins.pcss';
+
 .cbx-button {
 	@mixin border-radius xs;
-	@mixin transition (
-		max-width,
-		border-radius,
-		color,
-		background-color,
-		min-height,
-		box-shadow
-	);
 	@mixin viewport xs, letter-spacing, 1;
 	@mixin viewport xs, font-size, 14;
 	@mixin viewport xs, height, 40;
 	@mixin viewport xs, min-width, 220;
 	@mixin viewport xs, padding-right, 15;
 	@mixin viewport xs, padding-left, 15;
+	@mixin transition-duration;
+	transition-property: max-width, border-radius, color, background-color, min-height, box-shadow;
 	font-family: var(--font-r);
 	display: inline-flex;
 	justify-content: center;
@@ -21,9 +17,6 @@
 	text-align: center;
 	line-height: 1.5;
 	overflow: hidden;
-	/* transition: max-width 350ms ease-in-out, border-radius 350ms ease-in-out,
-		color 350ms ease-in-out, background-color 350ms ease-in-out,
-		min-height 350ms ease-in-out, box-shadow 350ms ease-in-out; */
 	color: var(--white);
 	background-color: var(--soft-blue);
 	&:active {
@@ -36,67 +29,21 @@
 		min-width: 100%;
 	}
 	&[m-mody~="raised"] {
-		@include box-shadow(xs, small-out);
+		@mixin box-shadow xs, small-out;
 	}
 	&[m-mody~="rounded"] {
 		@mixin viewport xs, border-radius, 50;
 		& i {
 			color: var(--background-gray);
-			&:after {
+			&::after {
+				@mixin transition background-color;
 				background-color: var(--soft-blue);
-				transition: background-color 350ms ease-in-out;
 			}
-		}
-	}
-	&[m-mody~="profile"] {
-		@mixin viewport xs, font-size, 14;
-		@mixin viewport xs, min-height, 44;
-		@mixin viewport xs, min-width, 220;
-		@mixin viewport xs, padding-top, 15;
-		@mixin viewport xs, padding-bottom, 15;
-		width: 100%;
-		font-family: var(--font-b);
-		background-color: var(--white);
-		color: var(--light-gray);
-		border-radius: 0;
-		box-shadow: none;
-		&[m-active="true"] {
-			@mixin rgba background-color, var(--soft-blue), 0.8;
-			color: var(--white);
-		}
-	}
-	&[m-mody~="more"] {
-		background-color: var(--background-gray);
-		color: var(--darkest-gray);
-		& i {
-			@mixin viewport xs, font-size, 15;
-			@mixin viewport xs, margin-right, 20;
-			&::before {
-				@mixin transition (background-color, color);
-				@mixin viewport xs, height, 30;
-				@mixin viewport xs, width, 30;
-				background-color: var(--soft-blue);
-				color: var(--white);
-				border-radius: 50%;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
-		}
-		& span {
-			&::before {
-				@mixin viewport xs, font-size, 14;
-				font-family: var(--font-r);
-				content: attr(m-text-close);
-			}
-		}
-		&:active {
-			background-color: var(--background-gray);
 		}
 	}
 }
 
-@media width >= 768px {
+@media (width >= 768px) {
 	.cbx-button {
 		@mixin border-radius sm;
 		font-size: 14px;
@@ -111,32 +58,9 @@
 		&[m-mody~="rounded"] {
 			border-radius: 50px;
 		}
-		&[m-mody~="profile"] {
-			font-size: 14px;
-			min-height: 44px;
-			padding: {
-				top: 15px;
-				bottom: 15px;
-			}
-		}
-		&[m-mody~="more"] {
-			& i {
-				font-size: 15px;
-				margin-right: 20px;
-				&::before {
-					height: 30px;
-					width: 30px;
-				}
-			}
-			& span {
-				&::before {
-					font-size: 14px;
-				}
-			}
-		}
 	}
 }
-@media width >= 1024px {
+@media (width >= 1024px) {
 	.cbx-button {
 		@mixin border-radius lg;
 		@mixin viewport lg, letter-spacing, 1;
@@ -145,71 +69,22 @@
 		@mixin viewport lg, min-width, 220;
 		@mixin viewport lg, padding-right, 15;
 		@mixin viewport lg, padding-left, 15;
-		&:hover:not([disabled]):not([m-active="true"]):not([m-mody~="more"]) {
+		&:hover:not([disabled], [m-active="true"], [m-mody~="more"]) {
 			color: var(--white);
 			background-color: var(--cyan);
 		}
-		&[m-mody~="raised"]:not([disabled]):not([m-mody~="profile"]):not([m-active="true"]) {
+		&[m-mody~="raised"]:not([disabled], [m-mody~="profile"], [m-active="true"]) {
 			@mixin box-shadow lg, small-out;
 			&:hover {
 				@mixin box-shadow lg, big-out;
 			}
 		}
 		&[m-mody~="rounded"] {
-			@mixin viewport lg, padding-left, 50;
-		}
-		&[m-mody~="profile"] {
-			@mixin viewport lg, font-size, 14;
-			@mixin viewport lg, min-height, 44;
-			@mixin viewport lg, padding-top, 15;
-			@mixin viewport lg, padding-bottom, 15;
-			&:hover:not([disabled], [m-active="true"]) {
-				@mixin rgba background-color, var(--cyan), 0.8;
-				color: var(--white);
-			}
-		}
-		&[m-mody~="more"] {
-			& i {
-				@mixin viewport lg, font-size, 15;
-				@mixin viewport lg, margin-right, 20;
-				&::before {
-					@mixin viewport lg, height, 30;
-					@mixin viewport lg, width, 30;
-				}
-			}
-			& span {
-				position: relative;
-				&::before {
-					@mixin viewport lg, font-size, 14;
-				}
-				&::after {
-					@mixin absolute center-horizontal;
-					@mixin transition width;
-					@mixin viewport lg, height, 2;
-					content: "";
-					bottom: 0;
-					width: 0;
-					background-color: var(--darkest-gray);
-				}
-			}
-			&:hover {
-				& i {
-					color: var(--soft-blue);
-					&::before {
-						background-color: var(--cyan);
-						color: var(--white);
-					}
-				}
-				& span {
-					&::after {
-						width: 100%;
-					}
-				}
-			}
+			@mixin viewport lg, border-radius, 50;
 		}
 	}
 }
-@media width >= 1280px {
+@media (width >= 1280px) {
 	.cbx-button {
 		@mixin border-radius xl;
 		@mixin viewport xl, letter-spacing, 1;
@@ -218,7 +93,7 @@
 		@mixin viewport xl, min-width, 220;
 		@mixin viewport xl, padding-right, 15;
 		@mixin viewport xl, padding-left, 15;
-		&[m-mody~="raised"]:not([disabled]):not([m-mody~="profile"]):not([m-active="true"]) {
+		&[m-mody~="raised"]:not([disabled], [m-mody~="profile"], [m-active="true"]) {
 			@mixin box-shadow xl, small-out;
 			&:hover {
 				@mixin box-shadow xl, big-out;
@@ -227,33 +102,9 @@
 		&[m-mody~="rounded"] {
 			@mixin viewport xl, border-radius, 50;
 		}
-		&[m-mody~="profile"] {
-			@mixin viewport xl, font-size, 14;
-			@mixin viewport xl, min-height, 44;
-			@mixin viewport xl, padding-top, 15;
-			@mixin viewport xl, padding-bottom, 15;
-		}
-		&[m-mody~="more"] {
-			& i {
-				@mixin viewport xl, font-size, 15;
-				@mixin viewport xl, margin-right, 20;
-				&::before {
-					@mixin viewport xl, height, 30;
-					@mixin viewport xl, width, 30;
-				}
-			}
-			& span {
-				&::before {
-					@mixin viewport xl, font-size, 14;
-				}
-				&::after {
-					@mixin viewport xl, height, 2;
-				}
-			}
-		}
 	}
 }
-@media width >= 1440px {
+@media (width >= 1440px) {
 	.cbx-button {
 		@mixin border-radius xxl;
 		@mixin viewport xxl, letter-spacing, 1;
@@ -262,7 +113,7 @@
 		@mixin viewport xxl, min-width, 220;
 		@mixin viewport xxl, padding-right, 15;
 		@mixin viewport xxl, padding-left, 15;
-		&[m-mody~="raised"]:not([disabled]):not([m-mody~="profile"]):not([m-active="true"]) {
+		&[m-mody~="raised"]:not([disabled],[m-mody~="profile"], [m-active="true"]) {
 			@mixin box-shadow full, small-out;
 			&:hover {
 				@mixin box-shadow full, big-out;
@@ -270,30 +121,6 @@
 		}
 		&[m-mody~="rounded"] {
 			@mixin viewport xxl, border-radius, 50;
-		}
-		&[m-mody~="profile"] {
-			@mixin viewport xxl, font-size, 14;
-			@mixin viewport xxl, min-height, 44;
-			@mixin viewport xxl, padding-top, 15;
-			@mixin viewport xxl, padding-bottom, 15;
-		}
-		&[m-mody~="more"] {
-			& i {
-				@mixin viewport xxl, font-size, 15;
-				@mixin viewport xxl, margin-right, 20;
-				&::before {
-					@mixin viewport xxl, height, 30;
-					@mixin viewport xxl, width, 30;
-				}
-			}
-			& span {
-				&::before {
-					@mixin viewport xxl, font-size, 14;
-				}
-				&::after {
-					@mixin viewport xxl, height, 2;
-				}
-			}
 		}
 	}
 }

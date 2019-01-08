@@ -1,31 +1,31 @@
+@import '../../mixins.pcss';
+
 .cbx-compare-modal {
 	@mixin rgba background-color, var(--black), 0.8;
-	bottom: viewport(xs, -74);
+	@mixin viewport xs, bottom, -74;
 	position: fixed;
 	z-index: 1;
 	width: 100%;
-	height: viewport(xs, 100);
+	@mixin viewport xs, height, 100;
 	transition: bottom 350ms ease-in-out;
 	display: flex;
 	align-items: center;
 
-	.close-down {
-		position: absolute;
+	& .close-down {
+		@mixin absolute center-horizontal;
 		top: 0;
-		left: 50%;
-		transform: translateX(-50%);
-		height: viewport(xs, 30);
+		@mixin viewport xs, height, 30;
 		width: 100%;
 		pointer-events: auto;
 	}
-	.cbx-wrapper {
+	& .cbx-wrapper {
 		padding: 0;
 	}
 
 	&[m-open="true"] {
 		bottom: 0;
-		.close-down {
-			.icon-angle-down-o {
+		& .close-down {
+			& .icon-angle-down-o {
 				&:before {
 					content: "\65";
 				}
@@ -34,8 +34,8 @@
 	}
 
 	&[m-open="false"] {
-		.close-down {
-			.icon-angle-down-o {
+		& .close-down {
+			& .icon-angle-down-o {
 				&:before {
 					content: "\6b";
 				}
@@ -43,55 +43,55 @@
 		}
 	}
 
-	.content-cards {
+	& .content-cards {
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
 		flex-wrap: wrap;
-		.cbx-button {
+		& .cbx-button {
 			min-width: auto;
-			width: viewport(xs, 80);
-			height: viewport(xs, 45);
-			margin: viewport(xs, 10);
+			@mixin viewport xs, width, 80;
+			@mixin viewport xs, height, 45;
+			@mixin viewport xs, margin, 10;
 		}
 	}
-	.cbx-credit-card {
-		.cbx-img {
-			width: viewport(xs, 80);
-			height: viewport(xs, 45);
+	& .cbx-credit-card {
+		& .cbx-img {
+			@mixin viewport xs, width, 80;
+			@mixin viewport xs, height, 45;
 		}
 		&:nth-child(3) {
 			display: none;
 		}
-		.cbx-img {
+		& .cbx-img {
 			background: none;
-			img {
+			& img {
 				background: none;
 			}
 		}
 		&[m-active="false"] {
 			pointer-events: none;
-			.credit-button {
+			& .credit-button {
 				display: none;
 			}
 		}
 	}
 }
 
-@media width >= 768px {
+@media (width >= 768px) {
 	.cbx-compare-modal {
 		height: 100px;
 		bottom: -74px;
-		.close-down {
+		& .close-down {
 			height: 30px;
 		}
-		.cbx-credit-card {
+		& .cbx-credit-card {
 			&:nth-child(3) {
 				display: block;
 			}
 		}
-		.content-cards {
-			.cbx-button {
+		& .content-cards {
+			& .cbx-button {
 				margin: 0;
 				width: 220px;
 				height: 40px;
@@ -99,48 +99,48 @@
 		}
 	}
 }
-@media width >= 1024px {
+@media (width >= 1024px) {
 	.cbx-compare-modal {
-		height: viewport(lg, 180);
-		bottom: viewport(lg, -130);
-		.close-down {
-			height: viewport(lg, 50);
+		@mixin viewport lg, height, 180;
+		@mixin viewport lg, bottom, -130;
+		& .close-down {
+			@mixin viewport lg, height, 50;
 		}
-		.content-cards {
-			.cbx-button {
-				width: viewport(lg, 220);
-				height: viewport(lg, 45);
+		& .content-cards {
+			& .cbx-button {
+				@mixin viewport lg, width, 220;
+				@mixin viewport lg, height, 45;
 			}
 		}
 	}
 }
 
-@media width >= 1280px {
+@media (width >= 1280px) {
 	.cbx-compare-modal {
-		height: viewport(xl, 180);
-		bottom: viewport(xl, -145);
-		.close-down {
-			height: viewport(xl, 50);
+		@mixin viewport xl, height, 180;
+		@mixin viewport xl, bottom, -145;
+		& .close-down {
+			@mixin viewport xl, height, 50;
 		}
-		.content-cards {
-			.cbx-button {
-				width: viewport(xl, 220);
-				height: viewport(xl, 45);
+		& .content-cards {
+			& .cbx-button {
+				@mixin viewport xl, width, 220;
+				@mixin viewport xl, height, 45;
 			}
 		}
 	}
 }
-@media width >= 1440px {
+@media (width >= 1440px) {
 	.cbx-compare-modal {
-		height: viewport(xxl, 180);
-		bottom: viewport(xxl, -145);
-		.close-down {
-			height: viewport(xxl, 50);
+		@mixin viewport xxl, height,  180;
+		@mixin viewport xxl, bottom,  -145;
+		& .close-down {
+			@mixin viewport xxl, height,  50;
 		}
-		.content-cards {
-			.cbx-button {
-				width: viewport(xxl, 220);
-				height: viewport(xxl, 45);
+		& .content-cards {
+			& .cbx-button {
+				@mixin viewport xxl, width,  220;
+				@mixin viewport xxl, height,  45;
 			}
 		}
 	}

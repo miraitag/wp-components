@@ -1,7 +1,9 @@
+@import '../../mixins.pcss';
+
 html {
 	&:not([m-browser~="mobile"]) {
-		.cbx-input,
-		.cbx-select {
+		& .cbx-input,
+		& .cbx-select {
 			input,
 			select {
 				&:focus {
@@ -18,55 +20,53 @@ html {
 }
 
 [m-container="form"] {
-	@include box-shadow(xs, medium-out);
+	@mixin box-shadow xs, medium-out;
+	@mixin viewport width, 280;
+	@mixin viewport padding, 20;
+	@mixin viewport min-height, 280;
 	position: relative;
 	background-color: var(--white);
 	display: flex;
 	flex-wrap: wrap;
-	width: viewport(xs, 280);
-	padding: viewport(xs, 20);
-	min-height: viewport(xs, 280);
 	&[m-mody="flat"] {
 		padding: 0;
 		width: 100%;
 		box-shadow: none;
 	}
-	.form-legal {
-		margin-bottom: viewport(xs, 20);
+	& .form-legal {
+		@mixin viewport margin-bottom, 20;
 	}
-	.form-button {
+	& .form-button {
 		margin: auto;
 	}
-	.form-message {
-		@include absolute(center);
+	& .form-message {
+		@mixin absolute center;
 		width: 85%;
 		text-align: center;
-		.cbx-icon {
-			margin: {
-				right: auto;
-				left: auto;
-			}
+		& .cbx-icon {
+			margin-right: auto;
+			margin-left: auto;
 		}
-		.cbx-icon,
-		.cbx-headline-section,
-		.cbx-sub-headline {
-			margin-bottom: viewport(xs, 20);
+		& .cbx-icon,
+		& .cbx-headline-section,
+		& .cbx-sub-headline {
+			@mixin viewport margin-bottom, 20;
 			&:last-child {
 				margin-bottom: 0;
 			}
 		}
 		&[m-mody="success"] {
-			.cbx-icon {
+			& .cbx-icon {
 				background-color: var(--green);
 			}
 		}
 		&[m-mody="error"] {
-			.cbx-icon {
+			& .cbx-icon {
 				background-color: var(--bright-orange);
 			}
 		}
 		&[m-mody="loading"] {
-			.cbx-icon {
+			& .cbx-icon {
 				background-color: var(--cyan);
 			}
 		}
@@ -75,79 +75,75 @@ html {
 
 .cbx-input,
 .cbx-select {
+	@mixin viewport margin-bottom, 10;
 	flex-grow: 1;
 	flex-shrink: 1;
 	flex-basis: 100%;
 	position: relative;
-	margin-bottom: viewport(xs, 10);
 	&[m-empty="false"] {
-		input,
-		select {
+		& input,
+		& select {
 			border-bottom-color: var(--soft-blue);
-			+ label {
+			& & + label {
 				top: 0;
-				font-size: viewport(xs, 14);
+				@mixin viewport font-size, 14;
 			}
-			~ .cbx-sub-text {
+			& ~ .cbx-sub-text {
 				opacity: 1;
 			}
 		}
 		&[m-success="true"] {
-			> .cbx-sub-text {
+			& > .cbx-sub-text {
 				opacity: 0;
 			}
 		}
 	}
 	&[m-error="true"] {
-		> .cbx-sub-text {
+		& > .cbx-sub-text {
 			color: var(--citi-red);
 			opacity: 1;
 		}
-		input,
-		select {
+		& input,
+		& select {
 			border-bottom-color: var(--citi-red);
 		}
 	}
 	&[m-success="true"] {
-		input,
-		select {
+		& input,
+		& select {
 			border-bottom-color: var(--green);
 		}
 	}
-	input,
-	select {
-		@include transition(border);
+	& input,
+	& select {
+		@mixin transition border;
 		width: 100%;
-		padding: {
-			top: viewport(xs, 20);
-			bottom: viewport(xs, 10);
-		}
+		@mixin viewport padding-top, 20;
+		@mixin viewport padding-bottom, 10;
 		color: var(--darkest-gray);
-		border-bottom: {
-			width: 1px;
-			style: solid;
-			color: var(--middle-gray);
-		}
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
+		border-bottom-color: var(--middle-gray);
 		&:focus {
 			border-bottom-color: var(--soft-blue);
-			+ label {
+			& + label {
 				top: 0;
-				font-size: viewport(xs, 14);
+				@mixin viewport font-size, 14;
 			}
-			~ .cbx-sub-text {
+			& ~ .cbx-sub-text {
 				opacity: 1;
 			}
 		}
 	}
-	label {
-		@include transition((top, font-size));
+	& label {
+		@mixin transition(top, font-size);
 		position: absolute;
 		top: 16px;
 		left: 0;
 		color: var(--soft-blue);
 	}
-	> .cbx-sub-text {
-		@include transition((opacity, color));
+	& > .cbx-sub-text {
+		@mixin transition(opacity, color);
 		opacity: 0;
 		color: var(--soft-blue);
 	}
@@ -155,7 +151,7 @@ html {
 
 .cbx-select {
 	position: relative;
-	.cbx-icon {
+	& .cbx-icon {
 		position: absolute;
 		top: 40%;
 		transform: translateY(-50%);
@@ -164,20 +160,20 @@ html {
 	}
 }
 
-@media width >= 768px {
+@media (width >= 768px) {
 	[m-container="form"] {
-		@include box-shadow(sm, medium-out);
+		@mixin box-shadow sm, medium-out;
 		width: 480px;
 		padding: 20px;
 		min-height: 350px;
-		.form-legal {
+		& .form-legal {
 			margin-bottom: 20px;
 		}
-		.form-message {
+		& .form-message {
 			width: 90%;
-			.cbx-icon,
-			.cbx-headline-section,
-			.cbx-sub-headline {
+			& .cbx-icon,
+			& .cbx-headline-section,
+			& .cbx-sub-headline {
 				margin-bottom: 20px;
 			}
 		}
@@ -187,168 +183,160 @@ html {
 	.cbx-select {
 		margin-bottom: 10px;
 		&[m-empty="false"] {
-			input,
-			select {
-				+ label {
+			& input,
+			& select {
+				& + label {
 					font-size: 14px;
 				}
 			}
 		}
-		input,
-		select {
-			padding: {
-				top: 20px;
-				bottom: 10px;
-			}
+		& input,
+		& select {
+			padding-top: 20px;
+			paddin-bottom: 10px;
 			&:focus {
-				+ label {
+				& + label {
 					font-size: 14px;
 				}
 			}
 		}
-		label {
+		& label {
 			top: 16px;
 		}
 	}
 }
 
-@media width >= 1024px {
+@media (width >= 1024px) {
 	[m-container="form"] {
-		@include box-shadow(lg, medium-out);
-		width: viewport(lg, 480);
-		padding: viewport(lg, 20);
-		min-height: viewport(lg, 350);
-		.form-legal {
-			margin-bottom: viewport(lg, 20);
+		@mixin box-shadow lg, medium-out;
+		@mixin viewport lg, width, 480;
+		@mixin viewport lg, padding, 20;
+		@mixin viewport lg, min-height, 350;
+		& .form-legal {
+			@mixin viewport lg, margin-bottom, 20;
 		}
-		.form-message {
-			.cbx-icon,
-			.cbx-headline-section,
-			.cbx-sub-headline {
-				margin-bottom: viewport(lg, 20);
+		& .form-message {
+			& .cbx-icon,
+			& .cbx-headline-section,
+			& .cbx-sub-headline {
+				@mixin viewport lg, margin-bottom, 20;
 			}
 		}
 	}
 
 	.cbx-input,
 	.cbx-select {
-		margin-bottom: viewport(lg, 10);
+		@mixin viewport lg, margin-bottom, 10;
 		&[m-empty="false"] {
-			input,
-			select {
-				+ label {
-					font-size: viewport(lg, 14);
+			& input,
+			& select {
+				& + label {
+					@mixin viewport lg, font-size, 14;
 				}
 			}
 		}
-		input,
-		select {
-			padding: {
-				top: viewport(lg, 20);
-				bottom: viewport(lg, 10);
-			}
+		& input,
+		& select {
+			@mixin viewport lg, padding-top, 20;
+			@mixin viewport lg, padding-bottom, 10;
 			&:focus {
-				+ label {
-					font-size: viewport(lg, 14);
+				& + label {
+					@mixin viewport lg, font-size, 14;
 				}
 			}
 		}
-		label {
-			top: viewport(lg, 16);
+		& label {
+			@mixin viewport lg, top, 16;
 		}
 	}
 }
 
-@media width >= 1280px {
+@media (width >= 1280px) {
 	[m-container="form"] {
-		@include box-shadow(xl, medium-out);
-		width: viewport(xl, 480);
-		padding: viewport(xl, 20);
-		min-height: viewport(xl, 350);
-		.form-legal {
-			margin-bottom: viewport(xl, 20);
+		@mixin box-shadow xl, medium-out;
+		@mixin viewport xl, width, 480;
+		@mixin viewport xl, padding, 20;
+		@mixin viewport xl, min-height, 350;
+		& .form-legal {
+			@mixin viewport xl, margin-bottom, 20;
 		}
-		.form-message {
-			.cbx-icon,
-			.cbx-headline-section,
-			.cbx-sub-headline {
-				margin-bottom: viewport(xl, 20);
+		& .form-message {
+			& .cbx-icon,
+			& .cbx-headline-section,
+			& .cbx-sub-headline {
+				@mixin viewport xl, margin-bottom, 20;
 			}
 		}
 	}
 
 	.cbx-input,
 	.cbx-select {
-		margin-bottom: viewport(xl, 10);
+		@mixin viewport xl, margin-bottom, 10;
 		&[m-empty="false"] {
-			input,
-			select {
-				+ label {
-					font-size: viewport(xl, 14);
+			& input,
+			& select {
+				& + label {
+					@mixin viewport xl, font-size, 14;
 				}
 			}
 		}
-		input,
-		select {
-			padding: {
-				top: viewport(xl, 20);
-				bottom: viewport(xl, 10);
-			}
+		& input,
+		& select {
+			@mixin viewport xl, padding-top, 20;
+			@mixin viewport xl, padding-bottom, 10;
 			&:focus {
-				+ label {
-					font-size: viewport(xl, 14);
+				& + label {
+					@mixin viewport xl, font-size, 14;
 				}
 			}
 		}
-		label {
-			top: viewport(xl, 16);
+		& label {
+			@mixin viewport xl, top, 16;
 		}
 	}
 }
 
-@media width >= 1440px {
+@media (width >= 1440px) {
 	[m-container="form"] {
-		@include box-shadow(xxl, medium-out);
-		width: viewport(xxl, 480);
-		padding: viewport(xxl, 20);
-		min-height: viewport(xxl, 350);
-		.form-legal {
-			margin-bottom: viewport(xxl, 20);
+		@mixin box-shadow xxl, medium-out;
+		@mixin viewport xxl, width, 480;
+		@mixin viewport xxl, padding, 20;
+		@mixin viewport xxl, min-height, 350;
+		& .form-legal {
+			@mixin viewport xxl, margin-bottom, 20;
 		}
-		.form-message {
-			.cbx-icon,
-			.cbx-headline-section,
-			.cbx-sub-headline {
-				margin-bottom: viewport(xxl, 20);
+		& .form-message {
+			& .cbx-icon,
+			& .cbx-headline-section,
+			& .cbx-sub-headline {
+				@mixin viewport xxl, margin-bottom, 20;
 			}
 		}
 	}
 
 	.cbx-input,
 	.cbx-select {
-		margin-bottom: viewport(xxl, 10);
+		@mixin viewport xxl, margin-bottom, 10;
 		&[m-empty="false"] {
-			input,
-			select {
-				+ label {
-					font-size: viewport(xxl, 14);
+			& input,
+			& select {
+				& + label {
+					@mixin viewport xxl, font-size, 14;
 				}
 			}
 		}
-		input,
-		select {
-			padding: {
-				top: viewport(xxl, 20);
-				bottom: viewport(xxl, 10);
-			}
+		& input,
+		& select {
+			@mixin viewport xxl, padding-top, 20;
+			@mixin viewport xxl, padding-bottom, 10;
 			&:focus {
-				+ label {
-					font-size: viewport(xxl, 14);
+				& + label {
+					@mixin viewport xxl, font-size, 14;
 				}
 			}
 		}
-		label {
-			top: viewport(xxl, 16);
+		& label {
+			@mixin viewport xxl, top, 16;
 		}
 	}
 }

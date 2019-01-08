@@ -1,64 +1,64 @@
+@import '../../mixins.pcss';
 
-
-.cbx-apps-promo{
-	> .cbx-img{
-		min-height: viewport(xs,270);
-		img{
+.cbx-apps-promo {
+	& > .cbx-img {
+		@mixin viewport xs, min-height, 270;
+		img {
 			height: 100%;
 			object-fit: cover;
 		}
 	}
-	.cbx-card{
+	& .cbx-card {
 		width: 100%;
 		box-shadow: none;
 	}
 }
 
-@media width >= 768px{
-	.cbx-apps-promo{
+@media (width >= 768px) {
+	.cbx-apps-promo {
 		position: relative;
-		>.cbx-img{
+		& > .cbx-img {
 			min-height: 270px;
 		}
-		.cbx-card{
-			@include absolute(center-vertical);
+		& .cbx-card {
+			@mixin absolute center-vertical;
 			right: 100px;
 		}
 	}
 }
 
-@media width >= 1024px{
-	.cbx-apps-promo{
-		>.cbx-img{
-			min-height: viewport(lg,270);
+@media (width >= 1024px) {
+	.cbx-apps-promo {
+		& > .cbx-img {
+			@mixin viewport lg, min-height, 270;
 		}
-		.cbx-card{
-			right: viewport(lg,100);
-			&:hover{
+		& .cbx-card {
+			@mixin viewport lg, right, 100;
+			&:hover {
 				box-shadow: none !important;
 			}
 		}
 	}
 }
 
-@media width >= 1280px{
-	.cbx-apps-promo{
-		>.cbx-img{
-			min-height: viewport(xl,270);
+@media (width >= 1280px) {
+	.cbx-apps-promo {
+		& > .cbx-img {
+			@mixin viewport xl, min-height, 270;
 		}
-		.cbx-card{
-			right: viewport(xl,225);
+		& .cbx-card {
+			@mixin viewport xl, right, 225;
 		}
 	}
 }
 
-@media width >= 1440px{
-	.cbx-apps-promo{
-		>.cbx-img{
-			min-height: viewport(xxl,270);
+@media (width >= 1440px) {
+	.cbx-apps-promo {
+		& > .cbx-img {
+			@mixin viewport xxl, min-height, 270;
 		}
-		.cbx-card{
-			right: viewport(xxl,225);
+		& .cbx-card {
+			@mixin viewport xxl, right, 225;
 		}
 	}
 }

@@ -1,287 +1,284 @@
+@import '../../mixins.pcss';
 
+.cbx-promociones {
+	display: flex;
+	flex-wrap: wrap;
+	& .content-promociones {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column-reverse;
+	}
+	& .menu-promociones {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: center;
+		justify-content: space-between;
+		@mixin viewport xs, margin-top, 20;
+		@mixin viewport xs, margin-bottom, 20;
+		& .cbx-card {
+			@mixin viewport xs, width, 60;
+			@mixin viewport xs, height, 60;
+			@mixin viewport xs, padding, 5;
+			position: relative;
+			&:not(:last-child) {
+				@mixin viewport xs, margin-right, 10;
+			}
+			& [class*="icon-"] {
+				color: var(--dark-gray);
+				transition: color 350ms ease-in-out;
+			}
+			&[m-active="true"] {
+				@mixin viewport xs, width, 70;
+				@mixin viewport xs, height, 70;
+				background-color: var(--soft-blue);
+				& [class*="icon-"] {
+					color: var(--white);
+				}
+				& .cbx-text {
+					color: var(--white);
+					@mixin viewport xs, font-size, 10;
+				}
+			}
+			& .card-content {
+				position: relative;
+				flex-direction: column;
+				justify-content: center;
+				width: 100%;
+				& .cbx-icon {
+					margin-right: 0;
+				}
+			}
+			& .cbx-text {
+				@mixin viewport xs, font-size, 8;
+			}
+			& .notification {
+				@mixin viewport xs, width, 20;
+				@mixin viewport xs, height, 20;
+				background-color: var(--fuschia);
+				position: absolute;
+				@mixin viewport xs, right, -10;
+				@mixin viewport xs, top, -10;
+				border-radius: 50%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-family: var(--font-b);
+				& .cbx-legal {
+					color: var(--white);
+				}
+			}
+		}
+	}
+	& .cards-promociones {
+		display: none;
+		&[m-open="true"] {
+			display: block;
+		}
+	}
+	& .btn-promociones {
+		display: flex;
+		width: 100%;
+		justify-content: center;
+	}
+}
+@media (width >= 768px) {
+	.cbx-promociones {
+		& .menu-promociones {
+			justify-content: center;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			& .cbx-card {
+				width: 60px;
+				height: 60px;
+				padding: 5px;
+				& .cbx-text {
+					font-size: 8px;
+				}
+				&[m-active="true"] {
+					width: 70px;
+					height: 70px;
+					& .cbx-text {
+						font-size: 10px;
+					}
+				}
+				&:not(:last-child) {
+					margin-right: 20px;
+				}
 
-.cbx-promociones{
-    display: flex;
-    flex-wrap: wrap;
-    .content-promociones{
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column-reverse;
-    }
-    .menu-promociones{
-        display: flex;
-        flex-wrap: nowrap;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: viewport(xs,20);
-        margin-bottom: viewport(xs,20);
-        .cbx-card{
-            width: viewport(xs, 60);
-            height: viewport(xs, 60);
-            padding: viewport(xs, 5);
-            position: relative;
-            &:not(:last-child){
-                margin-right: viewport(xs, 10);
-            }
-            [class*=icon-]{
-                color: var(--dark-gray);
-                transition: color 350ms ease-in-out;
-            }
-            &[m-active=true]{
-                width: viewport(xs, 70);
-                height: viewport(xs, 70);
-                background-color: var(--soft-blue);
-                [class*=icon-]{
-                    color: var(--white);
-                }
-                .cbx-text{
-                    color: var(--white);
-                    font-size:viewport(xs,10);
-                }
-            }
-            .card-content{
-                position: relative;
-                flex-direction: column;
-                justify-content: center;
-                width: 100%;
-                .cbx-icon{
-                    margin-right: 0;
-                }
-            }
-            .cbx-text{
-                font-size:viewport(xs,8);
-            }
-            .notification{
-                width: viewport(xs, 20);
-                height: viewport(xs, 20);
-                background-color: var(--fuschia);
-                position: absolute;
-                right: viewport(xs, -10);
-                top: viewport(xs, -10);
-                border-radius: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-family: "IR";
-                .cbx-legal{
-                    color: var(--white);
-                }
-
-            }
-        }
-    }
-    .cards-promociones{
-            display: none;
-        &[m-open=true]{
-            display: block;
-        }
-    }
-    .btn-promociones{
-        display: flex;
-        width: 100%;
-        justify-content: center;
-    }
+				& .notification {
+					width: 20px;
+					height: 20px;
+					right: -10px;
+					top: -10px;
+				}
+			}
+		}
+		& .cards-promociones {
+			&[m-open="true"] {
+				display: flex;
+			}
+			& .cbx-card {
+				width: calc(100% / 3);
+				&:not(:last-child) {
+					margin-right: 20px;
+				}
+			}
+		}
+	}
 }
-@media width >= 768px{
-    .cbx-promociones{
-        .menu-promociones{
-            justify-content: center;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            .cbx-card{ 
-                width: 60px;
-                height: 60px;
-                padding: 5px;
-                .cbx-text{
-                    font-size:8px;
-                }
-                &[m-active=true]{
-                    width: 70px;
-                    height: 70px;
-                    .cbx-text{
-                        font-size:10px;
-                    }
-                    
-                }
-                &:not(:last-child){
-                    margin-right: 20px;
-                }
-                    
-                .notification{
-                    width: 20px;
-                    height: 20px;
-                    right: -10px;
-                    top: -10px;
-                }
-            
-            }
-        }
-        .cards-promociones{
-            &[m-open=true]{
-                display: flex;
-            }
-            .cbx-card{
-                width: calc(100%/3);
-                &:not(:last-child){
-                    margin-right: 20px;
-                }
-            }
-        }
-    }
+@media (width >= 1024px) {
+	.cbx-promociones {
+		flex-direction: row;
+		& .content-promociones {
+			display: flex;
+			width: 100%;
+			justify-content: space-between;
+			flex-wrap: nowrap;
+			flex-direction: row;
+		}
+		& .menu-promociones {
+			flex-wrap: wrap;
+			flex-direction: column;
+			align-items: flex-start;
+			margin-right: 0;
+			margin-top: 0;
+			margin-bottom: 0;
+			@mixin viewport lg, width, 180;
+			& .cbx-card {
+				width: inherit;
+				height: inherit;
+				padding: inherit;
+				@mixin viewport lg, margin-bottom, 20;
+				&:last-child {
+					margin-bottom: 0;
+				}
+				&[m-active] {
+					margin-right: 0;
+					padding: 0;
+					height: inherit;
+					width: inherit;
+				}
+				& .cbx-text {
+					@mixin viewport lg, font-size, 16;
+				}
+				& .card-content {
+					flex-direction: row;
+					@mixin viewport lg, padding, 20;
+					justify-content: flex-start;
+					& .cbx-icon {
+						@mixin viewport lg, margin-right, 20;
+						margin-top: 0;
+						margin-bottom: 0;
+						width: auto;
+						height: auto;
+					}
+					& .cbx-text {
+						@mixin viewport lg, font-size, 16;
+					}
+				}
+				& .notification {
+					@mixin viewport lg, width, 20;
+					@mixin viewport lg, height, 20;
+					@mixin viewport lg, right, -10;
+					@mixin viewport lg, top, -10;
+				}
+			}
+		}
+		& .category-promociones {
+			@mixin viewport lg, width, 715;
+		}
+		& .cards-promociones {
+			justify-content: space-between;
+			width: inherit;
+			& .cbx-card {
+				@mixin viewport lg, width, 225;
+				&:not(:last-child) {
+					margin-right: 0;
+				}
+			}
+		}
+		& .btn-promociones {
+			display: block;
+			@mixin viewport lg, margin-top, 30;
+		}
+	}
 }
-@media width >= 1024px{
-    .cbx-promociones{
-        flex-direction: row;
-        .content-promociones{
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-            flex-wrap: nowrap;
-            flex-direction: row;
-        }
-        .menu-promociones{
-            flex-wrap: wrap;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-right: 0;
-            margin-top: 0;
-            margin-bottom: 0;
-            width: viewport(lg,180);
-            .cbx-card{
-                width: inherit;
-                height: inherit;
-                padding: inherit;
-                margin-bottom: viewport(lg, 20);
-                &:last-child{
-                    margin-bottom: 0;
-                }
-                &[m-active]{
-                    margin-right: 0;
-                    padding: 0;
-                    height: inherit;
-                    width: inherit;
-                }
-                .cbx-text{
-                    font-size:viewport(lg,16);
-                }
-                .card-content{
-                    flex-direction: row;
-                    padding: viewport(lg,20);
-                    justify-content: flex-start;
-                    .cbx-icon{
-                        margin-right: viewport(lg,20);
-                        margin-top:0;
-                        margin-bottom: 0;
-                        width: auto;
-                        height: auto;
-                    }
-                    .cbx-text{
-                        font-size: viewport(lg,16);
-                    }
-                }
-                .notification{
-                    width: viewport(lg,20);
-                    height: viewport(lg,20);
-                    right: viewport(lg,-10);
-                    top: viewport(lg,-10);
-                }
-            }
-        }
-        .category-promociones{
-            width: viewport(lg, 715);
-        }
-        .cards-promociones{
-            justify-content: space-between;
-            width: inherit;
-            .cbx-card{
-                width: viewport(lg, 225);
-                &:not(:last-child){
-                    margin-right: 0;
-                }
-            }
-        }
-        .btn-promociones{
-            display: block;
-            margin-top:viewport(lg,30);
-        }
-    }
-}
-@media width >= 1280px{
-    .cbx-promociones{
-        .menu-promociones{
-            width: viewport(xl, 180);
-            .cbx-card{
-                margin-bottom: viewport(xl, 20);
-                .cbx-text{
-                    font-size:viewport(xl,16);
-                }
-                .card-content{
-                    padding: viewport(xl,20);
-                    .cbx-icon{
-                        margin-right: viewport(xl,20);
-                    }
-                    .cbx-text{
-                        font-size: viewport(xl,16);
-                    }
-                }
-                .notification{
-                    width: viewport(xl,20);
-                    height: viewport(xl,20);
-                    right: viewport(xl,-10);
-                    top: viewport(xl,-10);
-                }
-            }
-        }
-        .category-promociones{
-            width: viewport(xl, 805);
-        }
-        .cards-promociones{
-            .cbx-card{
-                width: viewport(xl, 255);
-            }
-        }
-        .btn-promociones{
-            margin-top:viewport(xl,30);
-        }
-    }
+@media (width >= 1280px) {
+	.cbx-promociones {
+		& .menu-promociones {
+			@mixin viewport xl, width, 180;
+			& .cbx-card {
+				@mixin viewport xl, margin-bottom, 20;
+				& .cbx-text {
+					@mixin viewport xl, font-size, 16;
+				}
+				& .card-content {
+					@mixin viewport xl, padding, 20;
+					& .cbx-icon {
+						@mixin viewport xl, margin-right, 20;
+					}
+					& .cbx-text {
+						@mixin viewport xl, font-size, 16;
+					}
+				}
+				& .notification {
+					@mixin viewport xl, width, 20;
+					@mixin viewport xl, height, 20;
+					@mixin viewport xl, right, -10;
+					@mixin viewport xl, top, -10;
+				}
+			}
+		}
+		& .category-promociones {
+			@mixin viewport xl, width, 805;
+		}
+		& .cards-promociones {
+			& .cbx-card {
+				@mixin viewport xl, width, 255;
+			}
+		}
+		& .btn-promociones {
+			@mixin viewport xl, margin-top, 30;
+		}
+	}
 }
 
-@media width >= 1440px{
-    .cbx-promociones{
-        .menu-promociones{
-            width: viewport(xxl, 180);
-            .cbx-card{
-                margin-bottom: viewport(xxl, 20);
-                .cbx-text{
-                    font-size:viewport(xxl,16);
-                }
-                .card-content{
-                    padding: viewport(xxl,20);
-                    .cbx-icon{
-                        margin-right: viewport(xxl,20);
-                    }
-                    .cbx-text{
-                        font-size: viewport(xxl,16);
-                    }
-                }
-                .notification{
-                    width: viewport(xxl,20);
-                    height: viewport(xxl,20);
-                    right: viewport(xxl,-10);
-                    top: viewport(xxl,-10);
-                }
-            }
-        }
-        .category-promociones{
-            width: viewport(xxl, 805);
-        }
-        .cards-promociones{
-            .cbx-card{
-                width: viewport(xxl, 255);
-            }
-        }
-        .btn-promociones{
-            margin-top:viewport(xxl,30);
-        }
-    }
+@media (width >= 1440px) {
+	.cbx-promociones {
+		& .menu-promociones {
+			@mixin viewport xxl, width,  180;
+			& .cbx-card {
+				@mixin viewport xxl, margin-bottom,  20;
+				& .cbx-text {
+					@mixin viewport xxl, font-size,  16;
+				}
+				& .card-content {
+					@mixin viewport xxl, padding,  20;
+					& .cbx-icon {
+						@mixin viewport xxl, margin-right,  20;
+					}
+					& .cbx-text {
+						@mixin viewport xxl, font-size,  16;
+					}
+				}
+				& .notification {
+					@mixin viewport xxl, width,  20;
+					@mixin viewport xxl, height,  20;
+					@mixin viewport xxl, right,  -10;
+					@mixin viewport xxl, top,  -10;
+				}
+			}
+		}
+		& .category-promociones {
+			@mixin viewport xxl, width,  805;
+		}
+		& .cards-promociones {
+			& .cbx-card {
+				@mixin viewport xxl, width,  255;
+			}
+		}
+		& .btn-promociones {
+			@mixin viewport xxl, margin-top,  30;
+		}
+	}
 }

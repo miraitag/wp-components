@@ -1,23 +1,25 @@
+@import '../../mixins.pcss';
 
-.cbx-btn-back{
-    display: flex;
-    width: viewport(xs,200);
-    height: viewport(xs,50);
-    align-items: center;
-    .cbx-icon, .cbx-text{
-        color: var(--soft-blue);
-    }
+.cbx-btn-back {
+	display: flex;
+	@mixin viewport xs, width, 200;
+	@mixin viewport xs, height, 50;
+	align-items: center;
+	& .cbx-icon,
+	& .cbx-text {
+		color: var(--soft-blue);
+	}
 }
 
-@media width >= 768px{
-    .cbx-btn-back{
-        width: 200px;
-        height: 50px;
-    }
+@media (width >= 768px) {
+	.cbx-btn-back {
+		width: 200px;
+		height: 50px;
+	}
 }
 
-@media width >= 1024px{
-    .cbx-btn-back{
-        display: none;   
-    }
+@media (width >= 1024px) {
+	.cbx-btn-back {
+		display: none;
+	}
 }

@@ -1,338 +1,331 @@
-
+@import '../../mixins.pcss';
 
 html {
-
-    &[m-browser=ie],
-    &[m-browser=safari] {
-        .cbx-submenu {
-            &[m-sticky=true] {
-                position: relative;
-                top: 0;
-            }
-        }
-    }
+	&[m-browser="ie"] {
+		& .cbx-submenu {
+			&[m-sticky="true"] {
+				position: relative;
+				top: 0;
+			}
+		}
+	}
 }
 
 .cbx-submenu {
-    width: 100%;
-    align-items: center;
-    z-index: 1;
+	width: 100%;
+	align-items: center;
+	z-index: 1;
 
-    &[m-sticky=true] {
-        position: sticky;
-        top: viewport(xs, 48);
-    }
+	&[m-sticky="true"] {
+		@mixin position-sticky;
+		@mixin viewport xs, top, 48;
+	}
 
-    &[m-open=true] {
-        z-index: 2;
+	&[m-open="true"] {
+		z-index: 2;
 
-        .submenu-content {
-            top: 0;
-        }
-    }
+		& .submenu-content {
+			top: 0;
+		}
+	}
 
-    .name-submenu {
-        width: 100%;
-        height: viewport(xs, 40);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: var(--darkest-gray);
-        color: var(--white);
-    }
+	& .name-submenu {
+		width: 100%;
+		@mixin viewport xs, height, 40;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: var(--darkest-gray);
+		color: var(--white);
+	}
 
-    .submenu-header {
-        @include blue-wave("beyond");
+	& .submenu-header {
+		@mixin blue-wave beyond;
 
-        .cbx-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+		& .cbx-wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
 
-            .btn-open {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
+			& .btn-open {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
 
-                .cbx-icon {
-                    height: viewport(xs, 35);
-                }
+				& .cbx-icon {
+					@mixin viewport xs, height, 35;
+				}
 
-                .cbx-text {
-                    color: var(--white);
-                }
-            }
+				& .cbx-text {
+					color: var(--white);
+				}
+			}
 
-            .cbx-button {
-                min-width: viewport(xs, 100);
+			& .cbx-button {
+				@mixin viewport xs, min-width, 100;
 
-                .cbx-icon {
-                    margin-left: viewport(xs, 20);
-                }
-            }
-        }
-    }
+				& .cbx-icon {
+					@mixin viewport xs, margin-left, 20;
+				}
+			}
+		}
+	}
 
-    .submenu-content {
-        @include transition(top);
-        background-color: var(--black);
-        position: fixed;
-        top: -10000px;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow-y: scroll;
+	& .submenu-content {
+		@mixin transition top;
+		background-color: var(--black);
+		position: fixed;
+		top: -10000px;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		overflow-y: scroll;
 
-        .cbx-wrapper {
-            height: 100%;
-        }
+		& .cbx-wrapper {
+			height: 100%;
+		}
 
-        .submenu-head {
-            height: viewport(xs, 40);
-        }
+		& .submenu-head {
+			@mixin viewport xs, height, 40;
+		}
 
-        .btn-close {
-            display: flex;
-            align-items: center;
-            float: right;
+		& .btn-close {
+			display: flex;
+			align-items: center;
+			float: right;
 
-            .cbx-text {
-                color: var(--white);
-                margin-right: viewport(xs, 10);
-            }
+			& .cbx-text {
+				color: var(--white);
+				@mixin viewport xs, margin-right, 10;
+			}
 
-            .cbx-icon {
-                background-color: var(--white);
-                color: var(--black);
-            }
-        }
+			& .cbx-icon {
+				background-color: var(--white);
+				color: var(--black);
+			}
+		}
 
-        .submenu-body {
-            padding-top: viewport(xs, 20);
-        }
-    }
+		& .submenu-body {
+			@mixin viewport xs, padding-top, 20;
+		}
+	}
 }
 
-@media width >= 768px {
-    .cbx-submenu {
-        &[m-sticky=true] {
-            position: sticky;
-            top: 48px;
-        }
+@media (width >= 768px){
+	.cbx-submenu {
+		&[m-sticky="true"] {
+			top: 48px;
+		}
 
-        &[m-open=true] {
-            .submenu-content {
-                max-height: 10000px;
-            }
-        }
+		&[m-open="true"] {
+			& .submenu-content {
+				max-height: 10000px;
+			}
+		}
 
-        .name-submenu {
-            @include absolute(center);
-            height: auto;
-            width: auto;
-            background-color: transparent;
+		& .name-submenu {
+			@mixin absolute center;
+			height: auto;
+			width: auto;
+			background-color: transparent;
+		}
 
-        }
+		& .submenu-header {
+			& .cbx-wrapper {
+				padding: {
+					top: 20px;
+					bottom: 20px;
+				}
 
-        .submenu-header {
-            .cbx-wrapper {
-                padding: {
-                    top: 20px;
-                    bottom: 20px;
-                }
+				& .btn-open {
+					& .cbx-icon {
+						height: 35px;
+					}
+				}
 
-                .btn-open {
-                    .cbx-icon {
-                        height: 35px;
-                    }
-                }
+				& .cbx-button {
+					min-width: 220px;
 
-                .cbx-button {
-                    min-width: 220px;
+					& .cbx-icon {
+						margin-left: 20px;
+					}
+				}
+			}
+		}
 
-                    .cbx-icon {
-                        margin-left: 20px;
-                    }
-                }
-            }
-        }
+		& .submenu-content {
+			@mixin transition max-height;
+			position: absolute;
+			top: 0;
+			height: auto;
+			max-height: 0;
+			overflow-y: hidden;
 
-        .submenu-content {
-            @include transition(max-height);
-            position: absolute;
-            top: 0;
-            height: auto;
-            max-height: 0;
-            overflow-y: hidden;
+			& .btn-close {
+				& .cbx-text {
+					color: var(--white);
+					margin-right: 10px;
+				}
+			}
 
-            .btn-close {
-                .cbx-text {
-                    color: var(--white);
-                    margin-right: 10px;
-                }
-            }
+			& .submenu-head {
+				height: 40px;
+			}
 
-            .submenu-head {
-                height: 40px;
-            }
-
-            .submenu-body {
-                padding-top: 0;
-            }
-        }
-    }
+			& .submenu-body {
+				padding-top: 0;
+			}
+		}
+	}
 }
 
-@media width >= 1024px {
-    .cbx-submenu {
-        &[m-sticky=true] {
-            position: sticky;
-            top: viewport(lg, 73);
-        }
+@media (width >= 1024px) {
+	.cbx-submenu {
+		&[m-sticky="true"] {
+			@mixin viewport lg, top, 73;
+		}
 
-        .submenu-header {
-            .cbx-wrapper {
-                padding: {
-                    top: viewport(lg, 20);
-                    bottom: viewport(lg, 20);
-                }
+		& .submenu-header {
+			& .cbx-wrapper {
+				padding: {
+					@mixin viewport lg, top, 20;
+					@mixin viewport lg, bottom, 20;
+				}
 
-                .btn-open {
-                    .cbx-icon {
-                        height: viewport(lg, 35);
-                    }
-                }
+				& .btn-open {
+					& .cbx-icon {
+						@mixin viewport lg, height, 35;
+					}
+				}
 
-                .cbx-button {
-                    min-width: viewport(lg, 220);
+				& .cbx-button {
+					@mixin viewport lg, min-width, 220;
 
-                    .cbx-icon {
-                        margin-left: viewport(lg, 20);
-                    }
-                }
-            }
-        }
+					& .cbx-icon {
+						@mixin viewport lg, margin-left, 20;
+					}
+				}
+			}
+		}
 
-        .submenu-content {
-            .btn-close {
-                .cbx-text {
-                    margin-right: viewport(lg, 10);
-                }
-            }
+		& .submenu-content {
+			& .btn-close {
+				& .cbx-text {
+					@mixin viewport lg, margin-right, 10;
+				}
+			}
 
-            .cbx-wrapper {
-                padding: {
-                    top: viewport(lg, 60);
-                    bottom: viewport(lg, 60);
-                }
-            }
+			& .cbx-wrapper {
+				padding: {
+					@mixin viewport lg, top, 60;
+					@mixin viewport lg, bottom, 60;
+				}
+			}
 
-            .submenu-head {
-                height: viewport(lg, 40);
-            }
-        }
-    }
+			& .submenu-head {
+				@mixin viewport lg, height, 40;
+			}
+		}
+	}
 }
 
-@media width >= 1280px {
-    .cbx-submenu {
-        &[m-sticky=true] {
-            position: sticky;
-            top: viewport(xl, 70);
-        }
+@media (width >= 1280px) {
+	.cbx-submenu {
+		&[m-sticky="true"] {
+			@mixin viewport xl, top, 70;
+		}
 
-        .submenu-header {
-            .cbx-wrapper {
-                padding: {
-                    top: viewport(xl, 20);
-                    bottom: viewport(xl, 20);
-                }
+		& .submenu-header {
+			& .cbx-wrapper {
+				padding: {
+					@mixin viewport xl, top, 20;
+					@mixin viewport xl, bottom, 20;
+				}
 
-                .btn-open {
-                    .cbx-icon {
-                        height: viewport(xl, 35);
-                    }
-                }
+				& .btn-open {
+					& .cbx-icon {
+						@mixin viewport xl, height, 35;
+					}
+				}
 
-                .cbx-button {
-                    min-width: viewport(xl, 220);
+				& .cbx-button {
+					@mixin viewport xl, min-width, 220;
 
-                    .cbx-icon {
-                        margin-left: viewport(xl, 20);
-                    }
-                }
-            }
-        }
+					& .cbx-icon {
+						@mixin viewport xl, margin-left, 20;
+					}
+				}
+			}
+		}
 
-        .submenu-content {
-            .btn-close {
-                .cbx-text {
-                    margin-right: viewport(xl, 10);
-                }
-            }
+		& .submenu-content {
+			& .btn-close {
+				& .cbx-text {
+					@mixin viewport xl, margin-right, 10;
+				}
+			}
 
-            .cbx-wrapper {
-                padding: {
-                    top: viewport(xl, 60);
-                    bottom: viewport(xl, 60);
-                }
-            }
+			& .cbx-wrapper {
+				padding: {
+					@mixin viewport xl, top, 60;
+					@mixin viewport xl, bottom, 60;
+				}
+			}
 
-            .submenu-head {
-                height: viewport(xl, 40);
-            }
-        }
-    }
+			& .submenu-head {
+				@mixin viewport xl, height, 40;
+			}
+		}
+	}
 }
 
-@media width >= 1440px {
-    .cbx-submenu {
-        &[m-sticky=true] {
-            position: sticky;
-            top: viewport(xxl, 72);
-        }
+@media (width >= 1440px) {
+	.cbx-submenu {
+		&[m-sticky="true"] {
+			@mixin viewport xxl, top, 72;
+		}
 
-        .submenu-header {
-            .cbx-wrapper {
-                padding: {
-                    top: viewport(xxl, 20);
-                    bottom: viewport(xxl, 20);
-                }
+		& .submenu-header {
+			& .cbx-wrapper {
+				padding: {
+					@mixin viewport xxl, top, 20;
+					@mixin viewport xxl, bottom, 20;
+				}
 
-                .btn-open {
-                    .cbx-icon {
-                        height: viewport(xxl, 35);
-                    }
-                }
+				& .btn-open {
+					& .cbx-icon {
+						@mixin viewport xxl, height, 35;
+					}
+				}
 
-                .cbx-button {
-                    min-width: viewport(xxl, 220);
+				& .cbx-button {
+					@mixin viewport xxl, min-width, 220;
 
-                    .cbx-icon {
-                        margin-left: viewport(xxl, 20);
-                    }
-                }
-            }
-        }
+					& .cbx-icon {
+						@mixin viewport xxl, margin-left, 20;
+					}
+				}
+			}
+		}
 
-        .submenu-content {
-            .btn-close {
-                .cbx-text {
-                    margin-right: viewport(xxl, 10);
-                }
-            }
+		& .submenu-content {
+			& .btn-close {
+				& .cbx-text {
+					@mixin viewport xxl, margin-right, 10;
+				}
+			}
 
-            .cbx-wrapper {
-                padding: {
-                    top: viewport(xxl, 60);
-                    bottom: viewport(xxl, 60);
-                }
-            }
+			& .cbx-wrapper {
+				padding: {
+					@mixin viewport xxl, top, 60;
+					@mixin viewport xxl, bottom, 60;
+				}
+			}
 
-            .submenu-head {
-                height: viewport(xxl, 40);
-            }
-        }
-    }
+			& .submenu-head {
+				@mixin viewport xxl, height, 40;
+			}
+		}
+	}
 }

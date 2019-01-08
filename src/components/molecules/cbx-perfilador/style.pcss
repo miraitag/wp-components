@@ -1,248 +1,238 @@
+@import '../../mixins.pcss';
 
-
-.cbx-perfilador{
-    position: relative;
-    height: viewport(xs, 420);
-    width: 100%;
-    .cbx-img{
-        width: 100%;
-        height: viewport(xs, 280);
-    }
-    .perfilador-labels{
-        .cbx-text{
-            @include absolute( center-vertical );
-            display: flex-inline;
-            top: viewport(xs, 20);
-            color: var(--white);
-            padding: {
-                left: viewport(xs,20);
-            }
-       } 
-        .label-close{
-            position: absolute;
-            top: 0;
-            right: viewport(xs,10);
-            width: viewport(xs,44);
-            height: viewport(xs,44);
-            .cbx-icon{
-                position: absolute;
-                top: viewport(xs,10);
-                right: viewport(xs,10);
-            }
-        } 
-    }
-    .cbx-headline-section{
-        @include text-shadow( xs );
-        @include absolute( center-horizontal );
-        top: viewport(xs,40);
-        color:var(--white);
-        text-align: center;
-        width: 100%;
-        padding: {
-            right: viewport(xs,20);
-            left: viewport(xs,20);
-        }
-    }
-    .perfil-rounded{
-        @include absolute( center-horizontal );
-        top: viewport(xs, 110);
-        height: viewport(xs, 200);
-        width: viewport(xs, 200);
-        background-color: var(--soft-gray);
-        
-    }
-    .cbx-button{
-        @include absolute(center-horizontal);
-        bottom: 0;
-    }
+.cbx-perfilador {
+	position: relative;
+	@mixin viewport xs, height, 420;
+	width: 100%;
+	& .cbx-img {
+		width: 100%;
+		@mixin viewport xs, height, 280;
+	}
+	& .perfilador-labels {
+		& .cbx-text {
+			@mixin absolute center-vertical;
+			display: flex-inline;
+			@mixin viewport xs, top, 20;
+			color: var(--white);
+			padding: {
+				@mixin viewport xs, left, 20;
+			}
+		}
+		& .label-close {
+			position: absolute;
+			top: 0;
+			@mixin viewport xs, right, 10;
+			@mixin viewport xs, width, 44;
+			@mixin viewport xs, height, 44;
+			& .cbx-icon {
+				position: absolute;
+				@mixin viewport xs, top, 10;
+				@mixin viewport xs, right, 10;
+			}
+		}
+	}
+	& .cbx-headline-section {
+		@mixin text-shadow xs;
+		@mixin absolute center-horizontal;
+		@mixin viewport xs, top, 40;
+		color: var(--white);
+		text-align: center;
+		width: 100%;
+		padding: {
+			@mixin viewport xs, right, 20;
+			@mixin viewport xs, left, 20;
+		}
+	}
+	& .perfil-rounded {
+		@mixin absolute center-horizontal;
+		@mixin viewport xs, top, 110;
+		@mixin viewport xs, height, 200;
+		@mixin viewport xs, width, 200;
+		background-color: var(--soft-gray);
+	}
+	& .cbx-button {
+		@mixin absolute center-horizontal;
+		bottom: 0;
+	}
 }
 
-@media width >= 768px{
-    .cbx-perfilador{
-        height: 380px;
-        display: flex;
-        flex-direction: row-reverse;
-        .cbx-headline-section, .perfil-rounded, .cbx-button{
-            position: relative;
-            top: auto;
-            bottom: auto;
-            left: auto;
-            transform: none;
-        }
-        .cbx-img{
-            flex-grow: 1;
-            flex-basis: 0;
-            height: inherit;
-            /*height: inherit;
-            img{
-                height: inherit;
-                object-fit: cover;
-            }*/
-        }
-        .perfilador-labels{
-            flex-grow: 1;
-            flex-basis: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--white);
+@media (width >= 768px) {
+	.cbx-perfilador {
+		height: 380px;
+		display: flex;
+		flex-direction: row-reverse;
+		& .cbx-headline-section,
+		& .perfil-rounded,
+		& .cbx-button {
+			position: relative;
+			top: auto;
+			bottom: auto;
+			left: auto;
+			transform: none;
+		}
+		& .cbx-img {
+			flex-grow: 1;
+			flex-basis: 0;
+			height: inherit;
+		}
+		& .perfilador-labels {
+			flex-grow: 1;
+			flex-basis: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			background-color: var(--white);
 
-            .cbx-text{
-               transform: none;
-               top:  0px;
-               left: 0px;
-               color: var(--dark-gray);
-               padding:{
-                   left:20px;
-                   top: 20px;
-                }
-            }
-            .label-close{
-                top: 0px;
-                right: 0px;
-                width: 44px;
-                height: 44px;
-                .cbx-icon{
-                    position: absolute;
-                    top: 20px;
-                    right:20px;
-                    left: 0px;
-                }
-            } 
-        }
-        .content-perfilador{
-            width: 100%;
-            margin-bottom: 40px;
-        }
-        .cbx-headline-section{
-            color: var(--darkest-gray);
-            text-shadow: none;
-            
-            padding: {
-                right: 20px;
-                left: 20px;
-            }
-        }
-        .perfil-rounded{
-            height: 50px;
-            width: 200px;
-            margin: {
-                right: auto;
-                left: auto;
-                bottom: 40px;
-            } 
-        }
-    }
+			& .cbx-text {
+				transform: none;
+				top: 0px;
+				left: 0px;
+				color: var(--dark-gray);
+				padding: {
+					left: 20px;
+					top: 20px;
+				}
+			}
+			& .label-close {
+				top: 0px;
+				right: 0px;
+				width: 44px;
+				height: 44px;
+				& .cbx-icon {
+					position: absolute;
+					top: 20px;
+					right: 20px;
+					left: 0px;
+				}
+			}
+		}
+		& .content-perfilador {
+			width: 100%;
+			margin-bottom: 40px;
+		}
+		& .cbx-headline-section {
+			color: var(--darkest-gray);
+			text-shadow: none;
+
+			padding: {
+				right: 20px;
+				left: 20px;
+			}
+		}
+		& .perfil-rounded {
+			height: 50px;
+			width: 200px;
+			margin: {
+				right: auto;
+				left: auto;
+				bottom: 40px;
+			}
+		}
+	}
 }
 
-@media width >= 1024px{
-    .cbx-perfilador{
-        height: viewport(lg,512);
-        .content-perfilador{
-            margin-bottom: viewport(lg,40);
-        }
-        .cbx-text{
-            padding:{
-                   left:viewport(lg,20);
-                   top:viewport(lg,20);
-            }
-        }
-        .label-close{
-                right: viewport(lg,20);
-                width:viewport(lg,44);
-                height:viewport(lg,44);
-                .cbx-icon{
-                    left:viewport(lg,20);
-                    top:viewport(lg,20);
-                    
-                }
-        } 
-        .cbx-headline-section{
-            
-            padding:{
-                right: viewport(lg,20);
-                left: viewport(lg,20);
-            }
-        }
-        .perfil-rounded{
-            height: viewport(lg,50);
-            width: viewport(lg,200);
-        }
-    }
+@media (width >= 1024px) {
+	.cbx-perfilador {
+		@mixin viewport lg, height, 512;
+		& .content-perfilador {
+			@mixin viewport lg, margin-bottom, 40;
+		}
+		& .cbx-text {
+			padding: {
+				@mixin viewport lg, left, 20;
+				@mixin viewport lg, top, 20;
+			}
+		}
+		& .label-close {
+			@mixin viewport lg, right, 20;
+			@mixin viewport lg, width, 44;
+			@mixin viewport lg, height, 44;
+			& .cbx-icon {
+				@mixin viewport lg, left, 20;
+				@mixin viewport lg, top, 20;
+			}
+		}
+		& .cbx-headline-section {
+			padding: {
+				@mixin viewport lg, right, 20;
+				@mixin viewport lg, left, 20;
+			}
+		}
+		& .perfil-rounded {
+			@mixin viewport lg, height, 50;
+			@mixin viewport lg, width, 200;
+		}
+	}
 }
 
-@media width >= 1280px{
-    .cbx-perfilador{
-        height: viewport(xl,800);
-       
-        .content-perfilador{
-            margin-bottom: viewport(xl,40);
-        }
-         .cbx-text{
-            padding:{
-                   left:viewport(xl,20);
-                   top:viewport(xl,20);
-            }
-        }
-        .label-close{
-                right: viewport(xl,20);
-                width:viewport(xl,0);
-                height:viewport(xl,0);
-                .cbx-icon{
-                    left:viewport(xl,20);
-                    top:viewport(xl,20);
-                    
-                }
-        } 
-        .cbx-headline-section{
-            
-            padding:{
-                right: viewport(xl,20);
-                left: viewport(xl,20);
-            }
-        }
-        .perfil-rounded{
-            height: viewport(xl,50);
-            width: viewport(xl,200);
-            margin-bottom: viewport(xl,60);
-        }
-    }
+@media (width >= 1280px) {
+	.cbx-perfilador {
+		@mixin viewport xl, height, 800;
+
+		& .content-perfilador {
+			@mixin viewport xl, margin-bottom, 40;
+		}
+		& .cbx-text {
+			padding: {
+				@mixin viewport xl, left, 20;
+				@mixin viewport xl, top, 20;
+			}
+		}
+		& .label-close {
+			@mixin viewport xl, right, 20;
+			@mixin viewport xl, width, 0;
+			@mixin viewport xl, height, 0;
+			& .cbx-icon {
+				@mixin viewport xl, left, 20;
+				@mixin viewport xl, top, 20;
+			}
+		}
+		& .cbx-headline-section {
+			padding: {
+				@mixin viewport xl, right, 20;
+				@mixin viewport xl, left, 20;
+			}
+		}
+		& .perfil-rounded {
+			@mixin viewport xl, height, 50;
+			@mixin viewport xl, width, 200;
+			@mixin viewport xl, margin-bottom, 60;
+		}
+	}
 }
 
-@media width >= 1440px{
-    .cbx-perfilador{
-        height: viewport(xxl,720);
-        .content-perfilador{
-            margin-bottom: viewport(xxl,40);
-        }
-        cbx-text{
-            padding:{
-                   left:viewport(xxl,20);
-                   top:viewport(xxl,20);
-            }
-        }
-        .label-close{
-                right: viewport(xxl,20);
-                width:viewport(xxl,0);
-                height:viewport(xxl,0);
-                .cbx-icon{
-                    left:viewport(xxl,20);
-                    top:viewport(xxl,20);
-                    
-                }
-        } 
-        .cbx-headline-section{
-            
-            padding:{
-                right: viewport(xxl,20);
-                left: viewport(xxl,20);
-            }
-        }
-        .perfil-rounded{
-            height: viewport(xxl,50);
-            width: viewport(xxl,200);
-            margin-bottom: viewport(xl,60);
-        }
-    }
+@media (width >= 1440px) {
+	.cbx-perfilador {
+		@mixin viewport xxl, height, 720;
+		& .content-perfilador {
+			@mixin viewport xxl, margin-bottom, 40;
+		}
+		& .cbx-text {
+			padding: {
+				@mixin viewport xxl, left, 20;
+				@mixin viewport xxl, top, 20;
+			}
+		}
+		& .label-close {
+			@mixin viewport xxl, right, 20;
+			@mixin viewport xxl, width, 0;
+			@mixin viewport xxl, height, 0;
+			& .cbx-icon {
+				@mixin viewport xxl, left, 20;
+				@mixin viewport xxl, top, 20;
+			}
+		}
+		& .cbx-headline-section {
+			padding: {
+				@mixin viewport xxl, right, 20;
+				@mixin viewport xxl, left, 20;
+			}
+		}
+		& .perfil-rounded {
+			@mixin viewport xxl, height, 50;
+			@mixin viewport xxl, width, 200;
+			@mixin viewport xxl, margin-bottom, 60;
+		}
+	}
 }

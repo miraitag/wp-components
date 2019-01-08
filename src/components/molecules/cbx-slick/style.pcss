@@ -1,17 +1,24 @@
+@import '../../mixins.pcss';
 
 .slick-slider{position:relative;display:block;box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-touch-callout:none;-khtml-user-select:none;-ms-touch-action:pan-y;touch-action:pan-y;-webkit-tap-highlight-color:transparent}.slick-list{position:relative;display:block;overflow:hidden;margin:0;padding:0}.slick-list:focus{outline:none}.slick-list.dragging{cursor:pointer;cursor:hand}.slick-slider .slick-list,.slick-slider .slick-track{-webkit-transform:translate3d(0, 0, 0);-moz-transform:translate3d(0, 0, 0);-ms-transform:translate3d(0, 0, 0);-o-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0)}.slick-track{position:relative;top:0;left:0;display:block}.slick-track:after,.slick-track:before{display:table;content:''}.slick-track:after{clear:both}.slick-loading .slick-track{visibility:hidden}.slick-slide{display:none;float:left;height:100%;min-height:1px}[dir=rtl] .slick-slide{float:right}.slick-slide img{display:block}.slick-slide.slick-loading img{display:none}.slick-slide.dragging img{pointer-events:none}.slick-initialized .slick-slide{display:block}.slick-loading .slick-slide{visibility:hidden}.slick-vertical .slick-slide{display:block;height:auto;border:1px solid transparent}.slick-arrow.slick-hidden{display:none}
 
-[m-slick*=arrows]{
+[m-slick*="arrows"] {
 	position: relative;
-	padding: 0 viewport(xs,20);
-	.slick-arrow{
-		@include absolute( center-vertical );
+	padding: {
+		@mixin viewport xs, top, 0;
+		@mixin viewport xs, right, 20;
+		@mixin viewport xs, bottom, 0;
+		@mixin viewport xs, left, 20;
+	}
+	& .slick-arrow {
+		@mixin absolute center-vertical;
 		color: transparent;
-		height: viewport(xs,50);
-		width: viewport(xs,20);
+		@mixin viewport xs, height, 50;
+		@mixin viewport xs, width, 20;
 		z-index: 0;
-		&.slick-prev, &.slick-next{
-			&::before{
+		&.slick-prev,
+		&.slick-next {
+			&::before {
 				position: absolute;
 				transform: translateX(-50%);
 				top: 0;
@@ -20,66 +27,68 @@
 				height: inherit;
 				color: var(--dark-gray);
 				font-family: cbx-icons;
-				font-size: viewport(xs,40);
+				@mixin viewport xs, font-size, 40;
 				transition: color 350ms ease-in-out;
 			}
 		}
-		&.slick-disabled{
-			&::before{
+		&.slick-disabled {
+			&::before {
 				color: var(--middle-gray);
 			}
 		}
-		&.slick-prev{
+		&.slick-prev {
 			left: 0;
-			&::before{
+			&::before {
 				content: "\67";
 			}
 		}
-		&.slick-next{
+		&.slick-next {
 			right: 0;
-			&::before{
+			&::before {
 				content: "\69";
 			}
 		}
 	}
 }
 
-[m-slick*=dots]{
-	.slick-list{
-		padding-bottom: viewport(xs,30) !important;
+[m-slick*="dots"] {
+	& .slick-list {
+		@mixin viewport xs, padding-bottom, 30) !importan;
 	}
-	.slick-slide:not(.cbx-hero){
-		margin-right: viewport(xs, 20);
-		&:last-child{
+	& .slick-slide:not(.cbx-hero) {
+		@mixin viewport xs, margin-right, 20;
+		&:last-child {
 			margin-right: 0;
 		}
 	}
-	.slick-dots{
+	& .slick-dots {
 		display: flex;
 		justify-content: center;
-		height: viewport(xs,10);
-		li, button{
+		@mixin viewport xs, height, 10;
+		& li,
+		& button {
 			height: inherit;
 		}
-		li{
+		& li {
 			display: inherit;
-			width: viewport(xs,10);
-			margin-right: viewport(xs,10);
+			@mixin viewport xs, width, 10;
+			@mixin viewport xs, margin-right, 10;
 			border-radius: 50%;
 			background-color: var(--bright-gray);
-			transition: width 350ms linear, border-radius 350ms linear, background-color 350ms linear;
-			border-style:solid;
+			transition: width 350ms linear, border-radius 350ms linear,
+				background-color 350ms linear;
+			border-style: solid;
 			border-width: 1px;
-			border-color:var(--white);
-			&:last-child{
+			border-color: var(--white);
+			&:last-child {
 				margin-right: 0;
 			}
-			&.slick-active{
-				width: viewport(xs,20);
+			&.slick-active {
+				@mixin viewport xs, width, 20;
 				background-color: var(--bright-gray);
-				border-radius: viewport(xs,20);
+				@mixin viewport xs, border-radius, 20;
 			}
-			button{
+			& button {
 				color: transparent;
 				width: inherit;
 			}
@@ -87,36 +96,37 @@
 	}
 }
 
-@media width >= 768px{
-	[m-slick*=arrows]{
-		padding:{
+@media (width >= 768px) {
+	[m-slick*="arrows"] {
+		padding: {
 			right: 20px;
 			left: 20px;
 		}
-		.slick-arrow{
+		& .slick-arrow {
 			height: 50px;
 			width: 20px;
-			&.slick-prev, &.slick-next{
-				&::before{
+			&.slick-prev,
+			&.slick-next {
+				&::before {
 					font-size: 40px;
 				}
 			}
 		}
 	}
-	
-	[m-slick*=dots]{
-		.slick-list{
+
+	[m-slick*="dots"] {
+		& .slick-list {
 			padding-bottom: 30px !important;
 		}
-		.slick-slide:not(.cbx-hero){
+		& .slick-slide:not(.cbx-hero) {
 			margin-right: 20px;
 		}
-		.slick-dots{
+		& .slick-dots {
 			height: 10px;
-			li{
+			& li {
 				width: 10px;
 				margin-right: 10px;
-				&.slick-active{
+				&.slick-active {
 					width: 20px;
 					border-radius: 20px;
 				}
@@ -125,102 +135,105 @@
 	}
 }
 
-@media width >= 1024px{
-	[m-slick*=arrows]{
-		.slick-arrow{
-			height: viewport(lg,50);
-			width: viewport(lg,20);
-			&.slick-prev, &.slick-next{
-				&::before{
-					font-size: viewport(lg,40);
+@media (width >= 1024px) {
+	[m-slick*="arrows"] {
+		& .slick-arrow {
+			@mixin viewport lg, height, 50;
+			@mixin viewport lg, width, 20;
+			&.slick-prev,
+			&.slick-next {
+				&::before {
+					@mixin viewport lg, font-size, 40;
 				}
 			}
 		}
 	}
-	
-	[m-slick*=dots]{
-		.slick-list{
-			padding-bottom: viewport(lg,30) !important;
+
+	[m-slick*="dots"] {
+		& .slick-list {
+			@mixin viewport lg, padding-bottom, 30) !importan;
 		}
-		.slick-slide:not(.cbx-hero){
-			margin-right: viewport(lg, 20);
+		& .slick-slide:not(.cbx-hero) {
+			@mixin viewport lg, margin-right, 20;
 		}
-		.slick-dots{
-			height: viewport(lg,10);
-			li{
-				width: viewport(lg,10);
-				margin-right: viewport(lg,10);
-				&.slick-active{
-					width: viewport(lg,20);
-					border-radius: viewport(lg,20);
+		& .slick-dots {
+			@mixin viewport lg, height, 10;
+			& li {
+				@mixin viewport lg, width, 10;
+				@mixin viewport lg, margin-right, 10;
+				&.slick-active {
+					@mixin viewport lg, width, 20;
+					@mixin viewport lg, border-radius, 20;
 				}
 			}
 		}
 	}
 }
 
-@media width >= 1280px{
-	[m-slick*=arrows]{
-		.slick-arrow{
-			height: viewport(xl,50);
-			width: viewport(xl,20);
-			&.slick-prev, &.slick-next{
-				&::before{
-					font-size: viewport(xl,40);
+@media (width >= 1280px) {
+	[m-slick*="arrows"] {
+		& .slick-arrow {
+			@mixin viewport xl, height, 50;
+			@mixin viewport xl, width, 20;
+			&.slick-prev,
+			&.slick-next {
+				&::before {
+					@mixin viewport xl, font-size, 40;
 				}
 			}
 		}
 	}
-	
-	[m-slick*=dots]{
-		.slick-list{
-			padding-bottom: viewport(xl,30) !important;
+
+	[m-slick*="dots"] {
+		& .slick-list {
+			@mixin viewport xl, padding-bottom, 30) !importan;
 		}
-		.slick-slide:not(.cbx-hero){
-			margin-right: viewport(xl, 20);
+		& .slick-slide:not(.cbx-hero) {
+			@mixin viewport xl, margin-right, 20;
 		}
-		.slick-dots{
-			height: viewport(xl,10);
-			li{
-				width: viewport(xl,10);
-				margin-right: viewport(xl,10);
-				&.slick-active{
-					width: viewport(xl,20);
-					border-radius: viewport(xl,20);
+		& .slick-dots {
+			@mixin viewport xl, height, 10;
+			& li {
+				@mixin viewport xl, width, 10;
+				@mixin viewport xl, margin-right, 10;
+				&.slick-active {
+					@mixin viewport xl, width, 20;
+					@mixin viewport xl, border-radius, 20;
 				}
 			}
 		}
 	}
 }
 
-@media width >= 1440px{
-	[m-slick*=arrows]{
-		.slick-arrow{
-			height: viewport(xxl,50);
-			width: viewport(xxl,20);
-			&.slick-prev, &.slick-next{
-				&::before{
-					font-size: viewport(xxl,40);
+@media width >= 1440px {
+	[m-slick*="arrows"] {
+		& .slick-arrow {
+			@mixin viewport xxl, height,  50;
+			@mixin viewport xxl, width,  20;
+			&.slick-prev,
+			&.slick-next {
+				&::before {
+					@mixin viewport xxl, font-size,  40;
 				}
 			}
 		}
 	}
-	
-	[m-slick*=dots]{
-		.slick-list{
-			padding-bottom: viewport(xxl,30) !important;
+
+	[m-slick*="dots"] {
+		& .slick-list {
+			@mixin viewport xxl, padding-bottom,  30) !importan;
 		}
-		.slick-slide:not(.cbx-hero){
-			margin-right: viewport(xxl, 20);
+		& .slick-slide:not(.cbx-hero) {
+			@mixin viewport xxl, margin-right,  20;
 		}
-		.slick-dots{
-			height: viewport(xxl,10);
-			li{
-				width: viewport(xxl,10);
-				margin-right: viewport(xxl,10);
-				&.slick-active{
-					width: viewport(xxl,20);
-					border-radius: viewport(xxl,20);
+		& .slick-dots {
+			@mixin viewport xxl, height,  10;
+			& li {
+				@mixin viewport xxl, width,  10;
+				@mixin viewport xxl, margin-right,  10;
+				&.slick-active {
+					@mixin viewport xxl, width,  20;
+					@mixin viewport xxl, border-radius,  20;
 				}
 			}
 		}

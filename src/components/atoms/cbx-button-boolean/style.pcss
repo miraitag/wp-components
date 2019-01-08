@@ -1,101 +1,84 @@
+@import '../../mixins.pcss';
 
-
-.cbx-button-boolean{
-    @include blue-wave( citi );
-    padding: viewport(xs, 4);
-    border-radius: 50%;
-    display:flex;
-    text-align: center;
-    font:{
-        family: var(--font-r);
-        size: viewport(xs, 22);
-    }
-    line-height: 1.5;
-    overflow: hidden;
-    height: viewport(xs, 80);
-    width: viewport(xs, 80);
-    &[m-active=true]{
-        background-color: var(--white) ;
-        > span{
-            @include blue-wave( citi );
-            color: var(--white);
-        }
-    }
-    > span{
-        background-color: var(--white);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: inherit;
-        height: viewport(xs, 72);
-    }
+.cbx-button-boolean {
+	@mixin blue-wave citi;
+	@mixin viewport xs, padding, 4;
+	@mixin viewport xs, height, 80;
+	@mixin viewport xs, width, 80;
+	@mixin viewport xs, font-size, 22;
+	font-family: var(--font-r);
+	border-radius: 50%;
+	display: flex;
+	text-align: center;
+	line-height: 1.5;
+	overflow: hidden;
+	&[m-active="true"] {
+		background-color: var(--white);
+		& > span {
+			@mixin blue-wave citi;
+			color: var(--white);
+		}
+	}
+	& > span {
+		@mixin viewport xs, height, 72;
+		background-color: var(--white);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: inherit;
+	}
 }
 
-@media width >= 768px{
-    .cbx-button-boolean{
-        @include blue-wave( citi );
-        padding: 4px;
-        font-size: 22px;
-        height: 100px;
-        width: 100px;
-        letter-spacing: 1px;
-        &[m-active=true]{
-          background-color: var(--white);
-            > span{
-               @include blue-wave( citi );
-               color: var(--white);
-            }
-        }
-        > span{
-            height: 90px;
-        }
-    }  
+@media (width >= 768px) {
+	.cbx-button-boolean {
+		padding: 4px;
+		font-size: 22px;
+		height: 100px;
+		width: 100px;
+		letter-spacing: 1px;
+		& > span {
+			height: 90px;
+		}
+	}
 }
 
-@media width >= 1024px{
-  .cbx-button-boolean{
-        @include blue-wave( citi );
-        padding: viewport(lg, 4);
-        font-size: viewport(lg, 22);
-        height: viewport(lg, 100);
-        width: viewport(lg, 100);
-        letter-spacing: viewport(lg, 1);
-        [m-active=true]{
-            &:hover{
-                @include blue-wave( citi );
-                color: var(--white);
-            }
-        }  
-        > span{
-            width: inherit;
-            height: viewport(lg, 90);
-        } 
-    }
+@media (width >= 1024px) {
+	.cbx-button-boolean {
+		@mixin viewport lg, padding, 4;
+		@mixin viewport lg, font-size, 22;
+		@mixin viewport lg, height, 100;
+		@mixin viewport lg, width, 100;
+		@mixin viewport lg, letter-spacing, 1;
+		& > span {
+			width: inherit;
+			@mixin viewport lg, height, 90;
+		}
+	}
 }
 
-@media width >= 1280px{
-    .cbx-button-boolean{
-        padding: viewport(xl, 4);
-        font-size: viewport(xl, 22);
-        height: viewport(xl, 100);
-        width: viewport(xl, 100);
-        letter-spacing: viewport(xl, 1);
-        > span{            
-            height: viewport(xl, 90);
-        } 
-    }
+@media (width >= 1280px) {
+	.cbx-button-boolean {
+		@mixin viewport xl, padding, 4;
+		@mixin viewport xl, font-size, 22;
+		@mixin viewport xl, height, 100;
+		@mixin viewport xl, width, 100;
+		@mixin viewport xl, letter-spacing, 1;
+		& > span {
+			@mixin viewport xl, height, 90;
+		}
+	}
 }
 
-@media width >= 1440px{
-    .cbx-button-boolean{
-        padding: viewport(xxl, 4);
-        font-size: viewport(xxl, 22);
-        height: viewport(xxl, 100);
-        width: viewport(xxl, 100);
-        letter-spacing: viewport(xxl, 1);
-        > span{            
-            height: viewport(xxl, 90);
-        } 
-    }
+@media (width >= 1440px) {
+	.cbx-button-boolean {
+		@mixin viewport xxl, padding, 4;
+		@mixin viewport xxl, font-size, 22;
+		@mixin viewport xxl, height, 100;
+		@mixin viewport xxl, width, 100;
+		@mixin viewport xxl, letter-spacing, 1;
+		& > span {
+			@mixin viewport xxl, height, 90;
+		}
+	}
 }

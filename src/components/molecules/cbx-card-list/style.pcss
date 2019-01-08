@@ -1,33 +1,35 @@
+@import '../../mixins.pcss';
+
 .cbx-card-list {
-	@include box-shadow(xs, medium-out);
-	.card-list-head {
-		border-top-left-radius: borderRadius(xs);
-		border-top-right-radius: borderRadius(xs);
+	@mixin box-shadow xs, medium-out;
+	& .card-list-head {
+		border-top-left-radius: calc(4*100/320)vw;
+		border-top-right-radius: calc(4*100/320)vw;
 		background-color: var(--soft-blue);
 		display: flex;
 		justify-content: space-between;
 		width: 100%;
-		padding: viewport(xs, 20);
+		@mixin viewport xs, padding, 20;
 
-		.cbx-title {
+		& .cbx-title {
 			color: var(--white);
 		}
 	}
-	.card-list-body {
+	& .card-list-body {
 		background-color: var(--bright-gray);
 		padding: {
-			top: viewport(xs, 20);
-			right: viewport(xs, 20);
-			bottom: viewport(xs, 40);
-			left: viewport(xs, 20);
+			@mixin viewport xs, top, 20;
+			@mixin viewport xs, right, 20;
+			@mixin viewport xs, bottom, 40;
+			@mixin viewport xs, left, 20;
 		}
-		.cbx-sub-title {
+		& .cbx-sub-title {
 			margin-bottom: 40px;
 		}
 	}
-	.cbx-footer-list {
-		border-bottom-left-radius: borderRadius(xs);
-		border-bottom-right-radius: borderRadius(xs);
+	& .cbx-footer-list {
+		border-bottom-left-radius: calc(4*100/320)vw;
+		border-bottom-right-radius: calc(4*100/320)vw;
 		background-color: var(--white);
 		width: 100%;
 		display: flex;
@@ -35,14 +37,14 @@
 	}
 	&[m-mody="img-h"] {
 		box-shadow: none;
-		.card-list-body {
-			.cbx-list-square {
-				margin-bottom: viewport(xs, 20);
+		& .card-list-body {
+			& .cbx-list-square {
+				@mixin viewport xs, margin-bottom, 20;
 			}
-			.cbx-img {
+			& .cbx-img {
 				display: flex;
 				justify-content: center;
-				img {
+				& img {
 					width: auto;
 				}
 			}
@@ -50,15 +52,15 @@
 	}
 }
 
-@media width >= 768px {
+@media (width >= 768px) {
 	.cbx-card-list {
-		@include box-shadow(sm, medium-out);
-		.card-list-head {
-			border-top-left-radius: borderRadius(sm);
-			border-top-right-radius: borderRadius(sm);
+		@mixin box-shadow sm, medium-out;
+		& .card-list-head {
+			border-top-left-radius: 4px;
+			border-top-right-radius: 4px;
 			padding: 20px;
 		}
-		.card-list-body {
+		& .card-list-body {
 			padding: {
 				top: 20px;
 				right: 20px;
@@ -67,88 +69,85 @@
 			}
 		}
 		&[m-mody="img-h"] {
-			.content-flex {
+			& .content-flex {
 				display: flex;
 			}
-			.cbx-list-square {
+			& .cbx-list-square {
 				width: 50%;
 				margin-right: 20px;
 			}
-			.cbx-img {
+			& .cbx-img {
 				width: 50%;
-				img {
-					width: auto;
-				}
 				background: transparent;
 			}
 		}
 	}
 }
 
-@media width >= 1024px {
+@media (width >= 1024px) {
 	.cbx-card-list {
-		@include box-shadow(lg, medium-out);
-		.card-list-head {
-			border-top-left-radius: borderRadius(lg);
-			border-top-right-radius: borderRadius(lg);
-			padding: viewport(lg, 20);
+		@mixin box-shadow lg, medium-out;
+		& .card-list-head {
+			border-top-left-radius: calc(4*100/1024)vw;
+			border-top-right-radius: calc(4*100/1024)vw;
+			@mixin viewport lg, padding, 20;
 		}
-		.card-list-body {
+		& .card-list-body {
 			padding: {
-				top: viewport(lg, 20);
-				right: viewport(lg, 20);
-				bottom: viewport(lg, 40);
-				left: viewport(lg, 20);
+				@mixin viewport lg, top, 20;
+				@mixin viewport lg, right, 20;
+				@mixin viewport lg, bottom, 40;
+				@mixin viewport lg, left, 20;
 			}
 		}
-		.cbx-footer-list {
-			border-bottom-left-radius: borderRadius(lg);
-			border-bottom-right-radius: borderRadius(lg);
+		& .cbx-footer-list {
+			border-bottom-left-radius: calc(4*100/1024)vw;
+			border-bottom-right-radius: calc(4*100/1024)vw;
 		}
 	}
 }
 
-@media width >= 1280px {
+@media (width >= 1280px) {
 	.cbx-card-list {
-		@include box-shadow(xl, medium-out);
-		.card-list-head {
-			border-top-left-radius: borderRadius(xl);
-			border-top-right-radius: borderRadius(xl);
-			padding: viewport(xl, 20);
+		@mixin box-shadow xl, medium-out;
+		& .card-list-head {
+			border-top-left-radius: calc(4*100/1280)vw;
+			border-top-right-radius: calc(4*100/1280)vw;
+			@mixin viewport xl, padding, 20;
 		}
-		.card-list-body {
+		& .card-list-body {
 			padding: {
-				top: viewport(xl, 20);
-				right: viewport(xl, 20);
-				bottom: viewport(xl, 40);
-				left: viewport(xl, 20);
+				@mixin viewport xl, top, 20;
+				@mixin viewport xl, right, 20;
+				@mixin viewport xl, bottom, 40;
+				@mixin viewport xl, left, 20;
 			}
 		}
-		.cbx-footer-list {
-			border-bottom-left-radius: borderRadius(xl);
-			border-bottom-right-radius: borderRadius(xl);
+		& .cbx-footer-list {
+			border-bottom-left-radius: calc(4*100/1280)vw;
+			border-bottom-right-radius: calc(4*100/1280)vw;
 		}
 	}
 }
-@media width >= 1440px {
+@media (width >= 1440px) {
 	.cbx-card-list {
-		@include box-shadow(xxl, medium-out);
-		.card-list-head {
-			border-top-left-radius: borderRadius(xxl);
-			border-top-right-radius: borderRadius(xxl);
-			padding: viewport(lg, 20);
+		@mixin box-shadow xxl, medium-out;
+		& .card-list-head {
+			border-top-left-radius: calc(4*100/1440)vw;
+			border-top-right-radius: calc(4*100/1440)vw;
+			@mixin viewport lg, padding, 20;
 		}
-		.card-list-body {
+		& .card-list-body {
 			padding: {
-				top: viewport(xxl, 20);
-				right: viewport(xxl, 20);
-				bottom: viewport(xxl, 40);
-				left: viewport(xxl, 20);
+				@mixin viewport xxl, top,  20;
+				@mixin viewport xxl, right,  20;
+				@mixin viewport xxl, bottom,  40;
+				@mixin viewport xxl, left,  20;
 			}
 		}
-		.cbx-footer-list {
-			border-bottom-left-radius: borderRadius(xxl);
-			border-bottom-right-radius: borderRadius(xxl);
+		& .cbx-footer-list {
+			border-bottom-left-radius: calc(4*100/1440)vw;
+			border-bottom-right-radius: calc(4*100/1440)vw;
 		}
 	}
 }

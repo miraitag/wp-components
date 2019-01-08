@@ -1,65 +1,65 @@
+@import '../../mixins.pcss';
 
-
-[m-container=hero]{
+[m-container="hero"] {
 	position: relative;
-	height: viewport(xs,240);
+	@mixin xs, height, 240;
 	overflow: hidden;
-	.slick-slide{
-		height: viewport(xs, 220);
+	& .slick-slide {
+		@mixin xs, height, 220;
 	}
-	.cbx-hero{
+	& .cbx-hero {
 		display: inline-block;
 	}
-	.slick-dots{
-		@include absolute( center-horizontal );
+	& .slick-dots {
+		@mixin absolute center-horizontal;
 		bottom: 0;
 	}
 }
 
-@media width >= 768px{
-	[m-container=hero]{
+@media (width >= 768px) {
+	[m-container="hero"] {
 		height: 276px;
-		.slick-slide{
+		& .slick-slide {
 			height: 276px;
 		}
-		.slick-dots{
+		& .slick-dots {
 			bottom: 20px;
 		}
 	}
 }
 
-@media width >= 1024px{
-	[m-container=hero]{
-		height: viewport(lg,368);
-		.slick-slide{
-			height: viewport(lg,368);
+@media (width >= 1024px) {
+	[m-container="hero"] {
+		@mixin lg, height, 368;
+		& .slick-slide {
+			@mixin lg, height, 368;
 		}
-		.slick-dots{
-			bottom: viewport(lg,20);
-		}
-	}
-}
-
-@media width >= 1280px{
-	[m-container=hero]{
-		height: viewport(xl,400);
-		.slick-slide{
-			height: viewport(xl,400);
-		}
-		.slick-dots{
-			bottom: viewport(xl,20);
+		& .slick-dots {
+			@mixin lg, bottom, 20;
 		}
 	}
 }
 
-@media width >= 1440px{
-	[m-container=hero]{
-		height: viewport(xxl,400);
-		.slick-slide{
-			height: viewport(xxl,400);
+@media (width >= 1280px) {
+	[m-container="hero"] {
+		@mixin xl, height, 400;
+		& .slick-slide {
+			@mixin xl, height, 400;
 		}
-		.slick-dots{
-			bottom: viewport(xxl,20);
+		& .slick-dots {
+			@mixin xl, bottom, 20;
+		}
+	}
+}
+
+@media (width >= 1440px) {
+	[m-container="hero"] {
+		@mixin viewport xxl, height, 400;
+		& .slick-slide {
+			@mixin viewport xxl, height, 400;
+		}
+		& .slick-dots {
+			@mixin viewport xxl, bottom, 20;
 		}
 	}
 }

@@ -1,38 +1,36 @@
-
+@import '../../mixins.pcss';
 
 .cbx-category{
-    font:{
-        size: viewport( xs, 16);
-        family: var(--font-r);
-    }
-    letter-spacing: viewport( xs, 4);
+    @mixin viewport xs, letter-spacing, 4;
+    @mixin viewport xs, font-size, 16;
+    font-family: var(--font-r);
     color: var(--light-gray);
 }
 
-@media width >= 768px{
+@media (width >= 768px){
     .cbx-category{
         font-size: 16px;
         letter-spacing: 4px;
     }
 }
 
-@media width >= 1024px{
+@media (width >= 1024px){
     .cbx-category{
-        font-size: viewport( lg, 16);
-        letter-spacing: viewport( lg, 4);
+        @mixin viewport lg, font-size, 16;
+        @mixin viewport lg, letter-spacing, 4;
     }
 }
 
-@media width >= 1280px{
+@media (width >= 1280px){
     .cbx-category{
-        font-size: viewport(xl, 20);
-        letter-spacing: viewport(xl, 4);
+        @mixin viewport xl, font-size, 20;
+        @mixin viewport xl, letter-spacing, 4;
     }
 }
 
-@media width >= 1440px{
+@media (width >= 1440px){
     .cbx-category{
-        font-size: viewport(xxl, 20);
-        letter-spacing: viewport(xxl, 4);
+        @mixin viewport xxl, font-size, 20;
+        @mixin viewport xxl, letter-spacing, 4;
     }
 }

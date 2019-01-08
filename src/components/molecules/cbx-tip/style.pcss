@@ -1,69 +1,70 @@
+@import '../../mixins.pcss';
 
-.cbx-tip{
-    padding: viewport(xs,20);
-    display: flex;
-    align-items: center;
-    border-top:solid;
-    border-top-width: 1px;
-    border-top-color: var(--bright-gray);
-    border-bottom:solid;
-    border-bottom-width: 1px;
-    border-bottom-color: var(--bright-gray);
-    .cbx-icon{
-        width: viewport(xs,30);
-        margin-right: viewport(xs,20);
-        color:var(--soft-blue);
-        i {
-            font-size: viewport(xs,45);
-        }
-    }
+.cbx-tip {
+	@mixin viewport xs, padding, 20;
+	display: flex;
+	align-items: center;
+	border-top: solid;
+	border-top-width: 1px;
+	border-top-color: var(--bright-gray);
+	border-bottom: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: var(--bright-gray);
+	& .cbx-icon {
+		@mixin viewport xs, width, 30;
+		@mixin viewport xs, margin-right, 20;
+		color: var(--soft-blue);
+		& i {
+			@mixin viewport xs, font-size, 45;
+		}
+	}
 }
 
-@media width >= 768px{
-    .cbx-tip{
-        padding: 20px;
-        .cbx-icon{
-            width: 30px;
-            margin-right: 20px;
-            i {
-                font-size: 40px;
-            }
-        }
-    }
+@media (width >= 768px) {
+	.cbx-tip {
+		padding: 20px;
+		& .cbx-icon {
+			width: 30px;
+			margin-right: 20px;
+			& i {
+				font-size: 40px;
+			}
+		}
+	}
 }
-@media width >= 1024px{
-    .cbx-tip{
-        padding: viewport(lg,20);
-        .cbx-icon{
-            width: viewport(lg,30);
-            margin-right: viewport(lg,20);
-            i {
-                font-size: viewport(lg,45);
-            }
-        }
-    }
+@media (width >= 1024px) {
+	.cbx-tip {
+		@mixin viewport lg, padding, 20;
+		& .cbx-icon {
+			@mixin viewport lg, width, 30;
+			@mixin viewport lg, margin-right, 20;
+			& i {
+				@mixin viewport lg, font-size, 45;
+			}
+		}
+	}
 }
-@media width >= 1280px{
-    .cbx-tip{
-        padding: viewport(xl,20);
-        .cbx-icon{
-            width: viewport(xl,30);
-            margin-right: viewport(xl,20);
-            i {
-                font-size: viewport(xl,45);
-            }
-        }
-    }
+@media (width >= 1280px) {
+	.cbx-tip {
+		@mixin viewport xl, padding, 20;
+		& .cbx-icon {
+			@mixin viewport xl, width, 30;
+			@mixin viewport xl, margin-right, 20;
+			& i {
+				@mixin viewport xl, font-size, 45;
+			}
+		}
+	}
 }
-@media width >= 1440px{
-    .cbx-tip{
-        padding: viewport(xxl,20);
-        .cbx-icon{
-            width: viewport(xxl,30);
-            margin-right: viewport(xxl,20);
-            i {
-                font-size: viewport(xxl,45);
-            }
-        }
-    }
+@media (width >= 1440px) {
+	.cbx-tip {
+		@mixin viewport xxl, padding,  20;
+		& .cbx-icon {
+			@mixin viewport xxl, width,  30;
+			@mixin viewport xxl, margin-right,  20;
+			& i {
+				@mixin viewport xxl, font-size,  45;
+			}
+		}
+	}
 }

@@ -1,63 +1,65 @@
+@import '../../mixins.pcss';
+
 .cbx-credit-card {
-	width: viewport(xs, 100);
-	height: viewport(xs, 65);
+	@mixin viewport xs, width, 100;
+	@mixin viewport xs, height, 65;
 	padding: {
-		right: viewport(xs, 15);
-		top: viewport(xs, 10);
+		@mixin viewport xs, right, 15;
+		@mixin viewport xs, top, 10;
 	}
 	position: relative;
 	&[m-active="false"] {
 		cursor: pointer;
-		.cbx-img {
+		& .cbx-img {
 			@mixin rgba background-color, var(--soft-blue), 0.2;
-			@include absolute(center);
-			border-radius: borderRadius(xs);
+			@mixin absolute center;
+			@mixin border-radius xs;
 			border: {
-				width: viewport(xs, 2);
+				@mixin viewport xs, width, 2;
 				style: solid;
 				color: var(--soft-blue);
 			}
 			background-image: none;
-			img {
+			& img {
 				display: none;
 			}
 		}
-		.credit-button {
-			@include absolute(center);
+		& .credit-button {
+			@mixin absolute center;
 		}
-		.cbx-icon {
-			@include absolute(center);
+		& .cbx-icon {
+			@mixin absolute center;
 			background-color: var(--soft-blue);
 			color: var(--white);
 			border: none;
-			i {
+			& i {
 				&::before {
 					content: "\30";
 				}
 			}
 		}
 	}
-	.cbx-img {
-		@include placeholder-img;
+	& .cbx-img {
+		@mixin placeholder-img;
 		transition: background-color 350ms ease-in-out;
-		width: viewport(xs, 90);
-		height: viewport(xs, 55);
+		@mixin viewport xs, width, 90;
+		@mixin viewport xs, height, 55;
 	}
-	.credit-button {
-		height: viewport(xs, 44);
-		width: viewport(xs, 44);
+	& .credit-button {
+		@mixin viewport xs, height, 44;
+		@mixin viewport xs, width, 44;
 		position: absolute;
 		top: 0;
 		right: 0;
 	}
-	.cbx-icon {
+	& .cbx-icon {
 		position: absolute;
 		top: 0;
 		right: 0;
 		background-color: var(--white);
-		i {
+		& i {
 			&::before {
-				font-size: viewport(xs, 8);
+				@mixin viewport xs, font-size, 8;
 			}
 		}
 	}
@@ -68,16 +70,16 @@
 		&[m-active="true"] {
 			display: flex;
 			justify-content: center;
-			padding-bottom: viewport(xs, 10);
-			margin-top: viewport(xs, 10);
-			.credit-button {
+			@mixin viewport xs, padding-bottom, 10;
+			@mixin viewport xs, margin-top, 10;
+			& .credit-button {
 				top: auto;
 				right: auto;
 				bottom: 0;
 				left: 50%;
 				transform: translateX(-50%);
 
-				.cbx-icon {
+				& .cbx-icon {
 					top: auto;
 					right: auto;
 					left: 50%;
@@ -88,7 +90,7 @@
 	}
 }
 
-@media width >= 768px {
+@media (width >= 768px) {
 	.cbx-credit-card {
 		width: 100px;
 		height: 65px;
@@ -97,21 +99,21 @@
 			top: 10px;
 		}
 		&[m-active="false"] {
-			.cbx-img {
-				border-radius: borderRadius(sm);
+			& .cbx-img {
+				@mixin border-radius sm;
 				border-width: 2px;
 			}
 		}
-		.cbx-img {
+		& .cbx-img {
 			width: 90px;
 			height: 55px;
 		}
-		.credit-button {
+		& .credit-button {
 			height: 44px;
 			width: 44px;
 		}
-		.cbx-icon {
-			i {
+		& .cbx-icon {
+			& i {
 				&::before {
 					font-size: 8px;
 				}
@@ -122,137 +124,137 @@
 				padding-bottom: 10px;
 				margin-top: 10px;
 			}
-			.cbx-img {
+			& .cbx-img {
 				width: 80px;
 				height: 45px;
 			}
 		}
 	}
 }
-@media width >= 1024px {
+@media (width >= 1024px) {
 	.cbx-credit-card {
-		width: viewport(lg, 125);
-		height: viewport(lg, 85);
+		@mixin viewport lg, width, 125;
+		@mixin viewport lg, height, 85;
 		padding: {
-			right: viewport(lg, 15);
-			top: viewport(lg, 10);
+			@mixin viewport lg, right, 15;
+			@mixin viewport lg, top, 10;
 		}
 		&[m-active="false"] {
-			.cbx-img {
-				border-radius: borderRadius(lg);
-				border-width: viewport(lg, 2);
+			& .cbx-img {
+				@mixin border-radius lg;
+				@mixin viewport lg, border-width, 2;
 			}
 		}
-		.cbx-img {
-			width: viewport(lg, 120);
-			height: viewport(lg, 75);
+		& .cbx-img {
+			@mixin viewport lg, width, 120;
+			@mixin viewport lg, height, 75;
 		}
-		.credit-button {
-			height: viewport(lg, 44);
-			width: viewport(lg, 44);
+		& .credit-button {
+			@mixin viewport lg, height, 44;
+			@mixin viewport lg, width, 44;
 		}
-		.cbx-icon {
-			i {
+		& .cbx-icon {
+			& i {
 				&::before {
-					font-size: viewport(lg, 8);
+					@mixin viewport lg, font-size, 8;
 				}
 			}
 		}
 		&[m-mody="close-bottom"] {
-			width: viewport(lg, 125);
-			height: viewport(lg, 85);
+			@mixin viewport lg, width, 125;
+			@mixin viewport lg, height, 85;
 			&[m-active="true"] {
-				padding-bottom: viewport(lg, 10);
+				@mixin viewport lg, padding-bottom, 10;
 			}
-			.cbx-img {
-				width: viewport(lg, 120);
-				height: viewport(lg, 75);
+			& .cbx-img {
+				@mixin viewport lg, width, 120;
+				@mixin viewport lg, height, 75;
 			}
 		}
 	}
 }
 
-@media width >= 1280px {
+@media (width >= 1280px) {
 	.cbx-credit-card {
-		width: viewport(xl, 125);
-		height: viewport(xl, 85);
+		@mixin viewport xl, width, 125;
+		@mixin viewport xl, height, 85;
 		padding: {
-			right: viewport(xl, 15);
-			top: viewport(xl, 10);
+			@mixin viewport xl, right, 15;
+			@mixin viewport xl, top, 10;
 		}
 		&[m-active="false"] {
-			.cbx-img {
-				border-radius: borderRadius(xl);
-				border-width: viewport(xl, 2);
+			& .cbx-img {
+				@mixin border-radius xl;
+				@mixin viewport xl, border-width, 2;
 			}
 		}
-		.cbx-img {
-			width: viewport(xl, 120);
-			height: viewport(xl, 75);
+		& .cbx-img {
+			@mixin viewport xl, width, 120;
+			@mixin viewport xl, height, 75;
 		}
-		.credit-button {
-			height: viewport(xl, 44);
-			width: viewport(xl, 44);
+		& .credit-button {
+			@mixin viewport xl, height, 44;
+			@mixin viewport xl, width, 44;
 		}
-		.cbx-icon {
-			i {
+		& .cbx-icon {
+			& i {
 				&::before {
-					font-size: viewport(xl, 8);
+					@mixin viewport xl, font-size, 8;
 				}
 			}
 		}
 		&[m-mody="close-bottom"] {
-			width: viewport(xl, 125);
-			height: viewport(xl, 85);
+			@mixin viewport xl, width, 125;
+			@mixin viewport xl, height, 85;
 			&[m-active="true"] {
-				padding-bottom: viewport(xl, 10);
+				@mixin viewport xl, padding-bottom, 10;
 			}
-			.cbx-img {
-				width: viewport(xl, 120);
-				height: viewport(xl, 75);
+			& .cbx-img {
+				@mixin viewport xl, width, 120;
+				@mixin viewport xl, height, 75;
 			}
 		}
 	}
 }
 
-@media width >= 1280px {
+@media (width >= 1280px) {
 	.cbx-credit-card {
-		width: viewport(xxl, 125);
-		height: viewport(xxl, 85);
+		@mixin viewport xxl, width,  125;
+		@mixin viewport xxl, height,  85;
 		padding: {
-			right: viewport(xxl, 15);
-			top: viewport(xxl, 10);
+			@mixin viewport xxl, right,  15;
+			@mixin viewport xxl, top,  10;
 		}
 		&[m-active="false"] {
-			.cbx-img {
-				border-radius: borderRadius(xxl);
-				border-width: viewport(xxl, 2);
+			& .cbx-img {
+				@mixin border-radius xxl;
+				@mixin viewport xxl, border-width,  2;
 			}
 		}
-		.cbx-img {
-			width: viewport(xxl, 120);
-			height: viewport(xxl, 75);
+		& .cbx-img {
+			@mixin viewport xxl, width,  120;
+			@mixin viewport xxl, height,  75;
 		}
-		.credit-button {
-			height: viewport(xxl, 44);
-			width: viewport(xxl, 44);
+		& .credit-button {
+			@mixin viewport xxl, height,  44;
+			@mixin viewport xxl, width,  44;
 		}
-		.cbx-icon {
-			i {
+		& .cbx-icon {
+			& i {
 				&::before {
-					font-size: viewport(xxl, 8);
+					@mixin viewport xxl, font-size,  8;
 				}
 			}
 		}
 		&[m-mody="close-bottom"] {
-			width: viewport(xxl, 125);
-			height: viewport(xxl, 85);
+			@mixin viewport xxl, width,  125;
+			@mixin viewport xxl, height,  85;
 			&[m-active="true"] {
-				padding-bottom: viewport(xxl, 10);
+				@mixin viewport xxl, padding-bottom,  10;
 			}
-			.cbx-img {
-				width: viewport(xxl, 120);
-				height: viewport(xxl, 75);
+			& .cbx-img {
+				@mixin viewport xxl, width,  120;
+				@mixin viewport xxl, height,  75;
 			}
 		}
 	}

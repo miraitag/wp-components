@@ -1,33 +1,31 @@
-
+@import '../../mixins.pcss';
 
 .cbx-hightlight{
-    font: {
-        size: viewport( xs, 18);
-        family: var(--font-r);
-    }
+    @mixin viewport xs, font-size, 18;
+    font-family: var(--font-r);
     color: var(--darkest-gray);
 }
 
-@media width >= 768px{
+@media (width >= 768px){
     .cbx-hightlight{
         font-size: 18px;
     }
 }
 
-@media width >= 1024px{
+@media (width >= 1024px){
     .cbx-hightlight{
-        font-size: viewport( lg, 18 );
+        @mixin viewport lg, font-size, 18;
     }
 }
 
-@media width >= 1280px{
+@media (width >= 1280px){
     .cbx-hightlight{
-        font-size: viewport(xl, 22 );
+        @mixin viewport xl, font-size, 22;
     }
 }
 
-@media width >= 1440px{
+@media (width >= 1440px){
     .cbx-hightlight{
-        font-size: viewport(xxl, 22 );
+        @mixin viewport xxl, font-size, 22;
     }
 }

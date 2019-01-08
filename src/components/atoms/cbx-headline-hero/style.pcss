@@ -1,33 +1,31 @@
-
+@import '../../mixins.pcss';
 
 .cbx-headline-hero{
-    font:{
-        size: viewport( xs, 24);
-        family: var(--font-b);
-    }
+    @mixin viewport xs, font-size, 24;
+    font-family: var(--font-b);
     color: var(--darkest-gray);
 }
 
-@media width >= 768px{
+@media (width >= 768px){
     .cbx-headline-hero{
         font-size: 24px;
     }
 }
 
-@media width >= 1024px{
+@media (width >= 1024px){
     .cbx-headline-hero{
-        font-size: viewport( lg, 24);
+        @mixin viewport lg, font-size, 24;
     }
 }
 
-@media width >= 1280px{
+@media (width >= 1280px){
     .cbx-headline-hero{
-        font-size: viewport(xl, 36);
+        @mixin viewport xl, font-size, 36;
     }
 }
 
-@media width >= 1440px{
+@media (width >= 1440px){
     .cbx-headline-hero{
-        font-size: viewport(xxl, 36);
+        @mixin viewport xxl, font-size, 36;
     }
 }

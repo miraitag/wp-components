@@ -1,0 +1,54 @@
+@import '../../mixins.pcss';
+
+.cbx-list {
+	@mixin viewport xs, margin-bottom, 20;
+	.list-item {
+		display: flex;
+		.bullet {
+			@mixin viewport xs, margin-right, 5;
+		}
+	}
+}
+
+@media (width >= 768px) {
+	margin-bottom: 20px;
+	.cbx-list {
+		.list-item {
+			.bullet {
+				margin-right: 5px;
+			}
+		}
+	}
+}
+@media (width >= 1024px) {
+	.cbx-list {
+		@mixin viewport lg, margin-bottom, 20;
+		.list-item {
+			.bullet {
+				@mixin viewport lg, margin-right, 5;
+			}
+		}
+	}
+}
+
+@media (width >= 1280px) {
+	@mixin viewport xl, margin-bottom, 20;
+	.cbx-list {
+		.list-item {
+			.bullet {
+				@mixin viewport xl, margin-right, 5;
+			}
+		}
+	}
+}
+
+@media (width >= 1440px) {
+	@mixin viewport xxl, margin-bottom, 20;
+	.cbx-list {
+		.list-item {
+			.bullet {
+				@mixin viewport xxl, margin-right, 5;
+			}
+		}
+	}
+}

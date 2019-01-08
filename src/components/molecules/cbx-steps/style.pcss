@@ -1,11 +1,11 @@
+@import '../../mixins.pcss';
 
-
-html{
-	&[m-browser=ie]{
-		.cbx-steps{
-			.steps-info{
-				.steps-title{
-					height: viewport(xs,80);
+html {
+	&[m-browser="ie"] {
+		& .cbx-steps {
+			& .steps-info {
+				& .steps-title {
+					@mixin viewport xs, height, 80;
 					overflow-y: hidden;
 				}
 			}
@@ -13,35 +13,35 @@ html{
 	}
 }
 
-.cbx-steps{
-	&[m-mody=only-steps]{
-		.steps-info{
+.cbx-steps {
+	&[m-mody="only-steps"] {
+		& .steps-info {
 			background-color: transparent;
 		}
-		.cbx-list-square{
-			>.list-item{
+		& .cbx-list-square {
+			& > .list-item {
 				margin-bottom: 0 !important;
-				&:last-child{
-					>.text-content{
-						&:last-child{
-							&::before{
+				&:last-child {
+					& > .text-content {
+						&:last-child {
+							&::before {
 								content: none;
 							}
 						}
 					}
 				}
-				.cbx-bullet-list{
+				& .cbx-bullet-list {
 					margin-right: 0;
 				}
-				>.text-content{
+				& > .text-content {
 					position: relative;
-					padding:{
-						bottom: viewport(xs,30);
-						left: viewport(xs,35)
-					} 
-					margin-left: viewport(xs,-15);
-					&::before{
-						content: '';
+					padding: {
+						@mixin viewport xs, bottom, 30;
+						@mixin viewport xs, left, 35;
+					}
+					@mixin viewport xs, margin-left, -15;
+					&::before {
+						content: "";
 						position: absolute;
 						left: 0;
 						top: 0;
@@ -54,97 +54,97 @@ html{
 			}
 		}
 	}
-	>.cbx-img{
-		min-height: viewport(xs,150);
-		img{
+	& > .cbx-img {
+		@mixin viewport xs, min-height, 150;
+		& img {
 			height: 100%;
 			object-fit: cover;
 		}
 	}
-	.steps-info{
+	& .steps-info {
 		background-color: var(--background-gray);
-		.steps-title{
+		& .steps-title {
 			display: flex;
 			align-items: center;
 			background-color: var(--soft-blue);
-			padding-left: viewport(xs,30);
-			min-height: viewport(xs,80);
-			.cbx-title{
+			@mixin viewport xs, padding-left, 30;
+			@mixin viewport xs, min-height, 80;
+			& .cbx-title {
 				color: var(--white);
 			}
 		}
-		.steps-content{
-			padding:{
-				top: viewport(xs,20);
-				right: viewport(xs,20);
-				bottom: viewport(xs,30);
-				left: viewport(xs,20);
+		& .steps-content {
+			padding: {
+				@mixin viewport xs, top, 20;
+				@mixin viewport xs, right, 20;
+				@mixin viewport xs, bottom, 30;
+				@mixin viewport xs, left, 20;
 			}
-			.cbx-list-square{
-				.list-item{
-					margin-bottom: viewport(xs,30);
-					&:last-child{
-						margin-bottom: viewport(xs,30);
+			& .cbx-list-square {
+				& .list-item {
+					@mixin viewport xs, margin-bottom, 30;
+					&:last-child {
+						@mixin viewport xs, margin-bottom, 30;
 					}
 				}
 			}
-			.cbx-tip{
-				margin-top: viewport(xs,30);
+			& .cbx-tip {
+				@mixin viewport xs, margin-top, 30;
 			}
 		}
 	}
 }
 
-@media width >= 768px{
-	html{
-		&[m-browser=ie]{
-			.cbx-steps{
-				.steps-info{
-					.steps-title{
+@media (width >= 768px) {
+	html {
+		&[m-browser="ie"] {
+			& .cbx-steps {
+				& .steps-info {
+					& .steps-title {
 						height: 80px;
 					}
 				}
 			}
 		}
 	}
-	.cbx-steps{
-		&[m-mody=only-steps]{
-			.cbx-list-square{
-				>.list-item{
-					>.text-content{
-						padding:{
+	.cbx-steps {
+		&[m-mody="only-steps"] {
+			& .cbx-list-square {
+				& > .list-item {
+					& > .text-content {
+						padding: {
 							bottom: 30px;
 							left: 30px;
-						} 
+						}
 						margin-left: -15px;
 					}
 				}
 			}
 		}
-		>.cbx-img{
+		& > .cbx-img {
 			min-height: 150px;
 		}
-		.steps-info{
-			.steps-title{
+		& .steps-info {
+			& .steps-title {
 				padding-left: 30px;
 				min-height: 80px;
 			}
-			.steps-content{
-				padding:{
+			& .steps-content {
+				padding: {
 					top: 20px;
 					right: 20px;
 					bottom: 30px;
 					left: 20px;
 				}
-				.cbx-list-square{
-					.list-item{
+				& .cbx-list-square {
+					& .list-item {
 						margin-bottom: 30px;
-						&:last-child{
+						&:last-child {
 							margin-bottom: 30px;
 						}
 					}
 				}
-				.cbx-tip{
+				& .cbx-tip {
 					margin-top: 30px;
 				}
 			}
@@ -152,177 +152,178 @@ html{
 	}
 }
 
-@media width >= 1024px{
-	html{
-		&[m-browser=ie]{
-			.cbx-steps{
-				.steps-info{
-					.steps-title{
-						height: viewport(lg,80);
+@media (width >= 1024px) {
+	html {
+		&[m-browser="ie"] {
+			& .cbx-steps {
+				& .steps-info {
+					& .steps-title {
+						@mixin viewport lg, height, 80;
 					}
 				}
 			}
 		}
 	}
-	.cbx-steps{
+	.cbx-steps {
 		display: flex;
-		&[m-mody=only-steps]{
-			.cbx-list-square{
-				>.list-item{
-					>.text-content{
-						padding:{
-							bottom: viewport(lg,30);
-							left: viewport(lg,45);
-						} 
-						margin-left: viewport(lg,-22.5);
+		&[m-mody="only-steps"] {
+			& .cbx-list-square {
+				& > .list-item {
+					& > .text-content {
+						padding: {
+							@mixin viewport lg, bottom, 30;
+							@mixin viewport lg, left, 45;
+						}
+						@mixin viewport lg, margin-left, -22.5;
 					}
 				}
 			}
 		}
-		>.cbx-img{
-			min-height: viewport(lg,150);
+		& > .cbx-img {
+			@mixin viewport lg, min-height, 150;
 		}
-		>.cbx-img, .steps-info{
+		& > .cbx-img,
+		& .steps-info {
 			flex-grow: 1;
 			flex-shrink: 0;
 			flex-basis: 50%;
 		}
-		.steps-info{
-			.steps-title{
-				padding-left: viewport(lg,30);
-				min-height: viewport(lg,80);
+		& .steps-info {
+			& .steps-title {
+				@mixin viewport lg, padding-left, 30;
+				@mixin viewport lg, min-height, 80;
 			}
-			.steps-content{
-				padding:{
-					top: viewport(lg,20);
-					right: viewport(lg,20);
-					bottom: viewport(lg,30);
-					left: viewport(lg,30);
+			& .steps-content {
+				padding: {
+					@mixin viewport lg, top, 20;
+					@mixin viewport lg, right, 20;
+					@mixin viewport lg, bottom, 30;
+					@mixin viewport lg, left, 30;
 				}
-				.cbx-list-square{
-					.list-item{
-						margin-bottom: viewport(lg,30);
-						&:last-child{
-							margin-bottom: viewport(lg,30);
+				& .cbx-list-square {
+					& .list-item {
+						@mixin viewport lg, margin-bottom, 30;
+						&:last-child {
+							@mixin viewport lg, margin-bottom, 30;
 						}
 					}
 				}
-				.cbx-tip{
-					margin-top: viewport(lg,30);
+				& .cbx-tip {
+					@mixin viewport lg, margin-top, 30;
 				}
 			}
 		}
 	}
 }
 
-@media width >= 1280px{
-	html{
-		&[m-browser=ie]{
-			.cbx-steps{
-				.steps-info{
-					.steps-title{
-						height: viewport(xl,80);
+@media (width >= 1280px) {
+	html {
+		&[m-browser="ie"] {
+			& .cbx-steps {
+				& .steps-info {
+					& .steps-title {
+						@mixin viewport xl, height, 80;
 					}
 				}
 			}
 		}
 	}
-	.cbx-steps{
-		&[m-mody=only-steps]{
-			.cbx-list-square{
-				>.list-item{
-					>.text-content{
-						padding:{
-							bottom: viewport(xl,30);
-							left: viewport(xl,45);
-						} 
-						margin-left: viewport(xl,-22.5);
+	.cbx-steps {
+		&[m-mody="only-steps"] {
+			& .cbx-list-square {
+				& > .list-item {
+					& > .text-content {
+						padding: {
+							@mixin viewport xl, bottom, 30;
+							@mixin viewport xl, left, 45;
+						}
+						@mixin viewport xl, margin-left, -22.5;
 					}
 				}
 			}
 		}
-		>.cbx-img{
-			min-height: viewport(xl,150);
+		& > .cbx-img {
+			@mixin viewport xl, min-height, 150;
 		}
-		.steps-info{
-			.steps-title{
-				padding-left: viewport(xl,30);
-				min-height: viewport(xl,80);
+		& .steps-info {
+			& .steps-title {
+				@mixin viewport xl, padding-left, 30;
+				@mixin viewport xl, min-height, 80;
 			}
-			.steps-content{
-				padding:{
-					top: viewport(xl,20);
-					right: viewport(xl,20);
-					bottom: viewport(xl,30);
-					left: viewport(xl,30);
+			& .steps-content {
+				padding: {
+					@mixin viewport xl, top, 20;
+					@mixin viewport xl, right, 20;
+					@mixin viewport xl, bottom, 30;
+					@mixin viewport xl, left, 30;
 				}
-				.cbx-list-square{
-					.list-item{
-						margin-bottom: viewport(xl,30);
-						&:last-child{
-							margin-bottom: viewport(xl,30);
+				& .cbx-list-square {
+					& .list-item {
+						@mixin viewport xl, margin-bottom, 30;
+						&:last-child {
+							@mixin viewport xl, margin-bottom, 30;
 						}
 					}
 				}
-				.cbx-tip{
-					margin-top: viewport(xl,30);
+				& .cbx-tip {
+					@mixin viewport xl, margin-top, 30;
 				}
 			}
 		}
 	}
 }
 
-@media width >= 1440px{
-	html{
-		&[m-browser=ie]{
-			.cbx-steps{
-				.steps-info{
-					.steps-title{
-						height: viewport(xxl,80);
+@media (width >= 1440px) {
+	html {
+		&[m-browser="ie"] {
+			& .cbx-steps {
+				& .steps-info {
+					& .steps-title {
+						@mixin viewport xxl, height,  80;
 					}
 				}
 			}
 		}
 	}
-	.cbx-steps{
-		&[m-mody=only-steps]{
-			.cbx-list-square{
-				>.list-item{
-					>.text-content{
-						padding:{
-							bottom: viewport(xxl,30);
-							left: viewport(xxl,45);
-						} 
-						margin-left: viewport(xxl,-22.5);
+	.cbx-steps {
+		&[m-mody="only-steps"] {
+			& .cbx-list-square {
+				& > .list-item {
+					& > .text-content {
+						padding: {
+							@mixin viewport xxl, bottom,  30;
+							@mixin viewport xxl, left,  45;
+						}
+						@mixin viewport xxl, margin-left,  -22.5;
 					}
 				}
 			}
 		}
-		>.cbx-img{
-			min-height: viewport(xxl,150);
+		& > .cbx-img {
+			@mixin viewport xxl, min-height,  150;
 		}
-		.steps-info{
-			.steps-title{
-				padding-left: viewport(xxl,30);
-				min-height: viewport(xxl,80);
+		& .steps-info {
+			& .steps-title {
+				@mixin viewport xxl, padding-left,  30;
+				@mixin viewport xxl, min-height,  80;
 			}
-			.steps-content{
-				padding:{
-					top: viewport(xxl,20);
-					right: viewport(xxl,20);
-					bottom: viewport(xxl,30);
-					left: viewport(xxl,30);
+			& .steps-content {
+				padding: {
+					@mixin viewport xxl, top,  20;
+					@mixin viewport xxl, right,  20;
+					@mixin viewport xxl, bottom,  30;
+					@mixin viewport xxl, left,  30;
 				}
-				.cbx-list-square{
-					.list-item{
-						margin-bottom: viewport(xxl,30);
-						&:last-child{
-							margin-bottom: viewport(xxl,30);
+				& .cbx-list-square {
+					& .list-item {
+						@mixin viewport xxl, margin-bottom,  30;
+						&:last-child {
+							@mixin viewport xxl, margin-bottom,  30;
 						}
 					}
 				}
-				.cbx-tip{
-					margin-top: viewport(xxl,30);
+				& .cbx-tip {
+					@mixin viewport xxl, margin-top,  30;
 				}
 			}
 		}

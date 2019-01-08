@@ -1,30 +1,32 @@
+@import '../../mixins.pcss';
+
 .cbx-grid-eyf {
 	text-align: center;
-	.superior-grid {
+	& .superior-grid {
 		display: flex;
-		margin-bottom: viewport(xs, 20);
+		@mixin viewport xs, margin-bottom, 20;
 	}
-	.grid-element-big {
-		@include box-shadow(xs, "small-out");
-		border-radius: viewport(xs, 4);
+	& .grid-element-big {
+		@mixin box-shadow xs, small-out;
+		@mixin viewport xs, border-radius, 4;
 		width: calc(50% - 3.125vw);
-		margin-right: viewport(xs, 20);
+		@mixin viewport xs, margin-right, 20;
 		height: 100%;
-		padding: viewport(xs, 10);
+		@mixin viewport xs, padding, 10;
 		background-color: var(--white);
 	}
-	.grid-element-small {
+	& .grid-element-small {
 		width: calc(50% - 3.125vw);
 		height: 100%;
 
-		.small-item {
-			@include box-shadow(xs, "small-out");
-			padding: viewport(xs, 10);
-			border-radius: viewport(xs, 4);
+		& .small-item {
+			@mixin box-shadow xs, small-out;
+			@mixin viewport xs, padding, 10;
+			@mixin viewport xs, border-radius, 4;
 			height: 100%;
 			background-color: var(--white);
 			&:not(:last-child) {
-				margin-bottom: viewport(xs, 20);
+				@mixin viewport xs, margin-bottom, 20;
 			}
 			&:not(:first-child) {
 				display: none;
@@ -32,14 +34,14 @@
 		}
 	}
 	&[m-type="inline-element"] {
-		.grid-element-small {
+		& .grid-element-small {
 			width: 100%;
-			.small-item {
+			& .small-item {
 				display: block;
 				text-align: center;
 			}
 		}
-		.cbx-text {
+		& .cbx-text {
 			&[m-type="positive"] {
 				color: var(--green);
 			}
@@ -48,63 +50,63 @@
 			}
 		}
 	}
-	.grid-element-small-large {
-		@include box-shadow(xs, "small-out");
-		padding: viewport(xs, 20);
+	& .grid-element-small-large {
+		@mixin box-shadow xs, small-out;
+		@mixin viewport xs, padding, 20;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		background-color: var(--white);
-		i {
+		& i {
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			height: viewport(xs, 50);
+			@mixin viewport xs, height, 50;
 		}
-		select,
-		input {
+		& select,
+		& input {
 			border-style: solid;
 			border-width: 1px;
 			border-color: var(--light-gray);
-			padding: viewport(xs, 10);
+			@mixin viewport xs, padding, 10;
 			&::placeholder {
 				color: var(--soft-blue);
 			}
 		}
-		.converter {
+		& .converter {
 			display: flex;
 			position: relative;
-			.select-moneda {
+			& .select-moneda {
 				width: 50%;
-				height: viewport(xs, 35);
+				@mixin viewport xs, height, 35;
 				z-index: 0;
 			}
-			.select-mask {
+			& .select-mask {
 				background: var(--bright-gray);
 				width: 50%;
 				position: absolute;
 				pointer-events: none;
-				height: viewport(xs, 35);
+				@mixin viewport xs, height, 35;
 				z-index: 1;
 				left: 0;
 				&[value] {
 					color: var(--soft-blue);
 				}
 			}
-			.resultado {
+			& .resultado {
 				width: 50%;
-				height: viewport(xs, 35);
+				@mixin viewport xs, height, 35;
 			}
 		}
-		i {
-			font-size: viewport(xs, 30);
+		& i {
+			@mixin viewport xs, font-size, 30;
 		}
 	}
-	.cbx-title {
-		margin-bottom: viewport(xs, 10);
+	& .cbx-title {
+		@mixin viewport xs, margin-bottom, 10;
 		text-align: center;
 	}
-	.valores-cambio {
+	& .valores-cambio {
 		display: flex;
 		border-top: solid;
 		border-bottom: solid;
@@ -112,12 +114,12 @@
 		border-color: var(--middle-gray);
 		justify-content: center;
 		padding: {
-			top: viewport(xs, 10);
+			@mixin viewport xs, top, 10;
 			right: 0;
-			bottom: viewport(xs, 10);
+			@mixin viewport xs, bottom, 10;
 			left: 0;
 		}
-		.valor-item-cambio {
+		& .valor-item-cambio {
 			flex-shrink: 1;
 			padding: {
 				left: 0;
@@ -132,26 +134,26 @@
 			}
 		}
 	}
-	.content-chart {
+	& .content-chart {
 		display: none;
 	}
-	.converter {
-		.cbx-text {
+	& .converter {
+		& .cbx-text {
 			color: var(--soft-blue);
 		}
 	}
 }
 
-@media width >= 768px {
+@media (width >= 768px) {
 	.cbx-grid-eyf {
-		.superior-grid {
+		& .superior-grid {
 			width: 100%;
 			height: 435px;
 			margin-bottom: 20px;
 			text-align: center;
 		}
-		.grid-element-big {
-			@include box-shadow(sm, "small-out");
+		& .grid-element-big {
+			@mixin box-shadow sm, small-out;
 			border-radius: 4px;
 			width: calc(70% - 10px);
 			margin-right: 20px;
@@ -159,11 +161,11 @@
 			display: flex;
 			flex-direction: column;
 		}
-		.grid-element-small {
+		& .grid-element-small {
 			width: calc(30% - 10px);
 			height: calc(100% - 40px);
-			.small-item {
-				@include box-shadow(sm, "small-out");
+			& .small-item {
+				@mixin box-shadow sm, small-out;
 				padding: 20px;
 				height: calc(100% / 3);
 				border-radius: 4px;
@@ -175,72 +177,72 @@
 				}
 			}
 		}
-		.grid-element-small-large {
-			@include box-shadow(sm, "small-out");
+		& .grid-element-small-large {
+			@mixin box-shadow sm, small-out;
 			padding: 20px;
 			flex-direction: row;
 			align-items: center;
 			justify-content: space-around;
-			i {
+			& i {
 				height: 50px;
 			}
-			select,
-			input {
+			& select,
+			& input {
 				padding: 10px;
 			}
-			.converter {
+			& .converter {
 				width: 160px;
-				.select-moneda {
+				& .select-moneda {
 					height: 35px;
 				}
-				.select-mask {
+				& .select-mask {
 					height: 35px;
 					background-color: var(--soft-gray);
 				}
-				.resultado {
+				& .resultado {
 					height: 35px;
 				}
 			}
-			.cbx-title {
+			& .cbx-title {
 				margin-bottom: 0;
 			}
-			i {
+			& i {
 				font-size: 30px;
 			}
 		}
 		&[m-type="inline-element"] {
-			.grid-element-small {
+			& .grid-element-small {
 				display: flex;
 				justify-content: space-between;
-				.small-item {
+				& .small-item {
 					display: block;
 					width: calc(100% / 3 - 15px);
 				}
 			}
-			.valores-cambio {
+			& .valores-cambio {
 				padding: {
 					left: 0;
 					right: 0;
 				}
 				margin-bottom: 0;
-				.valor-item-cambio {
+				& .valor-item-cambio {
 					padding: 0;
 				}
 			}
-			.cbx-text {
+			& .cbx-text {
 				font-size: 14px;
 			}
-			.cbx-legal {
+			& .cbx-legal {
 				font-size: 8px;
 			}
 		}
-		.cbx-title {
+		& .cbx-title {
 			margin-bottom: 20px;
 		}
-		.valores-cambio {
+		& .valores-cambio {
 			padding: 10px;
 			margin-bottom: 20px;
-			.valor-item-cambio {
+			& .valor-item-cambio {
 				width: 50%;
 				padding: {
 					left: auto;
@@ -248,249 +250,249 @@
 				}
 			}
 		}
-		.content-chart {
+		& .content-chart {
 			display: block;
 			flex-grow: 1;
 		}
 	}
 }
-@media width >= 1024px {
+@media (width >= 1024px) {
 	.cbx-grid-eyf {
-		.superior-grid {
-			height: viewport(lg, 490);
-			margin-bottom: viewport(lg, 20);
+		& .superior-grid {
+			@mixin viewport lg, height, 490;
+			@mixin viewport lg, margin-bottom, 20;
 		}
-		.grid-element-big {
-			@include box-shadow(lg, "small-out");
-			border-radius: viewport(lg, 4);
+		& .grid-element-big {
+			@mixin box-shadow lg, small-out;
+			@mixin viewport lg, border-radius, 4;
 			width: calc(70% - 1.95313vw);
-			margin-right: viewport(lg, 20);
-			padding: viewport(lg, 20);
+			@mixin viewport lg, margin-right, 20;
+			@mixin viewport lg, padding, 20;
 		}
-		.grid-element-small {
+		& .grid-element-small {
 			width: calc(30% - 1.95313vw);
 			height: calc(100% - 3.90625vw);
 
-			.small-item {
-				@include box-shadow(lg, "small-out");
-				padding: viewport(lg, 20);
+			& .small-item {
+				@mixin box-shadow lg, small-out;
+				@mixin viewport lg, padding, 20;
 				height: calc(100% / 3);
-				border-radius: viewport(lg, 4);
+				@mixin viewport lg, border-radius, 4;
 				&:not(:last-child) {
-					margin-bottom: viewport(lg, 20);
+					@mixin viewport lg, margin-bottom, 20;
 				}
 				&:not(:first-child) {
 					display: block;
 				}
 			}
 		}
-		.grid-element-small-large {
-			@include box-shadow(lg, "small-out");
-			padding: viewport(lg, 20);
-			i {
-				height: viewport(lg, 50);
+		& .grid-element-small-large {
+			@mixin box-shadow lg, small-out;
+			@mixin viewport lg, padding, 20;
+			& i {
+				@mixin viewport lg, height, 50;
 			}
-			select,
-			input {
-				padding: viewport(lg, 10);
+			& select,
+			& input {
+				@mixin viewport lg, padding, 10;
 			}
-			.converter {
-				width: viewport(lg, 260);
-				.select-moneda {
-					height: viewport(lg, 35);
+			& .converter {
+				@mixin viewport lg, width, 260;
+				& .select-moneda {
+					@mixin viewport lg, height, 35;
 				}
-				.select-mask {
-					height: viewport(lg, 35);
+				& .select-mask {
+					@mixin viewport lg, height, 35;
 				}
-				.resultado {
-					height: viewport(lg, 35);
+				& .resultado {
+					@mixin viewport lg, height, 35;
 				}
 			}
-			i {
-				font-size: viewport(lg, 30);
+			& i {
+				@mixin viewport lg, font-size, 30;
 			}
 		}
 		&[m-type="inline-element"] {
-			.grid-element-small {
-				.small-item {
+			& .grid-element-small {
+				& .small-item {
 					width: calc(100% / 3 - 1.46484vw);
 				}
 			}
-			.cbx-text {
-				font-size: viewport(lg, 14);
+			& .cbx-text {
+				@mixin viewport lg, font-size, 14;
 			}
-			.cbx-legal {
-				font-size: viewport(lg, 12);
+			& .cbx-legal {
+				@mixin viewport lg, font-size, 12;
 			}
 		}
-		.cbx-title {
-			margin-bottom: viewport(lg, 20);
+		& .cbx-title {
+			@mixin viewport lg, margin-bottom, 20;
 		}
-		.valores-cambio {
-			padding: viewport(lg, 10);
-			margin-bottom: viewport(lg, 20);
+		& .valores-cambio {
+			@mixin viewport lg, padding, 10;
+			@mixin viewport lg, margin-bottom, 20;
 		}
 	}
 }
-@media width >= 1280px {
+@media (width >= 1280px) {
 	.cbx-grid-eyf {
-		.superior-grid {
-			height: viewport(xl, 490);
-			margin-bottom: viewport(xl, 20);
+		& .superior-grid {
+			@mixin viewport xl, height, 490;
+			@mixin viewport xl, margin-bottom, 20;
 		}
-		.grid-element-big {
-			@include box-shadow(xl, "small-out");
-			border-radius: viewport(xl, 4);
+		& .grid-element-big {
+			@mixin box-shadow xl, small-out;
+			@mixin viewport xl, border-radius, 4;
 			width: calc(70% - 0.625vw);
-			margin-right: viewport(xl, 20);
-			padding: viewport(xl, 20);
+			@mixin viewport xl, margin-right, 20;
+			@mixin viewport xl, padding, 20;
 		}
-		.grid-element-small {
+		& .grid-element-small {
 			width: calc(30% - 0.625vw);
 			height: calc(100% - 2.5vw);
-			.small-item {
-				@include box-shadow(xl, "small-out");
-				padding: viewport(xl, 20);
+			& .small-item {
+				@mixin box-shadow xl, small-out;
+				@mixin viewport xl, padding, 20;
 				height: calc(100% / 3);
-				border-radius: viewport(xl, 4);
+				@mixin viewport xl, border-radius, 4;
 				&:not(:last-child) {
-					margin-bottom: viewport(xl, 20);
+					@mixin viewport xl, margin-bottom, 20;
 				}
 				&:not(:first-child) {
 					display: block;
 				}
 			}
 		}
-		.grid-element-small-large {
-			@include box-shadow(xl, "small-out");
-			padding: viewport(xl, 20);
-			i {
-				height: viewport(xl, 50);
+		& .grid-element-small-large {
+			@mixin box-shadow xl, small-out;
+			@mixin viewport xl, padding, 20;
+			& i {
+				@mixin viewport xl, height, 50;
 			}
-			select,
-			input {
-				padding: viewport(xl, 10);
+			& select,
+			& input {
+				@mixin viewport xl, padding, 10;
 			}
-			.converter {
-				width: viewport(xl, 260);
-				.select-moneda {
-					height: viewport(xl, 40);
+			& .converter {
+				@mixin viewport xl, width, 260;
+				& .select-moneda {
+					@mixin viewport xl, height, 40;
 				}
-				.select-mask {
-					height: viewport(xl, 40);
+				& .select-mask {
+					@mixin viewport xl, height, 40;
 				}
-				.resultado {
-					height: viewport(xl, 40);
+				& .resultado {
+					@mixin viewport xl, height, 40;
 				}
 			}
-			i {
-				font-size: viewport(xl, 30);
+			& i {
+				@mixin viewport xl, font-size, 30;
 			}
 		}
 		&[m-type="inline-element"] {
-			.grid-element-small {
-				.small-item {
+			& .grid-element-small {
+				& .small-item {
 					width: calc(100% / 3 - 1.46484vw);
 				}
 			}
-			.cbx-text {
-				font-size: viewport(xl, 16);
+			& .cbx-text {
+				@mixin viewport xl, font-size, 16;
 			}
-			.cbx-legal {
-				font-size: viewport(xl, 14);
+			& .cbx-legal {
+				@mixin viewport xl, font-size, 14;
 			}
 		}
-		.cbx-title {
-			margin-bottom: viewport(xl, 20);
+		& .cbx-title {
+			@mixin viewport xl, margin-bottom, 20;
 		}
-		.valores-cambio {
+		& .valores-cambio {
 			padding: {
-				top: viewport(xl, 10);
+				@mixin viewport xl, top, 10;
 				right: 0;
-				bottom: viewport(xl, 10);
+				@mixin viewport xl, bottom, 10;
 				left: 0;
 			}
-			margin-bottom: viewport(xl, 20);
+			@mixin viewport xl, margin-bottom, 20;
 		}
 	}
 }
-@media width >= 1440px {
+@media (width >= 1440px) {
 	.cbx-grid-eyf {
-		.superior-grid {
-			height: viewport(xxl, 490);
-			margin-bottom: viewport(xxl, 20);
+		& .superior-grid {
+			@mixin viewport xxl, height, 490;
+			@mixin viewport xxl, margin-bottom, 20;
 		}
-		.grid-element-big {
-			@include box-shadow(xxl, "small-out");
-			border-radius: viewport(xxl, 4);
+		& .grid-element-big {
+			@mixin box-shadow xxl, small-out;
+			@mixin viewport xxl, border-radius, 4;
 			width: calc(70% - 0.69444vw);
-			margin-right: viewport(xxl, 20);
-			padding: viewport(xxl, 20);
+			@mixin viewport xxl, margin-right, 20;
+			@mixin viewport xxl, padding, 20;
 		}
-		.grid-element-small {
+		& .grid-element-small {
 			width: calc(30% - 0.69444vw);
 			height: calc(100% - 2.77778vw);
 
-			.small-item {
-				@include box-shadow(xxl, "small-out");
-				padding: viewport(xxl, 20);
+			& .small-item {
+				@mixin box-shadow xxl, small-out;
+				@mixin viewport xxl, padding, 20;
 				height: calc(100% / 3);
-				border-radius: viewport(xxl, 4);
+				@mixin viewport xxl, border-radius, 4;
 				&:not(:last-child) {
-					margin-bottom: viewport(xxl, 20);
+					@mixin viewport xxl, margin-bottom, 20;
 				}
 				&:not(:first-child) {
 					display: block;
 				}
 			}
 		}
-		.grid-element-small-large {
-			@include box-shadow(xxl, "small-out");
-			padding: viewport(xxl, 20);
-			i {
-				height: viewport(xxl, 50);
+		& .grid-element-small-large {
+			@mixin box-shadow xxl, small-out;
+			@mixin viewport xxl, padding, 20;
+			& i {
+				@mixin viewport xxl, height, 50;
 			}
-			select,
-			input {
-				padding: viewport(xxl, 10);
+			& select,
+			& input {
+				@mixin viewport xxl, padding, 10;
 			}
-			.converter {
-				width: viewport(xxl, 260);
-				.select-moneda {
-					height: viewport(xxl, 40);
+			& .converter {
+				@mixin viewport xxl, width, 260;
+				& .select-moneda {
+					@mixin viewport xxl, height, 40;
 				}
-				.select-mask {
-					height: viewport(xxl, 40);
+				& .select-mask {
+					@mixin viewport xxl, height, 40;
 				}
-				.resultado {
-					height: viewport(xxl, 40);
+				& .resultado {
+					@mixin viewport xxl, height, 40;
 				}
 			}
-			i {
-				font-size: viewport(xxl, 30);
+			& i {
+				@mixin viewport xxl, font-size, 30;
 			}
 		}
 		&[m-type="inline-element"] {
-			.grid-element-small {
-				.small-item {
+			& .grid-element-small {
+				& .small-item {
 					width: calc(100% / 3 - 1vw);
 				}
 			}
-			.cbx-text {
-				font-size: viewport(xxl, 16);
+			& .cbx-text {
+				@mixin viewport xxl, font-size, 16;
 			}
-			.cbx-legal {
-				font-size: viewport(xxl, 12);
+			& .cbx-legal {
+				@mixin viewport xxl, font-size, 12;
 			}
 		}
-		.cbx-title {
-			margin-bottom: viewport(xxl, 20);
+		& .cbx-title {
+			@mixin viewport xxl, margin-bottom, 20;
 		}
-		.valores-cambio {
+		& .valores-cambio {
 			padding: {
-				top: viewport(xxl, 10);
+				@mixin viewport xxl, top, 10;
 				right: 0;
-				bottom: viewport(xxl, 10);
+				@mixin viewport xxl, bottom, 10;
 				left: 0;
 			}
 			margin-bottom: 0;

@@ -1,0 +1,119 @@
+@import '../../mixins.pcss';
+
+.cbx-modal {
+	display: block;
+	width: 100%;
+	height: 100px;
+	overflow: hidden;
+	position: fixed;
+	top: -400%;
+	transition: top 350ms ease-in-out, height 350ms ease-in-out;
+	z-index: 4;
+
+	& .cbx-modal-content {
+		@mixin box-shadow xs, big-out;
+		@mixin border-radius xs;
+		@mixin viewport xs, padding, 20;
+		@mixin viewport xs, width, 280;
+		margin: {
+			@mixin viewport xs, top, 40;
+			right: auto;
+			@mixin viewport xs, bottom, 40;
+			left: auto;
+		}
+		background-color: var(--white);
+
+		& .modal-head {
+			@mixin viewport xs, margin-bottom, 20;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			& .cbx-hightlight {
+				color: var(--light-gray);
+			}
+		}
+	}
+
+	&[m-open="true"] {
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		height: auto;
+		overflow-x: hidden;
+		overflow-y: auto;
+	}
+}
+
+@media (width >= 768px) {
+	.cbx-modal {
+		& .cbx-modal-content {
+			@mixin box-shadow sm, big-out;
+			@mixin border-radius sm;
+			padding: 20px;
+			width: 680px;
+			margin: 40px auto;
+
+			& .modal-head {
+				margin-bottom: 20px;
+			}
+		}
+	}
+}
+
+@media (width >= 1024px) {
+	.cbx-modal {
+		& .cbx-modal-content {
+			@mixin box-shadow lg, big-out;
+			@mixin border-radius lg;
+			@mixin viewport lg, padding, 20;
+			@mixin viewport lg, width, 680;
+			margin: {
+				@mixin viewport lg, top, 40;
+				@mixin viewport lg, bottom, 40;
+			}
+			& .modal-head {
+				@mixin viewport lg, margin-bottom, 20;
+			}
+		}
+	}
+}
+
+@media (width >= 1280px) {
+	.cbx-modal {
+		& .cbx-modal-content {
+			@mixin box-shadow xl, big-out;
+			@mixin border-radius xl;
+			@mixin viewport xl, padding, 20;
+			@mixin viewport xl, width, 680;
+			margin: {
+				@mixin viewport xl, top, 40;
+				@mixin viewport xl, bottom, 40;
+			}
+
+			& .modal-head {
+				@mixin viewport xl, margin-bottom, 20;
+			}
+		}
+	}
+}
+
+@media (width >= 1440px) {
+	.cbx-modal {
+		& .cbx-modal-content {
+			@mixin box-shadow xxl, big-out;
+			@mixin border-radius xxl;
+			@mixin viewport xxl, padding,  20;
+			@mixin viewport xxl, width,  680;
+			margin: {
+				@mixin viewport xxl, top, 40;
+				@mixin viewport xxl, bottom, 40;
+			}
+
+			& .modal-head {
+				@mixin viewport xxl, margin-bottom,  20;
+			}
+		}
+	}
+}
