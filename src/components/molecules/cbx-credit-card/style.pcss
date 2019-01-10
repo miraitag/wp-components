@@ -90,7 +90,7 @@
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	.cbx-credit-card {
 		width: 100px;
 		height: 65px;
@@ -131,7 +131,7 @@
 		}
 	}
 }
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	.cbx-credit-card {
 		@mixin viewport lg, width, 125;
 		@mixin viewport lg, height, 85;
@@ -174,7 +174,7 @@
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	.cbx-credit-card {
 		@mixin viewport xl, width, 125;
 		@mixin viewport xl, height, 85;
@@ -217,7 +217,7 @@
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	.cbx-credit-card {
 		@mixin viewport xxl, width,  125;
 		@mixin viewport xxl, height,  85;

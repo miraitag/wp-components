@@ -66,7 +66,7 @@
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	.cbx-list-square {
 		& .cbx-bullet-list {
 			margin-right: 20px;
@@ -102,7 +102,7 @@
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	.cbx-list-square {
 		& .cbx-bullet-list {
 			@mixin viewport lg, margin-right, 20;
@@ -138,7 +138,7 @@
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	.cbx-list-square {
 		& .cbx-bullet-list {
 			@mixin viewport xl, margin-right, 20;
@@ -177,7 +177,7 @@
 		}
 	}
 }
-@media (width >= 1440px) {
+@media (--full) {
 	.cbx-list-square {
 		& .cbx-bullet-list {
 			@mixin viewport xxl, margin-right,, 20;

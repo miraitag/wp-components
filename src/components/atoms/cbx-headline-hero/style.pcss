@@ -1,30 +1,32 @@
 @import '../../mixins.pcss';
 
 .cbx-headline-hero{
-    @mixin viewport xs, font-size, 24;
-    font-family: var(--font-b);
+    font:{
+        @mixin viewport xs, size, 24;
+        family: var(--font-b);
+    }
     color: var(--darkest-gray);
 }
 
-@media (width >= 768px){
+@media (--portrait){
     .cbx-headline-hero{
         font-size: 24px;
     }
 }
 
-@media (width >= 1024px){
+@media (--small-desktop){
     .cbx-headline-hero{
         @mixin viewport lg, font-size, 24;
     }
 }
 
-@media (width >= 1280px){
+@media (--large-desktop){
     .cbx-headline-hero{
         @mixin viewport xl, font-size, 36;
     }
 }
 
-@media (width >= 1440px){
+@media (--full){
     .cbx-headline-hero{
         @mixin viewport xxl, font-size, 36;
     }

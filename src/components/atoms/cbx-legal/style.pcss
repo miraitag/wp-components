@@ -1,10 +1,11 @@
-@import '../../mixins.pcss';
+@import "../../mixins.pcss";
 
 .cbx-legal {
-	@mixin viewport xs, font-size, 12;
-	font-family: var(--font-r);
+	font: {
+		@mixin viewport xs, size, 12;
+		family: var(--font-r);
+	}
 	color: var(--dark-gray);
-	/* white-space: pre-wrap; */
 	&[m-mody="number"],
 	&[m-mody="cat"] {
 		font-family: var(--font-b);
@@ -14,7 +15,7 @@
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	.cbx-legal {
 		font-size: 12px;
 		&[m-mody="cat"] {
@@ -23,7 +24,7 @@
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	.cbx-legal {
 		@mixin viewport lg, font-size, 12;
 		&[m-mody="cat"] {
@@ -32,7 +33,7 @@
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	.cbx-legal {
 		@mixin viewport xl, font-size, 12;
 		&[m-mody="cat"] {
@@ -41,7 +42,7 @@
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	.cbx-legal {
 		@mixin viewport xxl, font-size, 12);
 		&[m-mody="cat"] {

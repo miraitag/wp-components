@@ -160,7 +160,7 @@ html {
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	[m-container="form"] {
 		@mixin box-shadow sm, medium-out;
 		width: 480px;
@@ -206,7 +206,7 @@ html {
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	[m-container="form"] {
 		@mixin box-shadow lg, medium-out;
 		@mixin viewport lg, width, 480;
@@ -251,7 +251,7 @@ html {
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	[m-container="form"] {
 		@mixin box-shadow xl, medium-out;
 		@mixin viewport xl, width, 480;
@@ -296,7 +296,7 @@ html {
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	[m-container="form"] {
 		@mixin box-shadow xxl, medium-out;
 		@mixin viewport xxl, width, 480;

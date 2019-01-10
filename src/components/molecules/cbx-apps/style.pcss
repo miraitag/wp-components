@@ -1,4 +1,4 @@
-@import '../../mixins.pcss';
+@import "../../mixins.pcss";
 
 html {
 	&:not([m-browser~="mobile"]) {
@@ -26,7 +26,7 @@ html {
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	html {
 		&:not([m-browser~="mobile"]) {
 			& .cbx-apps {
@@ -44,7 +44,7 @@ html {
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	html {
 		&:not([m-browser~="mobile"]) {
 			& .cbx-apps {
@@ -62,7 +62,7 @@ html {
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	html {
 		&:not([m-browser~="mobile"]) {
 			& .cbx-apps {
@@ -80,20 +80,20 @@ html {
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	html {
 		&:not([m-browser~="mobile"]) {
 			& .cbx-apps {
 				& [m-mody="apple"] {
-					@mixin viewport xxl, margin-right,  20;
+					@mixin viewport xxl, margin-right, 20;
 				}
 			}
 		}
 	}
 	.cbx-apps {
 		& > [m-mody] {
-			@mixin viewport xxl, height,  40;
-			@mixin viewport xxl, width,  120;
+			@mixin viewport xxl, height, 40;
+			@mixin viewport xxl, width, 120;
 		}
 	}
 }

@@ -1,4 +1,4 @@
-@import '../../mixins.pcss';
+@import "../../mixins.pcss";
 
 .cbx-apps-promo {
 	& > .cbx-img {
@@ -14,7 +14,7 @@
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	.cbx-apps-promo {
 		position: relative;
 		& > .cbx-img {
@@ -27,7 +27,7 @@
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	.cbx-apps-promo {
 		& > .cbx-img {
 			@mixin viewport lg, min-height, 270;
@@ -41,7 +41,7 @@
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	.cbx-apps-promo {
 		& > .cbx-img {
 			@mixin viewport xl, min-height, 270;
@@ -52,7 +52,7 @@
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	.cbx-apps-promo {
 		& > .cbx-img {
 			@mixin viewport xxl, min-height, 270;

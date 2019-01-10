@@ -1,4 +1,4 @@
-@import '../../mixins.pcss';
+@import "../../mixins.pcss";
 
 .cbx-list {
 	@mixin viewport xs, margin-bottom, 20;
@@ -10,7 +10,7 @@
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	margin-bottom: 20px;
 	.cbx-list {
 		.list-item {
@@ -20,7 +20,7 @@
 		}
 	}
 }
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	.cbx-list {
 		@mixin viewport lg, margin-bottom, 20;
 		.list-item {
@@ -31,7 +31,7 @@
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	@mixin viewport xl, margin-bottom, 20;
 	.cbx-list {
 		.list-item {
@@ -42,7 +42,7 @@
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	@mixin viewport xxl, margin-bottom, 20;
 	.cbx-list {
 		.list-item {

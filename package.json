@@ -23,6 +23,7 @@
     "node-sass": "^4.10.0",
     "postcss-advanced-variables": "^3.0.0",
     "postcss-at-rules-variables": "^0.1.6",
+    "postcss-calc": "^7.0.1",
     "postcss-conditionals": "^2.1.0",
     "postcss-css-variables": "^0.11.0",
     "postcss-import": "^12.0.1",

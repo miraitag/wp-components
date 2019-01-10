@@ -409,7 +409,7 @@ html {
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	[m-container="comparador"] {
 		&[m-select="true"] {
 			& .comparador-solicitar {
@@ -735,7 +735,7 @@ html {
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	[m-container="comparador"] {
 		& .cbx-wrapper {
 			@mixin viewport lg, padding-top, 20;
@@ -820,7 +820,7 @@ html {
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	[m-container="comparador"] {
 		& .cbx-wrapper {
 			@mixin viewport xl, padding-top, 20;
@@ -908,7 +908,7 @@ html {
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	[m-container="comparador"] {
 		& .cbx-wrapper {
 			@mixin viewport xxl, padding-top, 20;

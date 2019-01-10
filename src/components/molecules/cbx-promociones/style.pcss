@@ -81,7 +81,7 @@
 		justify-content: center;
 	}
 }
-@media (width >= 768px) {
+@media (--portrait) {
 	.cbx-promociones {
 		& .menu-promociones {
 			justify-content: center;
@@ -126,7 +126,7 @@
 		}
 	}
 }
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	.cbx-promociones {
 		flex-direction: row;
 		& .content-promociones {
@@ -203,7 +203,7 @@
 		}
 	}
 }
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	.cbx-promociones {
 		& .menu-promociones {
 			@mixin viewport xl, width, 180;
@@ -243,7 +243,7 @@
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	.cbx-promociones {
 		& .menu-promociones {
 			@mixin viewport xxl, width,  180;

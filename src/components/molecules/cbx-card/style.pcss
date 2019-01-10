@@ -44,11 +44,11 @@ button.cbx-card {
 .cbx-card {
 	@mixin box-shadow xs, medium-out;
 	@mixin border-radius xs;
-	background-color: var(--white);
-	display: flex;
 	@mixin viewport xs, min-height, 20;
 	@mixin viewport xs, padding, 20;
 	@mixin viewport xs, width, 280;
+	background-color: var(--white);
+	display: flex;
 	z-index: 0;
 	& .card-content {
 		display: flex;
@@ -100,7 +100,7 @@ button.cbx-card {
 	& [m-mody~="c-relative"] {
 		position: relative;
 	}
-	& &.slick-slide {
+	&.slick-slide {
 		display: flex !important;
 	}
 	&[m-dmp] {
@@ -545,7 +545,7 @@ button.cbx-card {
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	html {
 		&[m-browser~="mobile"] {
 			& .cbx-card {
@@ -975,7 +975,7 @@ button.cbx-card {
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	html {
 		&[m-browser~="mobile"] {
 			& .cbx-card {
@@ -1431,7 +1431,7 @@ button.cbx-card {
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	html {
 		&[m-browser~="mobile"] {
 			& .cbx-card {
@@ -1831,7 +1831,7 @@ button.cbx-card {
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	html {
 		&[m-browser~="mobile"] {
 			& .cbx-card {

@@ -1,126 +1,127 @@
-@import '../../mixins.pcss';
+@import "../../mixins.pcss";
 
 .cbx-button {
-	@mixin border-radius xs;
-	@mixin viewport xs, letter-spacing, 1;
-	@mixin viewport xs, font-size, 14;
-	@mixin viewport xs, height, 40;
-	@mixin viewport xs, min-width, 220;
-	@mixin viewport xs, padding-right, 15;
-	@mixin viewport xs, padding-left, 15;
-	@mixin transition-duration;
-	transition-property: max-width, border-radius, color, background-color, min-height, box-shadow;
-	font-family: var(--font-r);
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	line-height: 1.5;
-	overflow: hidden;
-	color: var(--white);
-	background-color: var(--soft-blue);
-	&:active {
-		background-color: var(--cyan);
-	}
-	&:focus {
-		color: var(--white);
-	}
-	&[m-mody~="2"] {
-		min-width: 100%;
-	}
-	&[m-mody~="raised"] {
-		@mixin box-shadow xs, small-out;
-	}
-	&[m-mody~="rounded"] {
-		@mixin viewport xs, border-radius, 50;
-		& i {
-			color: var(--background-gray);
-			&::after {
-				@mixin transition background-color;
-				background-color: var(--soft-blue);
-			}
-		}
-	}
+  @mixin border-radius xs;
+  @mixin viewport xs, letter-spacing, 1;
+  @mixin viewport xs, font-size, 14;
+  @mixin viewport xs, height, 40;
+  @mixin viewport xs, min-width, 220;
+  @mixin viewport xs, padding-right, 15;
+  @mixin viewport xs, padding-left, 15;
+  @mixin transition-duration;
+  transition-property: max-width, border-radius, color, background-color,
+    min-height, box-shadow;
+  font-family: var(--font-r);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1.5;
+  overflow: hidden;
+  color: var(--white);
+  background-color: var(--soft-blue);
+  &:active {
+    background-color: var(--cyan);
+  }
+  &:focus {
+    color: var(--white);
+  }
+  &[m-mody~="2"] {
+    min-width: 100%;
+  }
+  &[m-mody~="raised"] {
+    @mixin box-shadow xs, small-out;
+  }
+  &[m-mody~="rounded"] {
+    @mixin viewport xs, border-radius, 50;
+    & i {
+      color: var(--background-gray);
+      &::after {
+        @mixin transition background-color;
+        background-color: var(--soft-blue);
+      }
+    }
+  }
 }
 
-@media (width >= 768px) {
-	.cbx-button {
-		@mixin border-radius sm;
-		font-size: 14px;
-		height: 40px;
-		min-width: 220px;
-		padding-right: 15px;
-		padding-left: 15px;
-		letter-spacing: 1px;
-		&[m-mody~="raised"] {
-			@mixin box-shadow sm, small-out;
-		}
-		&[m-mody~="rounded"] {
-			border-radius: 50px;
-		}
-	}
+@media (--portrait) {
+  .cbx-button {
+    @mixin border-radius sm;
+    font-size: 14px;
+    height: 40px;
+    min-width: 220px;
+    padding-right: 15px;
+    padding-left: 15px;
+    letter-spacing: 1px;
+    &[m-mody~="raised"] {
+      @mixin box-shadow sm, small-out;
+    }
+    &[m-mody~="rounded"] {
+      border-radius: 50px;
+    }
+  }
 }
-@media (width >= 1024px) {
-	.cbx-button {
-		@mixin border-radius lg;
-		@mixin viewport lg, letter-spacing, 1;
-		@mixin viewport lg, font-size, 16;
-		@mixin viewport lg, height, 50;
-		@mixin viewport lg, min-width, 220;
-		@mixin viewport lg, padding-right, 15;
-		@mixin viewport lg, padding-left, 15;
-		&:hover:not([disabled], [m-active="true"], [m-mody~="more"]) {
-			color: var(--white);
-			background-color: var(--cyan);
-		}
-		&[m-mody~="raised"]:not([disabled], [m-mody~="profile"], [m-active="true"]) {
-			@mixin box-shadow lg, small-out;
-			&:hover {
-				@mixin box-shadow lg, big-out;
-			}
-		}
-		&[m-mody~="rounded"] {
-			@mixin viewport lg, border-radius, 50;
-		}
-	}
+@media (--small-desktop) {
+  .cbx-button {
+    @mixin border-radius lg;
+    @mixin viewport lg, letter-spacing, 1;
+    @mixin viewport lg, font-size, 16;
+    @mixin viewport lg, height, 50;
+    @mixin viewport lg, min-width, 220;
+    @mixin viewport lg, padding-right, 15;
+    @mixin viewport lg, padding-left, 15;
+    &:hover:not([disabled], [m-active="true"]) {
+      color: var(--white);
+      background-color: var(--cyan);
+    }
+    &[m-mody~="raised"]:not([disabled], [m-active="true"]) {
+      @mixin box-shadow lg, small-out;
+      &:hover {
+        @mixin box-shadow lg, big-out;
+      }
+    }
+    &[m-mody~="rounded"] {
+      @mixin viewport lg, border-radius, 50;
+    }
+  }
 }
-@media (width >= 1280px) {
-	.cbx-button {
-		@mixin border-radius xl;
-		@mixin viewport xl, letter-spacing, 1;
-		@mixin viewport xl, font-size, 16;
-		@mixin viewport xl, height, 50;
-		@mixin viewport xl, min-width, 220;
-		@mixin viewport xl, padding-right, 15;
-		@mixin viewport xl, padding-left, 15;
-		&[m-mody~="raised"]:not([disabled], [m-mody~="profile"], [m-active="true"]) {
-			@mixin box-shadow xl, small-out;
-			&:hover {
-				@mixin box-shadow xl, big-out;
-			}
-		}
-		&[m-mody~="rounded"] {
-			@mixin viewport xl, border-radius, 50;
-		}
-	}
+@media (--large-desktop) {
+  .cbx-button {
+    @mixin border-radius xl;
+    @mixin viewport xl, letter-spacing, 1;
+    @mixin viewport xl, font-size, 16;
+    @mixin viewport xl, height, 50;
+    @mixin viewport xl, min-width, 220;
+    @mixin viewport xl, padding-right, 15;
+    @mixin viewport xl, padding-left, 15;
+    &[m-mody~="raised"]:not([disabled], [m-active="true"]) {
+      @mixin box-shadow xl, small-out;
+      &:hover {
+        @mixin box-shadow xl, big-out;
+      }
+    }
+    &[m-mody~="rounded"] {
+      @mixin viewport xl, border-radius, 50;
+    }
+  }
 }
-@media (width >= 1440px) {
-	.cbx-button {
-		@mixin border-radius xxl;
-		@mixin viewport xxl, letter-spacing, 1;
-		@mixin viewport xxl, font-size, 16;
-		@mixin viewport xxl, height, 50;
-		@mixin viewport xxl, min-width, 220;
-		@mixin viewport xxl, padding-right, 15;
-		@mixin viewport xxl, padding-left, 15;
-		&[m-mody~="raised"]:not([disabled],[m-mody~="profile"], [m-active="true"]) {
-			@mixin box-shadow full, small-out;
-			&:hover {
-				@mixin box-shadow full, big-out;
-			}
-		}
-		&[m-mody~="rounded"] {
-			@mixin viewport xxl, border-radius, 50;
-		}
-	}
+@media (--full) {
+  .cbx-button {
+    @mixin border-radius xxl;
+    @mixin viewport xxl, letter-spacing, 1;
+    @mixin viewport xxl, font-size, 16;
+    @mixin viewport xxl, height, 50;
+    @mixin viewport xxl, min-width, 220;
+    @mixin viewport xxl, padding-right, 15;
+    @mixin viewport xxl, padding-left, 15;
+    &[m-mody~="raised"]:not([disabled] [m-active="true"]) {
+      @mixin box-shadow full, small-out;
+      &:hover {
+        @mixin box-shadow full, big-out;
+      }
+    }
+    &[m-mody~="rounded"] {
+      @mixin viewport xxl, border-radius, 50;
+    }
+  }
 }

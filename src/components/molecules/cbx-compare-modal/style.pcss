@@ -78,7 +78,7 @@
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	.cbx-compare-modal {
 		height: 100px;
 		bottom: -74px;
@@ -99,7 +99,7 @@
 		}
 	}
 }
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	.cbx-compare-modal {
 		@mixin viewport lg, height, 180;
 		@mixin viewport lg, bottom, -130;
@@ -115,7 +115,7 @@
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	.cbx-compare-modal {
 		@mixin viewport xl, height, 180;
 		@mixin viewport xl, bottom, -145;
@@ -130,7 +130,7 @@
 		}
 	}
 }
-@media (width >= 1440px) {
+@media (--full) {
 	.cbx-compare-modal {
 		@mixin viewport xxl, height,  180;
 		@mixin viewport xxl, bottom,  -145;

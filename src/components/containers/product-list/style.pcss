@@ -78,7 +78,7 @@
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	[m-container="product-list"] {
 		& .nav-filter {
 			height: 70px;
@@ -113,7 +113,7 @@
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	[m-container="product-list"] {
 		& .nav-filter {
 			@mixin viewport lg, height,70;
@@ -146,7 +146,7 @@
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	[m-container="product-list"] {
 		& .nav-filter {
 			@mixin viewport xl, height,70;
@@ -178,7 +178,7 @@
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	[m-container="product-list"] {
 		& .nav-filter {
 			@mixin viewport xxl, height, 70;

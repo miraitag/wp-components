@@ -55,7 +55,7 @@
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	[m-container="tdc-list"] {
 		& > [m-drop-down] {
 			display: flex;
@@ -117,7 +117,7 @@
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	[m-container="tdc-list"] {
 		& .tdc-item {
 			@mixin viewport lg, width, 305;
@@ -135,7 +135,7 @@
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	[m-container="tdc-list"] {
 		& .tdc-item {
 			@mixin viewport xl, width, 350;
@@ -153,7 +153,7 @@
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	[m-container="tdc-list"] {
 		& .tdc-item {
 			@mixin viewport xxl, width,  350;

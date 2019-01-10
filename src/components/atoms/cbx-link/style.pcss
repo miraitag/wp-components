@@ -1,4 +1,4 @@
-@import '../../mixins.pcss';
+@import "../../mixins.pcss";
 
 html {
 	&:not([m-browser~="mobile"]) {
@@ -16,8 +16,10 @@ html {
 }
 
 .cbx-link {
-	@mixin viewport xs, font-size, 14;
-	font-family: var(--font-r);
+	font: {
+		@mixin viewport xs, size, 14;
+		family: var(--font-r);
+	}
 	color: var(--soft-blue);
 	cursor: pointer;
 	&[m-active="true"] {
@@ -45,7 +47,6 @@ html {
 		& .cbx-icon {
 			@mixin viewport xs, margin-left, 10;
 			@mixin transition left;
-			/* transition: left 350ms ease-in-out; */
 			position: relative;
 			color: var(--soft-blue);
 			background-color: transparent;

@@ -56,7 +56,7 @@
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	.cbx-perfilador {
 		height: 380px;
 		display: flex;
@@ -132,7 +132,7 @@
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	.cbx-perfilador {
 		@mixin viewport lg, height, 512;
 		& .content-perfilador {
@@ -166,7 +166,7 @@
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	.cbx-perfilador {
 		@mixin viewport xl, height, 800;
 
@@ -202,7 +202,7 @@
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	.cbx-perfilador {
 		@mixin viewport xxl, height, 720;
 		& .content-perfilador {

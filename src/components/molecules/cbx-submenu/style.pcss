@@ -112,7 +112,7 @@ html {
 	}
 }
 
-@media (width >= 768px){
+@media (--portrait){
 	.cbx-submenu {
 		&[m-sticky="true"] {
 			top: 48px;
@@ -180,7 +180,7 @@ html {
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	.cbx-submenu {
 		&[m-sticky="true"] {
 			@mixin viewport lg, top, 73;
@@ -230,7 +230,7 @@ html {
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	.cbx-submenu {
 		&[m-sticky="true"] {
 			@mixin viewport xl, top, 70;
@@ -280,7 +280,7 @@ html {
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	.cbx-submenu {
 		&[m-sticky="true"] {
 			@mixin viewport xxl, top, 72;

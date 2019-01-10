@@ -23,7 +23,7 @@
 		text-align: center;
 	}
 }
-@media (width >= 768px) {
+@media (--portrait) {
 	.cbx-wrapper {
 		padding: {
 			top: 40px;
@@ -41,7 +41,7 @@
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	.cbx-wrapper {
 		padding: {
 			@mixin viewport lg, top, 40;
@@ -60,7 +60,7 @@
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	.cbx-wrapper {
 		padding: {
 			@mixin viewport xl, top, 40;
@@ -79,7 +79,7 @@
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	.cbx-wrapper {
 		padding: {
 			@mixin viewport xxl, top, 40;

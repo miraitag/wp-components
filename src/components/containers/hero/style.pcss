@@ -16,7 +16,7 @@
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	[m-container="hero"] {
 		height: 276px;
 		& .slick-slide {
@@ -28,7 +28,7 @@
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	[m-container="hero"] {
 		@mixin lg, height, 368;
 		& .slick-slide {
@@ -40,7 +40,7 @@
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	[m-container="hero"] {
 		@mixin xl, height, 400;
 		& .slick-slide {
@@ -52,7 +52,7 @@
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	[m-container="hero"] {
 		@mixin viewport xxl, height, 400;
 		& .slick-slide {

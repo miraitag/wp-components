@@ -46,7 +46,7 @@
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	.cbx-modal {
 		& .cbx-modal-content {
 			@mixin box-shadow sm, big-out;
@@ -62,7 +62,7 @@
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	.cbx-modal {
 		& .cbx-modal-content {
 			@mixin box-shadow lg, big-out;
@@ -80,7 +80,7 @@
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	.cbx-modal {
 		& .cbx-modal-content {
 			@mixin box-shadow xl, big-out;
@@ -99,7 +99,7 @@
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	.cbx-modal {
 		& .cbx-modal-content {
 			@mixin box-shadow xxl, big-out;

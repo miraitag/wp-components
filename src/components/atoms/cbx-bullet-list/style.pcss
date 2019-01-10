@@ -21,7 +21,7 @@
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	.cbx-bullet-list {
 		@mixin border-radius sm;
 		height: 30px;
@@ -32,7 +32,7 @@
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	.cbx-bullet-list {
 		@mixin border-radius lg;
 		@mixin viewport lg, height, 45;
@@ -43,7 +43,7 @@
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	.cbx-bullet-list {
 		@mixin border-radius xl;
 		@mixin viewport xl, height, 45;
@@ -53,7 +53,7 @@
 		}
 	}
 }
-@media (width >= 1440px) {
+@media (--full) {
 	.cbx-bullet-list {
 		@mixin border-radius xxl;
 		@mixin viewport xxl, height, 45;

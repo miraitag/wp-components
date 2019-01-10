@@ -11,7 +11,7 @@
 		}
 	}
 }
-@media (width >= 768px) {
+@media (--portrait) {
 	.cbx-tabs {
 		& .tabs-menu {
 			padding: 20px;
@@ -24,7 +24,7 @@
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	.cbx-tabs {
 		& .tabs-menu {
 			@mixin viewport lg, padding, 20;
@@ -36,7 +36,7 @@
 		}
 	}
 }
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	.cbx-tabs {
 		& .tabs-menu {
 			@mixin viewport lg, padding, 20;
@@ -49,7 +49,7 @@
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	.cbx-tabs {
 		& .tabs-menu {
 			@mixin viewport xxl, padding,  20;

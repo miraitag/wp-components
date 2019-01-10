@@ -66,7 +66,7 @@ html {
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	.cbx-exit {
 		@mixin box-shadow sm, big-out;
 		min-height: 180px;
@@ -94,7 +94,7 @@ html {
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	.cbx-exit {
 		@mixin box-shadow lg, big-out;
 		@mixin viewport lg, min-height, 180;
@@ -125,7 +125,7 @@ html {
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	.cbx-exit {
 		@mixin box-shadow xl, big-out;
 		@mixin viewport xl, min-height, 180;
@@ -153,7 +153,7 @@ html {
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	.cbx-exit {
 		@mixin box-shadow xxl, big-out;
 		@mixin viewport xxl, min-height,  180;

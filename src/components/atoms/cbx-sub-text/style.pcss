@@ -1,30 +1,32 @@
-@import '../../mixins.pcss';
+@import "../../mixins.pcss";
 
 .cbx-sub-text {
-	@mixin viewport xs, font-size, 12;
-	font-family: var(--font-r);
+	font: {
+		@mixin viewport xs, size, 12;
+		family: var(--font-r);
+	}
 	color: var(--dark-gray);
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	.cbx-sub-text {
 		font-size: 12px;
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	.cbx-sub-text {
 		@mixin viewport lg, font-size, 16;
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	.cbx-sub-text {
 		@mixin viewport xl, font-size, 16;
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	.cbx-sub-text {
 		@mixin viewport xxl, font-size, 16;
 	}

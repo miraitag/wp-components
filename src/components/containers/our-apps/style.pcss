@@ -1,6 +1,6 @@
 @import '../../mixins.pcss';
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	[m-container="our-apps"] {
 		&.slick-slider {
 			& .slick-list {
@@ -16,7 +16,7 @@
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	[m-container="our-apps"] {
 		&.slick-slider {
 			& .slick-slide {
@@ -27,7 +27,7 @@
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	[m-container="our-apps"] {
 		&.slick-slider {
 			& .slick-slide {

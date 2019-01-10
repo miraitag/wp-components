@@ -8,7 +8,8 @@ export default (env, argv) => {
     return {
 		watch: true,
         entry: {
-			'cbx-components': ['core-js/modules/es6.promise','core-js/modules/es6.array.iterator','./src/components.js']
+			/* 'cbx-components': ['core-js/modules/es6.promise','core-js/modules/es6.array.iterator','./src/components.js'] */
+			'cbx-components': ['./src/components.js']
         },
         output: {
             path: `${__dirname}/dist/`,
@@ -43,6 +44,7 @@ export default (env, argv) => {
 									require('postcss-import')(),
 									require('postcss-mixins')(),
 									require('postcss-conditionals')(),
+									require('postcss-calc')({precision: 2}),
 									/* require('postcss-media-variables')(), */
 									//require('postcss-css-variables')(),
 									require('postcss-nested-props')(),

@@ -1,12 +1,14 @@
-@import '../../mixins.pcss';
+@import "../../mixins.pcss";
 
 .cbx-button-boolean {
 	@mixin blue-wave citi;
 	@mixin viewport xs, padding, 4;
 	@mixin viewport xs, height, 80;
 	@mixin viewport xs, width, 80;
-	@mixin viewport xs, font-size, 22;
-	font-family: var(--font-r);
+	font: {
+		@mixin viewport xs, size, 22;
+		family: var(--font-r);
+	}
 	border-radius: 50%;
 	display: flex;
 	text-align: center;
@@ -30,7 +32,7 @@
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	.cbx-button-boolean {
 		padding: 4px;
 		font-size: 22px;
@@ -43,7 +45,7 @@
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	.cbx-button-boolean {
 		@mixin viewport lg, padding, 4;
 		@mixin viewport lg, font-size, 22;
@@ -57,7 +59,7 @@
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	.cbx-button-boolean {
 		@mixin viewport xl, padding, 4;
 		@mixin viewport xl, font-size, 22;
@@ -70,7 +72,7 @@
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	.cbx-button-boolean {
 		@mixin viewport xxl, padding, 4;
 		@mixin viewport xxl, font-size, 22;

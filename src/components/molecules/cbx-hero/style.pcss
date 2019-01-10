@@ -85,7 +85,7 @@ html {
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	.cbx-hero {
 		height: 276px;
 		&[m-mody="card"] {
@@ -137,7 +137,7 @@ html {
 	}
 }
 
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	.cbx-hero {
 		@mixin viewport lg, height, 368;
 		&[m-mody="card"] {
@@ -161,7 +161,7 @@ html {
 	}
 }
 
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	.cbx-hero {
 		@mixin viewport xl, height, 400;
 		&[m-mody="card"] {
@@ -185,7 +185,7 @@ html {
 	}
 }
 
-@media (width >= 1440px) {
+@media (--full) {
 	.cbx-hero {
 		@mixin viewport xxl, height,, 400;
 		&[m-mody="card"] {

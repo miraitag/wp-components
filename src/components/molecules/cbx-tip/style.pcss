@@ -20,7 +20,7 @@
 	}
 }
 
-@media (width >= 768px) {
+@media (--portrait) {
 	.cbx-tip {
 		padding: 20px;
 		& .cbx-icon {
@@ -32,7 +32,7 @@
 		}
 	}
 }
-@media (width >= 1024px) {
+@media (--small-desktop) {
 	.cbx-tip {
 		@mixin viewport lg, padding, 20;
 		& .cbx-icon {
@@ -44,7 +44,7 @@
 		}
 	}
 }
-@media (width >= 1280px) {
+@media (--large-desktop) {
 	.cbx-tip {
 		@mixin viewport xl, padding, 20;
 		& .cbx-icon {
@@ -56,7 +56,7 @@
 		}
 	}
 }
-@media (width >= 1440px) {
+@media (--full) {
 	.cbx-tip {
 		@mixin viewport xxl, padding,  20;
 		& .cbx-icon {
