@@ -17,8 +17,9 @@ export default (env, argv) => {
 		},
 		module: {
 			rules: [{
-				test: /\.pug/,
-				use: [{
+				test: /\.pug$/,
+				use: ['html-loader?atrr=false', 'pug-html-loader']
+				/* use: [{
 					loader: 'html-loader?attr=false&minimize=false',
 					query: {
 						minimize: false
@@ -26,10 +27,7 @@ export default (env, argv) => {
 					
 				}, {
 					loader: 'pug-html-loader',
-					/* options: {
-						pretty: false
-					} */
-				}]
+				}] */
 			}, {
 				test: /\.js$/,
 				exclude: `${__dirname}/node_modules`,
