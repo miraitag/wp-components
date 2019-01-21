@@ -1,3 +1,4 @@
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import postcssPresetEnv from 'postcss-preset-env'
 import { plugins } from './src/plugins/index'
 //import fs from 'fs'
@@ -13,7 +14,7 @@ export default (env, argv) => {
 		output: {
 			path: `${__dirname}/dist/`,
 			filename: '[name].bundle.js',
-			publicPath: '/'
+			publicPath: '/assets/'
 		},
 		module: {
 			rules: [{
@@ -82,6 +83,6 @@ export default (env, argv) => {
 				]
 			}]
 		},
-		plugins: plugins
+		plugins: plugins(env, argv)
 	}
 }

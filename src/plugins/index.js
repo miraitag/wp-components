@@ -1,36 +1,55 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin'
 
-const filename = {
-	atoms: 'components/atoms',
-	molecules: 'components/molecules',
-	containers: 'components/containers',
+const components = {
+	atoms: {
+		type: 'atoms',
+		content: [
+			'cbx-bullet-list',
+			'cbx-button',
+			'cbx-button-boolean'
+		]
+	},
+	molecules: {
+		type: 'molecules',
+		content: [
+			'cbx-apps'
+		]
+	}
 }
 
-const template = {
-	atoms: 'src/components/atoms',
-	molecules: 'src/components/molecules',
-	containers: 'src/components/containers'
+let allPlugins = [];
+
+function addPlugin(argv){
+	allPlugins.push( 
+		new MiniCssExtractPlugin({
+			filename: argv.mode === 'production' ? '[name].min.css' : '[name].css',
+			/* filename: '[name].css', */
+			chunkFilename: "[id].css"
+		}),
+	)
+
+	allPlugins.push( 
+		new OptimizeCssAssetsPlugin({
+			cssProcessor: require('cssnano')
+		})
+	)
+	for( let cte in components ){
+		console.log(components[cte]);
+		for(let i=0; i<components[cte].content.length; i++){
+			allPlugins.push( 
+				new HtmlWebpackPlugin({
+					filename: `components/${components[cte].type}/${components[cte].content[i]}/index.html`,
+					template: `src/components/${components[cte].type}/${components[cte].content[i]}/index.pug`,
+					inject: false
+				}),
+			)
+		}
+	}
+	return allPlugins;
 }
 
-export const plugins = [
-	new MiniCssExtractPlugin({
-		filename: "[name].css",
-		chunkFilename: "[id].css"
-	}),
-	new HtmlWebpackPlugin({
-		filename: `${filename.atoms}/cbx-bullet-list/index.html`,
-		template: `${template.atoms}/cbx-bullet-list/index.pug`,
-		inject: false
-	}),
-	new HtmlWebpackPlugin({
-		filename: `${filename.atoms}/cbx-button/index.html`,
-		template: `${template.atoms}/cbx-button/index.pug`,
-		inject: false
-	}),
-	new HtmlWebpackPlugin({
-		filename: `${filename.atoms}/cbx-button-boolean/index.html`,
-		template: `${template.atoms}/cbx-button-boolean/index.pug`,
-		inject: false
-	})
-]
+export function plugins(env, argv){
+	return addPlugin(argv);
+}
